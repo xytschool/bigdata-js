@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>数据展示</title>
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/layer/layer.min.js"></script>
+    <script type="text/javascript" src="js/layer/laydate/laydate.js"></script>
+     <link rel="stylesheet" href="css/wodry.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/public.css" />
+
+    <script>
+      $(function () {
+        $('.myscroll').myScroll({
+          speed: 60, //数值越大，速度越慢
+          rowHeight: 38 //li的高度
+        })
+      })
+
+      $(document).ready(function () {
+        var whei = $(window).width()
+        $('html').css({ fontSize: whei / 22 })
+        $(window).resize(function () {
+          var whei = $(window).width()
+          $('html').css({ fontSize: whei / 22 })
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="header">
+        <!-- <div class="header-left fl" id="time"></div> -->
+        <div class="header-center fl">
+          <div class="header-title">物流大数据展示</div>
+          <div class="header-img"></div>
+        </div>
+        <div class="header-right fl"></div>
+        <div class="header-bottom fl"></div>
+      </div>
+
+      <div class="center">
+        <div class="center-left fl">
+          <div class="weather-box mb40">
+            <div class="data">
+              <p class="time" id="time2">00:00:00</p>
+              <p id="date"></p>
+            </div>
+            <div class="weather border">
+              <img
+                id="weatherImg"
+                src="images/weather_img01.png"
+                alt=""
+              />
+              <div id="weather">
+                <p class="active">多云</p>
+                <p>16-22℃</p>
+                <p>栾州</p>
+              </div>
+            </div>
+          </div>
+          <div class="left-bottom mb40 rightTop border">
+            <div class="title-box">
+              <h6>青山要接待</h6>
+            </div>
+            <table class="table3">
+              <thead>
+                <tr>
+                  <th>地点</th>
+                  <th>上山接待</th>
+                  <th>下山接待</th>
+                </tr>
+              </thead>
+              <tbody id="tList">
+                <tr>
+                  <td>中山索道</td>
+                  <td>180</td>
+                  <td>3598</td>
+                </tr>
+                <tr>
+                  <td>中山索道</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>峰林索道</td>
+                  <td>160</td>
+                  <td>1988</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="left-bottom mb40 rightTop border">
+            <div class="title-box">
+              <h6>客户类型占比</h6>
+            </div>
+            <div class="bottom-b">
+              <div id="chart3" class="allnav"></div>
+            </div>
+          </div>
+        </div>
+        <div class="center-cen fl">
+          <div class="cen-top rightTop border">
+            <div class="top-title">
+              <ul>
+                <li>
+                  <p>今日接待(人)</p>
+                  <span>2020</span>
+                </li>
+                <li>
+                  <p>上山人数</p>
+                  <span>3598</span>
+                </li>
+                <li>
+                  <p>下山人数</p>
+                  <span>180</span>
+                </li>
+                <li>
+                  <p>山上停留人数</p>
+                  <span>3418</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="top-bottom">
+              <div id="map" class="allnav" style="height: 4.4rem"></div>
+            </div>
+          </div>
+          <div class="cen-bottom rightTop border">
+            <div class="title">月统计</div>
+            <div class="bottom-b">
+              <div id="chart4" class="allnav"></div>
+            </div>
+          </div>
+        </div>
+        <div class="center-right fr">
+          <div class="right-top rightTop border">
+            <div class="title">商品销售排行</div>
+
+            <div class="echart wenzi">
+              <div class="gun">
+                <span>排名</span>
+                <span>商品名称</span>
+                <span>销量</span>
+              </div>
+              <div id="FontScroll" class="myscroll">
+                <ul>
+                  <li>
+                    <div class="fontInner clearfix">
+                      <span>
+                        <b>1</b>
+                      </span>
+                      <span>女装</span>
+                      <span>4562万</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="fontInner clearfix">
+                      <span>
+                        <b>2</b>
+                      </span>
+                      <span>手机配件</span>
+                      <span>4125万</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="fontInner clearfix">
+                      <span>
+                        <b>3</b>
+                      </span>
+                      <span>手机</span>
+                      <span>4100万</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="fontInner clearfix">
+                      <span>
+                        <b>4</b>
+                      </span>
+                      <span>流行饰品</span>
+                      <span>3989万</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="fontInner clearfix">
+                      <span>
+                        <b>5</b>
+                      </span>
+                      <span>男装</span>
+                      <span>3956万</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="fontInner clearfix">
+                      <span>
+                        <b>6</b>
+                      </span>
+                      <span>真人发</span>
+                      <span>3823万</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="fontInner clearfix">
+                      <span>
+                        <b>7</b>
+                      </span>
+                      <span>手表</span>
+                      <span>3723万</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="fontInner clearfix">
+                      <span>
+                        <b>8</b>
+                      </span>
+                      <span>服饰配件</span>
+                      <span>3500万</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="fontInner clearfix">
+                      <span>
+                        <b>9</b>
+                      </span>
+                      <span>电脑</span>
+                      <span>3412万</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="fontInner clearfix">
+                      <span>
+                        <b>10</b>
+                      </span>
+                      <span>化妆品</span>
+                      <span>3312万</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="fontInner clearfix">
+                      <span>
+                        <b>11</b>
+                      </span>
+                      <span>女鞋</span>
+                      <span>2856万</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="fontInner clearfix">
+                      <span>
+                        <b>12</b>
+                      </span>
+                      <span>礼品</span>
+                      <span>2631万</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="right-cen border">
+            <div class="title">各平台占比</div>
+            <div class="right-cen-cent">
+              <div id="chart2" class="allnav"></div>
+            </div>
+          </div>
+          <div class="right-bottom rightTop border">
+            <div class="title">全球贸易国家城市排行</div>
+            <div class="chat">
+              <div id="chart5" class="allnav"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="https://www.jq22.com/jquery/echarts-4.2.1.min.js"></script>
+    <script src="js/wodry.min.js"></script>
+    <script src="js/fontscroll.js"></script>
+    <script src="js/echarts.js"></script>
+    <script src="js/china.js"></script>
+    <!--<script src="js/mymap.js"></script>-->
+    <script>
+      function fnW(str) {
+        var num;
+        str >= 10 ? num = str : num = "0" + str;
+        return num;
+        }
+      //获取当前时间
+      var timer = setInterval(function () {
+          var date = new Date();
+          var year = date.getFullYear(); //当前年份
+          var month = date.getMonth(); //当前月份
+          var data = date.getDate(); //天
+          var hours = date.getHours(); //小时
+          var minute = date.getMinutes(); //分
+          var second = date.getSeconds(); //秒
+          var day = date.getDay(); //获取当前星期几 
+          var ampm = hours < 12 ? 'am' : 'pm';
+          $('#time2').html(fnW(hours) + ":" + fnW(minute) + ":" + fnW(second));
+          $('#date').html('<span>' + year + '/' + (month + 1) + '/' + data + '</span><span>' + ampm + '</span><span>周' + day + '</span>')
+      }, 1000)
+      function fillZero(str) {
+        var realNum
+        if (str < 10) {
+          realNum = '0' + str
+        } else {
+          realNum = str
+        }
+        return realNum
+      }
+      setInterval(getTime, 1000)
+    </script>
+  </body>
+</html>

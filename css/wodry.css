@@ -1,0 +1,227 @@
+﻿.adjecting {
+    display: inline-block;
+    position: relative;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform-origin-x: 50%;
+}
+.adjecting .front-face, .adjecting .back-face {
+    display: inline-block;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.adjecting .front-face {
+    position: absolute;
+}
+.adjecting .back-face {
+    position: relative;
+}
+.title-box {
+  /* ../images/box_title.png */
+  width: 4.9rem;
+  height: 0.42rem;
+  background: url(../images/box_title.png) top left no-repeat;
+  background-size: 100% 100%;
+  margin: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  position: relative;
+}
+
+.title-box>h6 {
+  font-size: 0.2rem;
+  color: white;
+  height: 0.42rem;
+  line-height: 0.42rem;
+  margin-left: 0.4rem;
+}
+
+.title-box>p>span {
+  cursor: pointer;
+  color: rgba(255, 255, 255, .6);
+}
+
+.title-box>p>span.active {
+  color: rgba(255, 255, 255, 1);
+}
+
+.table3 {
+  font-size: 0.16rem;
+  border: 1px solid #0e94ea;
+  border-top: none;
+  margin: 10px auto;
+}
+
+.table3 tr {
+  border-top: 1px solid #0e94ea;
+  background: rgba(14, 148, 234, 0.1);
+}
+
+.table3 thead tr {
+  background: rgba(14, 148, 234, 0.4);
+}
+
+.table3 tr.bg-color {
+  background: rgba(14, 148, 234, 0.2);
+}
+
+.table3 tr td:nth-child(2n+1),
+.table3 tr td:nth-child(2n+1)>p {
+  width: 3rem;
+}
+
+.table3 tr td:nth-child(2n),
+.table3 tr td:nth-child(2n)>p {
+  width: 1.8rem;
+}
+
+.table3 tr td,
+.table3 tr th {
+  border-right: 1px solid #0e94ea;
+  height: 0.4rem;
+  line-height: 0.4rem;
+  color: #cdddf7;
+  text-align: center;
+}
+
+.table3 tr td p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #cdddf7;
+}
+
+.table3 thead tr th {
+  border-right: none;
+}
+
+.panel {
+  position: relative;
+  height: 3.875rem;
+  border: 1px solid rgba(25, 186, 139, 0.17);
+  background: rgba(255, 255, 255, 0.04) url(../images/line\(1\).png);
+  padding: 0 0.1875rem 0.5rem;
+  margin-bottom: 0.1875rem;
+}
+.panel::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid #02a6b5;
+  border-left: 2px solid #02a6b5;
+  border-radius: 20%;
+}
+.panel::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid #02a6b5;
+  border-right: 2px solid #02a6b5;
+  border-radius: 20%;
+}
+.panel .panel-footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+.panel .panel-footer::before {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid #02a6b5;
+  border-left: 2px solid #02a6b5;
+  border-radius: 20%;
+}
+.panel .panel-footer::after {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid #02a6b5;
+  border-right: 2px solid #02a6b5;
+  border-radius: 20%;
+}
+.panel h2 {
+  height: 0.6rem;
+  line-height: 0.6rem;
+  text-align: center;
+  color: #fff;
+  font-size: 0.25rem;
+  font-weight: 400;
+}
+.panel h2 a {
+  margin: 0 0.1875rem;
+  color: #fff;
+  text-decoration: underline;
+}
+.panel .chart {
+  height: 3rem;
+}
+
+
+.weather-box {
+  width: 100%;
+  height: 3.2rem;
+  /* border: 1px solid #0E94EA; */
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  border: 1px solid #0bc4e9;
+  background: rgba(0,72,115,0.28);
+  transition: all 1s;
+}
+
+.weather-box>.data {
+  width: 2.19rem;
+  height: 0.65rem;
+  border-right: 2px solid #cdddf7;
+}
+
+.data>p {
+  font-size: 0.16rem;
+  margin: 0 5px;
+  color: #cdddf7;
+  text-align: center;
+  margin: 0;
+}
+
+.data>p>span {
+  margin: 0 5px;
+}
+
+.data>p.time {
+  font-size: 0.42rem;
+  height: 0.42rem;
+  line-height: 0.42rem;
+}
+
+.weather-box>.weather {
+  width: 2.2rem;
+  height: 0.65rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+
+  margin-left: 10px;
+}
