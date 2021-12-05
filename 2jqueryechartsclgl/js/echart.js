@@ -1,6 +1,6 @@
 $(function () {
     /*echart_1();*/
-    echart_2();
+    // echart_2();
 
     echart_3();
     /*echart_4();*/
@@ -8,8 +8,8 @@ $(function () {
     /*echart_map();*/
     echarts_1();
     echarts_4();
-    echarts_2();
-    char4();
+    // echarts_2();
+    // char4();
 
 
     //echart_1
@@ -210,131 +210,131 @@ $(function () {
     }
 
     //echart_2
-    function echart_2() {
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('chart_2'));
+    // function echart_2() {
+    //     // 基于准备好的dom，初始化echarts实例
+    //     var myChart = echarts.init(document.getElementById('chart_2'));
         
-        option = {
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: { // 坐标轴指示器，坐标轴触发有效
-                    type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-                }
-            },
+    //     option = {
+    //         tooltip: {
+    //             trigger: 'axis',
+    //             axisPointer: { // 坐标轴指示器，坐标轴触发有效
+    //                 type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+    //             }
+    //         },
 
-            legend: {
-                // align: 'center',
-                // left: '65%',
-                top: '28',
-                data: ['行驶', '停车', '熄火', '离线'],
-                itemWidth:16,
-                itemHeight:12,
-                // borderRadius: 0, // 统一设置四个角的圆角大小
-                icon: 'rect',
-                textStyle: {
-                    itemGap: 12, //图例每项之间的间隔
-                    color: [],
-                    fontStyle: 'normal',
-                    fontFamily: '微软雅黑',
-                    fontSize: 14,
-                }
-            },
-            grid: {
-                left: '5%',
-                right: '5%',
-                bottom: '5%',
-                containLabel: true
-            },
+    //         legend: {
+    //             // align: 'center',
+    //             // left: '65%',
+    //             top: '28',
+    //             data: ['行驶', '停车', '熄火', '离线'],
+    //             itemWidth:16,
+    //             itemHeight:12,
+    //             // borderRadius: 0, // 统一设置四个角的圆角大小
+    //             icon: 'rect',
+    //             textStyle: {
+    //                 itemGap: 12, //图例每项之间的间隔
+    //                 color: [],
+    //                 fontStyle: 'normal',
+    //                 fontFamily: '微软雅黑',
+    //                 fontSize: 14,
+    //             }
+    //         },
+    //         grid: {
+    //             left: '5%',
+    //             right: '5%',
+    //             bottom: '5%',
+    //             containLabel: true
+    //         },
 
-            xAxis: {
-                axisLabel: { //调整x轴的lable
-                    textStyle: {
-                        color: '#fff',
-                        fontSize: 13,
-                    }
-                },
-                splitLine: {
-                    show: false
-                }
-            },
-            yAxis: {
-                type: 'category',
-                data: ['学生班车', '网约车', '危险品运输车', '客运车'],
-                axisTick : {show: true},
-                axisLabel: { //调整x轴的lable
-                    textStyle: {
-                        color: '#fff',
-                        fontSize: 13,
-                    }
-                },
-                splitLine: {
-                    show: false
-                }
-            },
-            series: [{
-                name: '行驶',
-                type: 'bar',
-                stack: '总量',
-                color:'#0035f9',
-                barWidth : 18,
-                label: {
-                    normal: {
-                        show: false,
-                        position: 'insideRight'
-                    }
-                },
-                data: [4, 10, 8, 7]
-            }, {
-                name: '停车',
-                type: 'bar',
-                stack: '总量',
-                color:'#f36f8a',
-                barWidth : 20,
-                label: {
-                    normal: {
-                        show: false,
-                        position: 'insideRight'
-                    }
-                },
-                data: [10, 4, 5, 6]
-            }, {
-                name: '熄火',
-                type: 'bar',
-                stack: '总量',
-                color:'#efe39b',
-                barWidth : 20,
-                label: {
-                    normal: {
-                        show: false,
-                        position: 'insideRight'
-                    }
-                },
-                data: [4, 10, 8, 7]
-            }, {
-                name: '离线',
-                type: 'bar',
-                stack: '总量',
-                color:'#25f3e6',
-                barWidth : 20,
-                label: {
-                    normal: {
-                        show: false,
-                        position: 'insideRight'
-                    }
-                },
-                data: [4, 10, 8, 7]
-            }
+    //         xAxis: {
+    //             axisLabel: { //调整x轴的lable
+    //                 textStyle: {
+    //                     color: '#fff',
+    //                     fontSize: 13,
+    //                 }
+    //             },
+    //             splitLine: {
+    //                 show: false
+    //             }
+    //         },
+    //         yAxis: {
+    //             type: 'category',
+    //             data: ['学生班车', '网约车', '危险品运输车', '客运车'],
+    //             axisTick : {show: true},
+    //             axisLabel: { //调整x轴的lable
+    //                 textStyle: {
+    //                     color: '#fff',
+    //                     fontSize: 13,
+    //                 }
+    //             },
+    //             splitLine: {
+    //                 show: false
+    //             }
+    //         },
+    //         series: [{
+    //             name: '行驶',
+    //             type: 'bar',
+    //             stack: '总量',
+    //             color:'#0035f9',
+    //             barWidth : 18,
+    //             label: {
+    //                 normal: {
+    //                     show: false,
+    //                     position: 'insideRight'
+    //                 }
+    //             },
+    //             data: [4, 10, 8, 7]
+    //         }, {
+    //             name: '停车',
+    //             type: 'bar',
+    //             stack: '总量',
+    //             color:'#f36f8a',
+    //             barWidth : 20,
+    //             label: {
+    //                 normal: {
+    //                     show: false,
+    //                     position: 'insideRight'
+    //                 }
+    //             },
+    //             data: [10, 4, 5, 6]
+    //         }, {
+    //             name: '熄火',
+    //             type: 'bar',
+    //             stack: '总量',
+    //             color:'#efe39b',
+    //             barWidth : 20,
+    //             label: {
+    //                 normal: {
+    //                     show: false,
+    //                     position: 'insideRight'
+    //                 }
+    //             },
+    //             data: [4, 10, 8, 7]
+    //         }, {
+    //             name: '离线',
+    //             type: 'bar',
+    //             stack: '总量',
+    //             color:'#25f3e6',
+    //             barWidth : 20,
+    //             label: {
+    //                 normal: {
+    //                     show: false,
+    //                     position: 'insideRight'
+    //                 }
+    //             },
+    //             data: [4, 10, 8, 7]
+    //         }
 
-            ]
+    //         ]
 
-        };
+    //     };
 
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-        window.addEventListener("resize",function(){
-            myChart.resize();
-        });
-    }
+    //     // 使用刚指定的配置项和数据显示图表。
+    //     myChart.setOption(option);
+    //     window.addEventListener("resize",function(){
+    //         myChart.resize();
+    //     });
+    // }
     
     // echart_map
     function echart_map() {
@@ -851,246 +851,246 @@ $(function () {
         });
     }
     
-    function echart_4() {
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('chart_4'));
+    // function echart_4() {
+    //     // 基于准备好的dom，初始化echarts实例
+    //     var myChart = echarts.init(document.getElementById('chart_4'));
 
-        /*中间显示的数据*/
-        /*中间显示的数据*/
-        var myData = ['超速', 'SOS', '偏移', '其他']
-        var databeast = {
-            1: [38, 25, 26, 32]
-        }
-        var databeauty = {
-            1: [11, 38, 23, 30]
-        }
-        var timeLineData = [1]
+    //     /*中间显示的数据*/
+    //     /*中间显示的数据*/
+    //     var myData = ['超速', 'SOS', '偏移', '其他']
+    //     var databeast = {
+    //         1: [38, 25, 26, 32]
+    //     }
+    //     var databeauty = {
+    //         1: [11, 38, 23, 30]
+    //     }
+    //     var timeLineData = [1]
 
-        var option = {
-            baseOption: {
-                backgroundColor: 'transparent',
-                timeline: {
-                    show: false,
-                    top: 0,
-                    data: []
-                },
-                legend: {
-                    show:true,
-                    // align: 'center',
-                    left: '30%',
-                    top: 30,
-                    // data: ['行驶', '停车'],
-                    // itemWidth:16,
-                    // itemHeight:12,
-                    // // borderRadius: 0, // 统一设置四个角的圆角大小
-                    icon: 'rect',
-                    textStyle: {
-                        itemGap: 12, //图例每项之间的间隔
-                        color: [],
-                        fontStyle: 'normal',
-                        fontFamily: '微软雅黑',
-                        fontSize: 14,
-                    }
-                },
-                tooltip: {
-                    show: true,
-                    trigger: 'axis',
-                    formatter: '{b}<br/>{a}: {c}',
-                    axisPointer: {
-                        type: 'shadow'
-                    }
-                },
+    //     var option = {
+    //         baseOption: {
+    //             backgroundColor: 'transparent',
+    //             timeline: {
+    //                 show: false,
+    //                 top: 0,
+    //                 data: []
+    //             },
+    //             legend: {
+    //                 show:true,
+    //                 // align: 'center',
+    //                 left: '30%',
+    //                 top: 30,
+    //                 // data: ['行驶', '停车'],
+    //                 // itemWidth:16,
+    //                 // itemHeight:12,
+    //                 // // borderRadius: 0, // 统一设置四个角的圆角大小
+    //                 icon: 'rect',
+    //                 textStyle: {
+    //                     itemGap: 12, //图例每项之间的间隔
+    //                     color: [],
+    //                     fontStyle: 'normal',
+    //                     fontFamily: '微软雅黑',
+    //                     fontSize: 14,
+    //                 }
+    //             },
+    //             tooltip: {
+    //                 show: true,
+    //                 trigger: 'axis',
+    //                 formatter: '{b}<br/>{a}: {c}',
+    //                 axisPointer: {
+    //                     type: 'shadow'
+    //                 }
+    //             },
 
-                grid: [{
-                    show: false,
-                    left: '8%',
-                    top: 60,
-                    bottom: 0,
-                    containLabel: true,
-                    width: '30%'
-                }, {
-                    show: false,
-                    left: '57%',
-                    top: 60,
-                    bottom: 0,
-                    width: '0%'
-                }, {
-                    show: false,
-                    right: '8%',
-                    top: 60,
-                    bottom: 0,
-                    containLabel: true,
-                    width: '30%'
-                }],
+    //             grid: [{
+    //                 show: false,
+    //                 left: '8%',
+    //                 top: 60,
+    //                 bottom: 0,
+    //                 containLabel: true,
+    //                 width: '30%'
+    //             }, {
+    //                 show: false,
+    //                 left: '57%',
+    //                 top: 60,
+    //                 bottom: 0,
+    //                 width: '0%'
+    //             }, {
+    //                 show: false,
+    //                 right: '8%',
+    //                 top: 60,
+    //                 bottom: 0,
+    //                 containLabel: true,
+    //                 width: '30%'
+    //             }],
 
-                xAxis: [{
-                    type: 'value',
-                    inverse: true,
-                    axisLine: {
-                        show: false
-                    },
-                    axisTick: {
-                        show: false
-                    },
-                    position: 'top',
-                    axisLabel: {
-                        show: false
-                    },
-                    splitLine: {
-                        show: false
-                    }
-                }, {
-                    gridIndex: 1,
-                    show: false
-                }, {
-                    gridIndex: 2,
-                    nameTextStyle: {
-                        color: '#50afff',
-                        fontSize: 14
-                    },
-                    axisLine: {
-                        show: false
-                    },
-                    axisTick: {
-                        show: false
-                    },
-                    position: 'top',
-                    axisLabel: {
-                        show: false
-                    },
-                    splitLine: {
-                        show: false
-                    }
-                }],
-                yAxis: [{
-                    type: 'category',
-                    inverse: true,
-                    position: 'right',
-                    axisLine: {
-                        show: false
-                    },
-                    axisTick: {
-                        show: false
-                    },
-                    axisLabel: {
-                        show: false
-                    },
-                    data: myData
-                }, {
-                    gridIndex: 1,
-                    type: 'category',
-                    inverse: true,
-                    position: 'left',
-                    axisLine: {
-                        show: false
-                    },
-                    axisTick: {
-                        show: false
-                    },
-                    axisLabel: {
-                        show: true,
-                        textStyle: {
-                            color: '#fff',
-                            fontSize: 14
-                        }
+    //             xAxis: [{
+    //                 type: 'value',
+    //                 inverse: true,
+    //                 axisLine: {
+    //                     show: false
+    //                 },
+    //                 axisTick: {
+    //                     show: false
+    //                 },
+    //                 position: 'top',
+    //                 axisLabel: {
+    //                     show: false
+    //                 },
+    //                 splitLine: {
+    //                     show: false
+    //                 }
+    //             }, {
+    //                 gridIndex: 1,
+    //                 show: false
+    //             }, {
+    //                 gridIndex: 2,
+    //                 nameTextStyle: {
+    //                     color: '#50afff',
+    //                     fontSize: 14
+    //                 },
+    //                 axisLine: {
+    //                     show: false
+    //                 },
+    //                 axisTick: {
+    //                     show: false
+    //                 },
+    //                 position: 'top',
+    //                 axisLabel: {
+    //                     show: false
+    //                 },
+    //                 splitLine: {
+    //                     show: false
+    //                 }
+    //             }],
+    //             yAxis: [{
+    //                 type: 'category',
+    //                 inverse: true,
+    //                 position: 'right',
+    //                 axisLine: {
+    //                     show: false
+    //                 },
+    //                 axisTick: {
+    //                     show: false
+    //                 },
+    //                 axisLabel: {
+    //                     show: false
+    //                 },
+    //                 data: myData
+    //             }, {
+    //                 gridIndex: 1,
+    //                 type: 'category',
+    //                 inverse: true,
+    //                 position: 'left',
+    //                 axisLine: {
+    //                     show: false
+    //                 },
+    //                 axisTick: {
+    //                     show: false
+    //                 },
+    //                 axisLabel: {
+    //                     show: true,
+    //                     textStyle: {
+    //                         color: '#fff',
+    //                         fontSize: 14
+    //                     }
 
-                    },
-                    data: myData.map(function(value) {
-                        return {
-                            value: value,
-                            textStyle: {
-                                align: 'center'
-                            }
-                        }
-                    })
-                }, {
-                    gridIndex: 2,
-                    type: 'category',
-                    inverse: true,
-                    position: 'left',
-                    axisLine: {
-                        show: false
-                    },
-                    axisTick: {
-                        show: false
-                    },
-                    axisLabel: {
-                        show: false
+    //                 },
+    //                 data: myData.map(function(value) {
+    //                     return {
+    //                         value: value,
+    //                         textStyle: {
+    //                             align: 'center'
+    //                         }
+    //                     }
+    //                 })
+    //             }, {
+    //                 gridIndex: 2,
+    //                 type: 'category',
+    //                 inverse: true,
+    //                 position: 'left',
+    //                 axisLine: {
+    //                     show: false
+    //                 },
+    //                 axisTick: {
+    //                     show: false
+    //                 },
+    //                 axisLabel: {
+    //                     show: false
 
-                    },
-                    data: myData
-                }],
-                series: [
+    //                 },
+    //                 data: myData
+    //             }],
+    //             series: [
 
-                ]
+    //             ]
 
-            },
-            options: []
-        }
+    //         },
+    //         options: []
+    //     }
 
-        option.baseOption.timeline.data.push(timeLineData[0])
-        option.options.push({
-            tooltip: {
-                trigger: 'axis',
-                formatter: '{b}<br/>{c} {a}'
-            },
-            series: [{
-                name: '昨天',
-                type: 'bar',
-                barWidth: 17,
-                label: {
-                    normal: {
-                        show: true,
-                        position: 'left',
-                        offset: [0, 0],
-                        textStyle: {
-                            color: '#fff',
-                            fontSize: 14
-                        }
-                    }
-                },
-                itemStyle: {
-                    normal: {
-                        color: '#0035f9',
-                        // barBorderRadius: 50
-                    }
-                },
+    //     option.baseOption.timeline.data.push(timeLineData[0])
+    //     option.options.push({
+    //         tooltip: {
+    //             trigger: 'axis',
+    //             formatter: '{b}<br/>{c} {a}'
+    //         },
+    //         series: [{
+    //             name: '昨天',
+    //             type: 'bar',
+    //             barWidth: 17,
+    //             label: {
+    //                 normal: {
+    //                     show: true,
+    //                     position: 'left',
+    //                     offset: [0, 0],
+    //                     textStyle: {
+    //                         color: '#fff',
+    //                         fontSize: 14
+    //                     }
+    //                 }
+    //             },
+    //             itemStyle: {
+    //                 normal: {
+    //                     color: '#0035f9',
+    //                     // barBorderRadius: 50
+    //                 }
+    //             },
 
-                data: databeast[timeLineData[0]]
-            }, {
-                name: '今天',
-                type: 'bar',
-                barWidth: 18,
-                xAxisIndex: 2,
-                yAxisIndex: 2,
-                label: {
-                    normal: {
-                        show: true,
-                        position: 'right',
-                        offset: [0, 0],
-                        textStyle: {
-                            color: '#fff',
-                            fontSize: 14
-                        }
-                    }
-                },
-                itemStyle: {
-                    normal: {
-                        color: '#25f3e6',
-                        // barBorderRadius: 50
-                    }
-                },
-                data: databeauty[timeLineData[0]]
-            }]
-        })
+    //             data: databeast[timeLineData[0]]
+    //         }, {
+    //             name: '今天',
+    //             type: 'bar',
+    //             barWidth: 18,
+    //             xAxisIndex: 2,
+    //             yAxisIndex: 2,
+    //             label: {
+    //                 normal: {
+    //                     show: true,
+    //                     position: 'right',
+    //                     offset: [0, 0],
+    //                     textStyle: {
+    //                         color: '#fff',
+    //                         fontSize: 14
+    //                     }
+    //                 }
+    //             },
+    //             itemStyle: {
+    //                 normal: {
+    //                     color: '#25f3e6',
+    //                     // barBorderRadius: 50
+    //                 }
+    //             },
+    //             data: databeauty[timeLineData[0]]
+    //         }]
+    //     })
         
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-        window.addEventListener("resize",function(){
-            myChart.resize();
-        });
+    //     // 使用刚指定的配置项和数据显示图表。
+    //     myChart.setOption(option);
+    //     window.addEventListener("resize",function(){
+    //         myChart.resize();
+    //     });
         
-    }
+    // }
 
 
     function echarts_4() {
@@ -1260,229 +1260,229 @@ $(function () {
 })
 
 
-function echarts_2() {
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('echarts_2'));
+// function echarts_2() {
+//     // 基于准备好的dom，初始化echarts实例
+//     var myChart = echarts.init(document.getElementById('echarts_2'));
 
-    option = {
-        backgroundColor: 'rgba(0,0,0,0)',
-        tooltip: {
-            trigger: 'item',
-            formatter: "{b}  <br/>{c}辆"
-        },
-        legend: {
-            x: 'center',
-            y: '2%',
-            data: ['车型一', '车型二', '车型三', '车型四', '车型五'],
-            icon: 'circle',
-            textStyle: {
-                color: '#fff',
-            }
-        },
-        calculable: true,
-        series: [{
-            name: '车型',
-            type: 'pie',
-            //起始角度，支持范围[0, 360]
-            startAngle: 0,
-            //饼图的半径，数组的第一项是内半径，第二项是外半径
-            radius: [41, 110],
-            //支持设置成百分比，设置成百分比时第一项是相对于容器宽度，第二项是相对于容器高度
-            center: ['50%', '20%'],
-            //是否展示成南丁格尔图，通过半径区分数据大小。可选择两种模式：
-            // 'radius' 面积展现数据的百分比，半径展现数据的大小。
-            //  'area' 所有扇区面积相同，仅通过半径展现数据大小
-            roseType: 'area',
-            //是否启用防止标签重叠策略，默认开启，圆环图这个例子中需要强制所有标签放在中心位置，可以将该值设为 false。
-            avoidLabelOverlap: false,
-            label: {
-                normal: {
-                    show: true,
-                    formatter: '{c}辆'
-                },
-                emphasis: {
-                    show: true
-                }
-            },
-            labelLine: {
-                normal: {
-                    show: true,
-                    length2: 1,
-                },
-                emphasis: {
-                    show: true
-                }
-            },
-            data: [{
-                value: 600,
-                name: '车型一',
-                itemStyle: {
-                    normal: {
-                        color: '#f845f1'
-                    }
-                }
-            },
-                {
-                    value: 1100,
-                    name: '车型二',
-                    itemStyle: {
-                        normal: {
-                            color: '#ad46f3'
-                        }
-                    }
-                },
-                {
-                    value: 1200,
-                    name: '车型三',
-                    itemStyle: {
-                        normal: {
-                            color: '#5045f6'
-                        }
-                    }
-                },
-                {
-                    value: 1300,
-                    name: '车型四',
-                    itemStyle: {
-                        normal: {
-                            color: '#4777f5'
-                        }
-                    }
-                },
-                {
-                    value: 1400,
-                    name: '车型五',
-                    itemStyle: {
-                        normal: {
-                            color: '#44aff0'
-                        }
-                    }
-                },
+//     option = {
+//         backgroundColor: 'rgba(0,0,0,0)',
+//         tooltip: {
+//             trigger: 'item',
+//             formatter: "{b}  <br/>{c}辆"
+//         },
+//         legend: {
+//             x: 'center',
+//             y: '2%',
+//             data: ['车型一', '车型二', '车型三', '车型四', '车型五'],
+//             icon: 'circle',
+//             textStyle: {
+//                 color: '#fff',
+//             }
+//         },
+//         calculable: true,
+//         series: [{
+//             name: '车型',
+//             type: 'pie',
+//             //起始角度，支持范围[0, 360]
+//             startAngle: 0,
+//             //饼图的半径，数组的第一项是内半径，第二项是外半径
+//             radius: [41, 110],
+//             //支持设置成百分比，设置成百分比时第一项是相对于容器宽度，第二项是相对于容器高度
+//             center: ['50%', '20%'],
+//             //是否展示成南丁格尔图，通过半径区分数据大小。可选择两种模式：
+//             // 'radius' 面积展现数据的百分比，半径展现数据的大小。
+//             //  'area' 所有扇区面积相同，仅通过半径展现数据大小
+//             roseType: 'area',
+//             //是否启用防止标签重叠策略，默认开启，圆环图这个例子中需要强制所有标签放在中心位置，可以将该值设为 false。
+//             avoidLabelOverlap: false,
+//             label: {
+//                 normal: {
+//                     show: true,
+//                     formatter: '{c}辆'
+//                 },
+//                 emphasis: {
+//                     show: true
+//                 }
+//             },
+//             labelLine: {
+//                 normal: {
+//                     show: true,
+//                     length2: 1,
+//                 },
+//                 emphasis: {
+//                     show: true
+//                 }
+//             },
+//             data: [{
+//                 value: 600,
+//                 name: '车型一',
+//                 itemStyle: {
+//                     normal: {
+//                         color: '#f845f1'
+//                     }
+//                 }
+//             },
+//                 {
+//                     value: 1100,
+//                     name: '车型二',
+//                     itemStyle: {
+//                         normal: {
+//                             color: '#ad46f3'
+//                         }
+//                     }
+//                 },
+//                 {
+//                     value: 1200,
+//                     name: '车型三',
+//                     itemStyle: {
+//                         normal: {
+//                             color: '#5045f6'
+//                         }
+//                     }
+//                 },
+//                 {
+//                     value: 1300,
+//                     name: '车型四',
+//                     itemStyle: {
+//                         normal: {
+//                             color: '#4777f5'
+//                         }
+//                     }
+//                 },
+//                 {
+//                     value: 1400,
+//                     name: '车型五',
+//                     itemStyle: {
+//                         normal: {
+//                             color: '#44aff0'
+//                         }
+//                     }
+//                 },
 
-                {
-                    value: 0,
-                    name: "",
-                    label: {
-                        show: false
-                    },
-                    labelLine: {
-                        show: false
-                    }
-                },
-                {
-                    value: 0,
-                    name: "",
-                    label: {
-                        show: false
-                    },
-                    labelLine: {
-                        show: false
-                    }
-                },
-                {
-                    value: 0,
-                    name: "",
-                    label: {
-                        show: false
-                    },
-                    labelLine: {
-                        show: false
-                    }
-                },
-                {
-                    value: 0,
-                    name: "",
-                    label: {
-                        show: false
-                    },
-                    labelLine: {
-                        show: false
-                    }
-                },
-                {
-                    value: 0,
-                    name: "",
-                    label: {
-                        show: false
-                    },
-                    labelLine: {
-                        show: false
-                    }
-                }
-            ]
-        }]
-    };
+//                 {
+//                     value: 0,
+//                     name: "",
+//                     label: {
+//                         show: false
+//                     },
+//                     labelLine: {
+//                         show: false
+//                     }
+//                 },
+//                 {
+//                     value: 0,
+//                     name: "",
+//                     label: {
+//                         show: false
+//                     },
+//                     labelLine: {
+//                         show: false
+//                     }
+//                 },
+//                 {
+//                     value: 0,
+//                     name: "",
+//                     label: {
+//                         show: false
+//                     },
+//                     labelLine: {
+//                         show: false
+//                     }
+//                 },
+//                 {
+//                     value: 0,
+//                     name: "",
+//                     label: {
+//                         show: false
+//                     },
+//                     labelLine: {
+//                         show: false
+//                     }
+//                 },
+//                 {
+//                     value: 0,
+//                     name: "",
+//                     label: {
+//                         show: false
+//                     },
+//                     labelLine: {
+//                         show: false
+//                     }
+//                 }
+//             ]
+//         }]
+//     };
 
-    // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption(option);
-    window.addEventListener("resize",function(){
-        myChart.resize();
-    });
-}
+//     // 使用刚指定的配置项和数据显示图表。
+//     myChart.setOption(option);
+//     window.addEventListener("resize",function(){
+//         myChart.resize();
+//     });
+// }
 
 
-function char4() {
+// function char4() {
 
-    var myChart = echarts.init($("#char4")[0]);
+//     var myChart = echarts.init($("#char4")[0]);
 
-    option = {
-        grid: {show:'true',borderWidth:'0'},
-        tooltip : {
-            trigger: 'axis',
-            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-            },
+//     option = {
+//         grid: {show:'true',borderWidth:'0'},
+//         tooltip : {
+//             trigger: 'axis',
+//             axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+//                 type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+//             },
 
-            formatter: function (params) {
-                var tar = params[0];
-                return tar.name + '<br/>' + tar.seriesName + ' : ' + tar.value;
-            }
-        },
+//             formatter: function (params) {
+//                 var tar = params[0];
+//                 return tar.name + '<br/>' + tar.seriesName + ' : ' + tar.value;
+//             }
+//         },
 
-        xAxis : [
-            {
-                type : 'category',
-                splitLine: {show:false},
-                data : ['客运车','危险品车','网约车','学生校车'],
-                axisLabel: {
-                    show: true,
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
+//         xAxis : [
+//             {
+//                 type : 'category',
+//                 splitLine: {show:false},
+//                 data : ['客运车','危险品车','网约车','学生校车'],
+//                 axisLabel: {
+//                     show: true,
+//                     textStyle: {
+//                         color: '#fff'
+//                     }
+//                 }
 
-            }
-        ],
-        yAxis : [
-            {
-                type : 'value',
-                splitLine: {show:false},
-                axisLabel: {
-                    show: true,
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            }
-        ],
-        series : [
+//             }
+//         ],
+//         yAxis : [
+//             {
+//                 type : 'value',
+//                 splitLine: {show:false},
+//                 axisLabel: {
+//                     show: true,
+//                     textStyle: {
+//                         color: '#fff'
+//                     }
+//                 }
+//             }
+//         ],
+//         series : [
 
-            {
-                name:'报警数量',
-                type:'bar',
-                stack: '总量',
-                itemStyle : {
-                    normal: {
-                        label : {show: true, position: 'inside'},
-                        color: '#44aff0'
-                    }
-                    },
-                data:[2900, 1200, 300, 200]
-            }
-        ]
-    };
+//             {
+//                 name:'报警数量',
+//                 type:'bar',
+//                 stack: '总量',
+//                 itemStyle : {
+//                     normal: {
+//                         label : {show: true, position: 'inside'},
+//                         color: '#44aff0'
+//                     }
+//                     },
+//                 data:[2900, 1200, 300, 200]
+//             }
+//         ]
+//     };
 
-    myChart.setOption(option);
-    window.addEventListener('resize', function () {myChart.resize();})
+//     myChart.setOption(option);
+//     window.addEventListener('resize', function () {myChart.resize();})
 
-}
+// }
