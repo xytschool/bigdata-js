@@ -1032,7 +1032,7 @@ $(function () {
                     right: '1%',
                     top: '35%',
                     bottom: '10%',
-                    width: '30%'
+                    width: '35%'
                 }
             ],
             // visualMap: {
@@ -1111,11 +1111,18 @@ $(function () {
                 }()
             },
                 {
-                    zlevel: 1.5,
-                    left: 'right',
-                    top: 'bottom',
-                    data: [120, 200, 150, 80, 70, 110, 130],
                     type: 'bar',
+                    zlevel: 1.5,
+                    data: [120, 200, 150, 80, 70, 110, 130],
+                    showBackground: true,
+                    backgroundStyle: {
+                        color: 'rgb(63,212,52)'
+                    },
+                },
+                {
+                    type: 'line',
+                    zlevel: 1.5,
+                    data: [120, 200, 150, 80, 70, 110, 130],
                     showBackground: true,
                     backgroundStyle: {
                         color: 'rgb(63,212,52)'
@@ -1132,6 +1139,9 @@ $(function () {
             if (params.componentType === 'series') {
             }
         })
+        window.addEventListener("resize",function(){
+            myChart.resize();
+        });
     }
 
 
