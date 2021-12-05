@@ -189,7 +189,7 @@ $(function () {
                 type: 'category',
                 data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
                 axisLabel: {
-                    formatter: '{value} 万',
+                    formatter: '{value}',
                     textStyle: {
                         color: "#ffffff" //X轴文字颜色
                     }
@@ -295,7 +295,7 @@ $(function () {
                     alignWithLabel: true
                 },
                 axisLabel: {
-                    formatter: '{value} 万',
+                    formatter: '{value}',
                     textStyle: {
                         color: "#ffffff" //X轴文字颜色
                     }
@@ -314,7 +314,7 @@ $(function () {
                     }
                 },
                 axisLabel: {
-                    formatter: '{value} 万'
+                    formatter: '{value}'
                 }
             },
                 {
@@ -1021,7 +1021,7 @@ $(function () {
                 x: 'left',
                 y: 'bottom',
                 data: [
-                    '已安装设备'
+                    '购票人数'
                 ],
                 textStyle: {
                     color: '#ccc'
@@ -1029,10 +1029,10 @@ $(function () {
             },
             grid: [
                 {
-                    right: '1%',
+                    right: '4%',
                     top: '35%',
                     bottom: '10%',
-                    width: '35%'
+                    width: '30%'
                 }
             ],
             // visualMap: {
@@ -1048,27 +1048,30 @@ $(function () {
             //     }
             // },
             xAxis: {
-                type: 'category',
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                axisLabel: {
-                    formatter: '{value} 万',
-                    textStyle: {
-                        color: "#ffffff" //X轴文字颜色
-                    }
-                },
+                max: 'dataMax',
+                type: 'value',
+                show: false,
+                // axisLabel: {
+                //     formatter: '{value}',
+                //     textStyle: {
+                //         color: "#ffffff" //X轴文字颜色
+                //     }
+                // },
             },
             yAxis: {
-                type: 'value',
+                inverse: true,
+                type: 'category',
+                data: ['河南', '北京', '山西', '天津', '河北', '江苏', '湖南'],
                 axisLabel: {
                     formatter: '{value}',
                     textStyle: {
-                        color: "#3a7744"
+                        color: "#d9d2c9"
                     }
                 },
             },
             series: [
                 {
-                name: '已安装设备',
+                name: '购票人数',
                 type: 'map',
                 aspectScale: 0.75,
                 zoom: 1.2,
@@ -1112,23 +1115,26 @@ $(function () {
             },
                 {
                     type: 'bar',
-                    zlevel: 1.5,
-                    data: [120, 200, 150, 80, 70, 110, 130],
+                    zlevel: 1,
+                    realtimeSort: true,
+                    sort: true,
+                    data: [320, 200, 100, 80, 70, 10, 2],
                     showBackground: true,
                     backgroundStyle: {
-                        color: 'rgb(63,212,52)'
+                        color: 'rgb(191,239,123)'
                     },
+                    label: {
+                        show: true,
+                        position: 'right',
+                        valueAnimation: true,
+                        color: 'rgb(191,239,123)'
+                    }
                 },
-                {
-                    type: 'line',
-                    zlevel: 1.5,
-                    data: [120, 200, 150, 80, 70, 110, 130],
-                    showBackground: true,
-                    backgroundStyle: {
-                        color: 'rgb(63,212,52)'
-                    },
-                },
-            ]
+            ],
+            animationDuration: 0,
+            animationDurationUpdate: 3000,
+            animationEasing: 'linear',
+            animationEasingUpdate: 'linear'
         };
 
         myChart.setOption(option);
