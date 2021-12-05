@@ -398,3 +398,10 @@
 
 
 
+.tickets li{
+  float: left;
+  width: 50%;
+  font-size: 0.3rem;
+  margin-top: 0.8rem;
+  text-align: center;
+}
