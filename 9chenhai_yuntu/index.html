@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>市域社会治理运行分析云图</title>
+    <link rel="stylesheet" type="text/css" href="./css/app.css" />
+</head>
+
+<body>
+    <header id="header">
+        <h3 class="header-title">阿拉善左旗市域社会治理运行分析云图</h3>
+    </header>
+
+    <a class="goHome" href="/home.jsp"></a>
+
+    <div id="container">
+        <div id="flexCon">
+            <div class="flex-left">
+                <div class="flex-cell flex-cell-1">
+                    <div class="chart-wrapper">
+                        <h3 class="chart-title">网格化组织</h3>
+                        <table class="block-text" id="team-box"></table>
+                        <div class="chart-div" id="block2">
+                            <div class="chart-loader">
+                                <div class="loader"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-cell flex-cell-1">
+                    <div class="chart-wrapper">
+                        <h3 class="chart-title">实有人口</h3>
+                        <div class="chart-div" id="block9">
+                            <div class="chart-loader">
+                                <div class="loader"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-cell flex-cell-1">
+                    <div class="chart-wrapper">
+                        <h3 class="chart-title">房屋管理</h3>
+                        <div class="chart-div" id="block4">
+                            <div class="chart-loader">
+                                <div class="loader"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-middle">
+                <div class="flex-cell flex-cell-middle">
+                    <div class="chart-wrapper chart-map">
+                        <div class="chart-div" id="mapChart">
+                            <div class="chart-loader">
+                                <div class="loader"></div>
+                            </div>
+                        </div>
+                        <div class="map-tools-box">
+                            <div class="map-tool map-one" onclick="window.location.href='views/map/index.jsp'">网格地图
+                            </div>
+                            <div class="map-tool map-3d" onclick="window.location.href='views/tdmap/index.jsp'">三维地图
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-column">
+                    <div class="flex-cell flex-cell-1">
+                        <div class="chart-wrapper">
+                            <h3 class="chart-title">事件处理</h3>
+                            <table class="block-text">
+                                <tr>
+                                    <td>
+                                        <p>办理率</p>
+                                        <p><span id="event-rate1">0</span>%</p>
+                                    </td>
+                                    <td>
+                                        <p>办结率</p>
+                                        <p><span id="event-rate2">0</span>%</p>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="chart-div" id="block7">
+                                <div class="chart-loader">
+                                    <div class="loader"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-cell flex-cell-1">
+                        <div class="chart-wrapper">
+                            <h3 class="chart-title">事件类型</h3>
+                            <div class="chart-div" id="block6">
+                                <div class="chart-loader">
+                                    <div class="loader"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-cell flex-cell-1">
+                        <div class="chart-wrapper">
+                            <h3 class="chart-title">事件分布</h3>
+                            <div class="chart-div" id="block5">
+                                <div class="chart-loader">
+                                    <div class="loader"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-right">
+                <div class="flex-cell flex-cell-1">
+                    <div class="chart-wrapper">
+                        <h3 class="chart-title">社会治安</h3>
+                        <div class="chart-div" id="block8">
+                            <div class="chart-loader">
+                                <div class="loader"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-cell flex-cell-1">
+                    <div class="chart-wrapper">
+                        <h3 class="chart-title">重点人员</h3>
+                        <div class="chart-div" id="block3">
+                            <div class="chart-loader">
+                                <div class="loader"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-cell flex-cell-1">
+                    <div class="chart-wrapper block1">
+                        <h3 class="chart-title">案件管理</h3>
+                        <table class="block-text block-text-top">
+                            <tr>
+                                <td>
+                                    <p>案件数量</p>
+                                    <p><span id="caseTotal">0</span></p>
+                                </td>
+                                <td>
+                                    <p>已处理案件</p>
+                                    <p><span id="caseTreated">0</span></p>
+                                </td>
+                                <td>
+                                    <p>待处理案件</p>
+                                    <p><span id="caseUntreated">0</span></p>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="chart-div" id="block1">
+                            <div class="chart-loader">
+                                <div class="loader"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="./js/plugin/countUp.min.js"></script>
+    <script src="https://www.jq22.com/jquery/echarts-4.2.1.min.js"></script>
+    <!-- 主题 -->
+    <script type="text/javascript" src="./js/plugin/echarts-theme-shine.js"></script>
+    <script type="text/javascript" src="./js/plugin/echarts-theme-macarons.js"></script>
+    <!-- 图表js -->
+    <script type="text/javascript" src="./js/echarts-map.js"></script>
+    <script type="text/javascript" src="./js/echarts-block1.js"></script>
+    <script type="text/javascript" src="./js/echarts-block2.js"></script>
+    <script type="text/javascript" src="./js/echarts-block3.js"></script>
+    <script type="text/javascript" src="./js/echarts-block4.js"></script>
+    <script type="text/javascript" src="./js/echarts-block5.js"></script>
+    <script type="text/javascript" src="./js/echarts-block6.js"></script>
+    <script type="text/javascript" src="./js/echarts-block7.js"></script>
+    <script type="text/javascript" src="./js/echarts-block8.js"></script>
+    <script type="text/javascript" src="./js/echarts-block9.js"></script>
+    <script type="text/javascript">
+        var ajaxBaseUrl = './';
+
+        $(function () {
+            //获取当天日期
+            (function () {
+                const now = new Date();
+                const year = now.getFullYear();
+                const month = now.getMonth() + 1;
+                const day = now.getDate();
+                $("#nowDate").html(year + "年" + month + "月" + day + "日");
+            })();
+
+            loadMap();
+            loadBlock1();
+            loadBlock2();
+            loadBlock3();
+            loadBlock4();
+            loadBlock5();
+            loadBlock6();
+            loadBlock7();
+            loadBlock8();
+            loadBlock9();
+
+            //获取统计数据
+            $.ajax({
+                url: "./data/count-data.json",
+                dataType: "json"
+            }).done(function (data) {
+                //console.log('Data: ', data);
+                // rollNum("listedCompany", 0, data.listed_companies_total);
+                // rollNum("listedSecurity", 0, data.listed_securities_total);
+                // rollNum("totalMarket", 0, data.total_market_value);
+                // rollNum("circulationMarket", 0, data.circulation_market_value);
+                // rollNum("shRatio", 0, data.sh_pe_ratio, 2);
+                // rollNum("szRatio", 0, data.sz_pe_ratio, 2);
+
+                // 案件管理数字
+                rollNum("caseTotal", 0, data.case_total);
+                rollNum("caseTreated", 0, data.case_treated);
+                rollNum("caseUntreated", 0, data.case_untreated);
+            }).fail(function (jqXHR, textStatus) {
+                console.log("Ajax Error: ", textStatus);
+            });
+        });
+
+        //数字变化特效
+        function rollNum(elId, startVal, endVal, decimalNum) {
+            let n = decimalNum || 0;
+            let countUp = new CountUp(elId, startVal, endVal, n, 2.5, {
+                useEasing: true,
+                useGrouping: true,
+                separator: ',',
+                decimal: '.'
+            });
+            if (!countUp.error) {
+                countUp.start();
+            } else {
+                console.error(countUp.error);
+            }
+        }
+    </script>
+</body>
+
+</html>

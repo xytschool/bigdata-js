@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>数据大屏</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+  </head>
+  <body>
+    <header>
+      游客客源分析
+      <!-- <span
+        id="localtime"
+        style="font-size: 14px; position: absolute; right: 30px; top: -20px"
+      ></span> -->
+    </header>
+    <div id="content">
+      <div class="content_left">
+        <div class="content_left_top mb16">
+          <div class="dtuplc public">
+            <div class="title-box">
+              <h6>客源地排行</h6>
+            </div>
+            <div class="echart wenzi">
+              <div class="gun">
+                <span>小型车</span>
+                <span>中型车</span>
+                <span>大型车</span>
+              </div>
+              <div id="FontScroll" class="myscroll">
+                <ul>
+                  <li>
+                    <div class="fontInner ">
+                      <span>253万</span>
+                      <span>65万</span>
+                      <span>182万</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="fontInner ">
+                      <span>253万</span>
+                      <span>65万</span>
+                      <span>182万</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="fontInner ">
+                      <span>253万</span>
+                      <span>65万</span>
+                      <span>182万</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="fontInner ">
+                      <span>253万</span>
+                      <span>65万</span>
+                      <span>182万</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="fontInner ">
+                      <span>253万</span>
+                      <span>65万</span>
+                      <span>182万</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="fontInner ">
+                      <span>253万</span>
+                      <span>65万</span>
+                      <span>182万</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="fontInner ">
+                      <span>253万</span>
+                      <span>65万</span>
+                      <span>182万</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="fontInner ">
+                      <span>253万</span>
+                      <span>65万</span>
+                      <span>182万</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="fontInner ">
+                      <span>253万</span>
+                      <span>65万</span>
+                      <span>182万</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="fontInner ">
+                      <span>253万</span>
+                      <span>65万</span>
+                      <span>182万</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="fontInner ">
+                      <span>253万</span>
+                      <span>65万</span>
+                      <span>182万</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="boxfoot"></div>
+          </div>
+        </div>
+
+        <div class="dtuplc public">
+          <div class="title-box">
+            <h6>客源地图标展示</h6>
+          </div>
+          <div id="container2" style="height: 280px"></div>
+          <div class="boxfoot"></div>
+        </div>
+      </div>
+      <div class="content_center">
+        <div class="center_top">
+          <div class="title">客源地分析</div>
+          <div class="center_top_con" id="distribution_map"></div>
+        </div>
+      </div>
+    </div>
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/4.0.0/echarts.js"></script>
+    <script type="text/javascript" src="js/china.js"></script>
+    <script type="text/javascript" src="js/vue.min.js"></script>
+    <script type="text/javascript" src="js/map.js"></script>
+    <script type="text/javascript" src="js/online.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/fontscroll.js"></script>
+
+    <script>
+      $(function () {
+        $('.myscroll').myScroll({
+          speed: 60, //数值越大，速度越慢
+          rowHeight: 38 //li的高度
+        })
+      })
+    </script>
+  </body>
+</html>
