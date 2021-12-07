@@ -58,7 +58,7 @@
 .left-header {
     background: url(../img/kuang4.png) no-repeat;
     background-size: cover;
-    width: 2.39899rem;
+    width: 3rem;
     height: 1.494949rem;
     margin-bottom: .045455rem;
 }
@@ -80,8 +80,8 @@
 }
 
 .center-map {
-    width: 4.277778rem;
-    height: 2.732323rem;
+    width: 6.5rem;
+    height: 4.6rem;
     border: 1px solid #43dcff;
     margin-bottom: .10101rem;
     padding: .10101rem;
