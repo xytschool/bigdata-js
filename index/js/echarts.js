@@ -126,7 +126,6 @@ $(function () {
     },
       grid: [{
         top: '10%',
-
         width: '80%'
       }],
       yAxis: {
@@ -139,15 +138,7 @@ $(function () {
           }
         },
       },
-      "color": [
-        "#00E4F0",
-        "#ECD64F",
-        "#44D16D",
-        "#124E91",
-        "#BDC414",
-        "#C8CCA5",
-        "#534EE1",
-      ],
+      "color": ["#00E4F0", "#44D16D", "#124E91", "#BDC414", "#C8CCA5", "#534EE1"],
       series: [{
           data: group_type_value,
           type: 'bar',
@@ -171,23 +162,11 @@ $(function () {
   }
 
   function ceshis3() {
-    // var month_data = []
-    // var month_value = []
-
-    // for (var i = 0; i < month.length; i++) {
-    //   month_data.push(month[i].month)
-    //   month_value.push(month[i].value)
-    // }
     day_group_data = []
     for (var i = 0; i < day_group.length; i++) {
       day_group_data.push(day_group[i].value)
     }
 
-    // last_year_month_data = []
-    // for (var i = 0; i < last_year_month.length; i++) {
-    //   last_year_month_data.push(last_year_month[i].value)
-    // }
-    //  last_year_month=[11,13,3,6,8,34,4,6]
     var myChart = echarts.init(document.getElementById('chart4'));
     option = {
       tooltip: {
@@ -404,12 +383,6 @@ $(function () {
   }
 
   function ceshis5() {
-    var colors = [
-      ["#1DE9B6", "#1DE9B6", "#FFDB5C", "#FFDB5C", "#04B9FF", "#04B9FF"],
-      ["#1DE9B6", "#F46E36", "#04B9FF", "#5DBD32", "#FFC809", "#FB95D5", "#BDA29A", "#6E7074", "#546570", "#C4CCD3"],
-      ["#37A2DA", "#67E0E3", "#32C5E9", "#9FE6B8", "#FFDB5C", "#FF9F7F", "#FB7293", "#E062AE", "#E690D1", "#E7BCF3", "#9D96F5", "#8378EA", "#8378EA"],
-      ["#DD6B66", "#759AA0", "#E69D87", "#8DC1A9", "#EA7E53", "#EEDD78", "#73A373", "#73B9BC", "#7289AB", "#91CA8C", "#F49F42"],
-    ];
     var province_customer_index = []
     var province_customer_value = []
     for (var i = 0; i < province_customer.length; i++) {
@@ -420,6 +393,7 @@ $(function () {
     var worldMapContainer1 = document.getElementById('map');
     var myChart = echarts.init(worldMapContainer1);
     var option = {
+      "color":       ["#DD6B66",  "#EEDD78", "#73A373", "#73B9BC", "#7289AB", "#91CA8C", "#F49F42"],
       tooltip: {
         trigger: 'item'
       },
