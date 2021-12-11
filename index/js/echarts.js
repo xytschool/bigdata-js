@@ -63,14 +63,13 @@ $(function () {
     option = {
       tooltip: {
         trigger: 'item',
-
       },
       label: {
         color: '#fff',
         show: true, // 显示文字
         formatter: function (arg) {
           console.log(arg)
-          return arg.name + '平台' + arg.value + '张\n' + arg.percent + '%'
+          return arg.name + arg.value + '张\n' + arg.percent + '%'
 
         },
       },
@@ -83,7 +82,6 @@ $(function () {
       },
       series: [{
         type: 'pie',
-
         labelLine: {
           show: false
         },
@@ -142,13 +140,13 @@ $(function () {
         },
       },
       "color": [
-        "#534EE1",
-        "#ECD64F",
         "#00E4F0",
+        "#ECD64F",
         "#44D16D",
         "#124E91",
         "#BDC414",
-        "#C8CCA5"
+        "#C8CCA5",
+        "#534EE1",
       ],
       series: [{
           data: group_type_value,
@@ -157,12 +155,12 @@ $(function () {
           backgroundStyle: {
             color: 'rgb(63,212,52)'
           },
-          label:{
-            formatter: function(arg){
-              console.log(arg)
-              return arg.value 
-            }
-          }
+          label: {
+           show: true,
+           position: 'top',
+           valueAnimation: true,
+          //color: 'rgb(102,236,12)'
+          },
         },
 
       ]
@@ -231,7 +229,7 @@ $(function () {
       }],
       yAxis: [{
         type: 'value',
-       
+
         axisLabel: {
           formatter: '{value}',
           textStyle: {
@@ -538,7 +536,6 @@ $(function () {
     }
     var myChart = echarts.init(document.getElementById('chart6'));
     option = {
-
       tooltip: {
         trigger: 'item'
       },
@@ -546,16 +543,13 @@ $(function () {
         name: 'Access From',
         type: 'pie',
         radius: '55%',
-        center: ['50%', '50%'],
         data: tickets_summary,
-
         roseType: 'radius',
         label: {
           color: '#fff',
           show: true, // 显示文字
           formatter: function (arg) {
-            console.log(arg)
-            return arg.name + '平台' + arg.value + '张\n' + arg.percent + '%'
+            return arg.name + arg.value + '张\n' + arg.percent + '%'
 
           },
         },
@@ -567,7 +561,6 @@ $(function () {
           length: 10,
           length2: 20
         },
-
         animationType: 'scale',
         animationEasing: 'elasticOut',
         animationDelay: function (idx) {
@@ -575,14 +568,9 @@ $(function () {
         }
       }]
     };
-
     myChart.setOption(option);
-    // 使用刚指定的配置项和数据显示图表。
-    /*myChart.setOption(option);*/
     window.addEventListener("resize", function () {
       myChart.resize();
     });
   }
-
-
 });
