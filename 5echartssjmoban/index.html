@@ -218,12 +218,10 @@
                   <span>产品销售排行</span>
                 </div>
                 <div
-                id="product"
+                  id="product"
                   class="biaoge biaoge_list"
                   style="width: 100%; height: 210px"
-                >
-                
-                </div>
+                ></div>
                 <div class="boxfoot"></div>
               </div>
               <div class="leftMain_info public">
@@ -285,6 +283,7 @@
               char_3()
               char_2()
               char_1()
+              char_7()
             },
             error: function (jqXHR) {
               console.log('Error: ' + jqXHR.status)
@@ -542,7 +541,7 @@
               series: [
                 {
                   type: 'line',
-                  data:  [2, 2, 2, 28, 6, 4, 4, 23],
+                  data: [2, 2, 2, 28, 6, 4, 4, 23],
                   itemStyle: {
                     normal: {
                       color: '#0efdff', //折线点的颜色
@@ -564,7 +563,7 @@
           }
           function char_4() {
             var myChart = echarts.init(document.getElementById('chart_4'))
-       
+
             option = {
               /*backgroundColor: 'rgb(3, 19, 52)',*/
               color: ['#2ea5c3', '#e08f68'],
@@ -572,11 +571,9 @@
                 trigger: 'axis',
                 axisPointer: {
                   type: 'shadow'
-                },
-
-           
+                }
               },
-             
+
               grid: {
                 //top:80,
                 left: 20,
@@ -586,7 +583,19 @@
               },
               xAxis: {
                 type: 'category',
-                data: ["2012","2013","2014","2015","2016","2017","2018","2010","2020","2021","2022"],
+                data: [
+                  '2012',
+                  '2013',
+                  '2014',
+                  '2015',
+                  '2016',
+                  '2017',
+                  '2018',
+                  '2010',
+                  '2020',
+                  '2021',
+                  '2022'
+                ],
                 axisLabel: {
                   tooltip: {
                     show: true
@@ -637,7 +646,6 @@
               ],
               series: [
                 {
-              
                   yAxisIndex: 0,
                   //barMinHeight:5,
                   barCategoryGap: '30%',
@@ -665,9 +673,8 @@
                     }
                   },
                   type: 'bar',
-                  data:  [0,0,0,0,0,0,0,0,0,0,10]
-                },
-               
+                  data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10]
+                }
               ]
             }
             // 使用刚指定的配置项和数据显示图表。
@@ -690,9 +697,7 @@
                 show: true, // 显示文字
                 formatter: function (arg) {
                   console.log(arg)
-                  return (
-                    arg.name + '平台' + arg.value + '张\n' + arg.percent + '%'
-                  )
+                  return arg.name + arg.value + '张\n' + arg.percent + '%'
                 }
               },
               legend: {
@@ -705,7 +710,6 @@
               series: [
                 {
                   type: 'pie',
-
                   labelLine: {
                     show: false
                   },
@@ -830,6 +834,54 @@
               ]
             }
 
+            myChart.setOption(option)
+          }
+          function char_7() {
+            var myChart = echarts.init(document.getElementById('product'))
+            var buy_source_name = []
+            var buy_source_value = []
+
+            for (var i = 0; i < buy_source.length; i++) {
+              buy_source_name.push(buy_source[i].buy_source)
+              buy_source_value.push(buy_source[i].value)
+            }
+            option = {
+              xAxis: {
+                type: 'category',
+                data: buy_source_name,
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                        color: '#fff'
+                    }
+                }
+              },
+              yAxis: {
+                type: 'value',
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                        color: '#fff'
+                    }
+                }
+              },
+              tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                  type: 'shadow'
+                }
+              },
+              series: [
+                {
+                  data: buy_source_value,
+                  type: 'bar',
+                  showBackground: true,
+                  backgroundStyle: {
+                    color: 'rgba(180, 180, 180, 0.2)'
+                  }
+                }
+              ]
+            }
             myChart.setOption(option)
           }
         </script>
