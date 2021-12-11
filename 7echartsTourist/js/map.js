@@ -16,19 +16,7 @@ $(function () {
         color: '#ccc'
       }
     },
-    // visualMap: {
 
-    //   min: 0,
-    //   max: 2500,
-    //   left: 'right',
-    //   top: 'bottom',
-    //   text: ['高', '低'], // 文本，默认为数值文本
-    //   calculable: true,
-    //   //		color: ['#26cfe4', '#f2b600', '#ec5845'],
-    //   textStyle: {
-    //     color: '#fff'
-    //   }
-    // },
     series: [{
       name: '已安装设备',
       type: 'map',

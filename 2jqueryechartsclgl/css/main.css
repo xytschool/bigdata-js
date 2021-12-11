@@ -348,11 +348,13 @@ a{text-decoration:none !important;}*/
   position: relative;
   margin-bottom: 20px;
   overflow: hidden;
+  height: 25rem;
 }
 .wenzi {
   margin-top: 30px;
   display: inline-block;
   width: 48%;
+  height: 100%;
 }
 .wenzi:nth-child(0) {
   margin-right: 20px;
@@ -457,6 +459,22 @@ a{text-decoration:none !important;}*/
   width: 49%;
   height: 230px;
 }
+.right_info_ul{
+  list-style: none;
+  color: #fff;
+  margin-left: 30px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.right_info_ul li{
+  line-height: 60px;
+  width: 50%;
+  text-align: center;
+}
+.right_info_ul li span{
+color: #feb4a8;
+}
 .right_ul {
   display: flex;
   justify-content: space-between;
@@ -467,6 +485,9 @@ a{text-decoration:none !important;}*/
   width: 50%;
   margin-top: 40px;
   text-align: center;
+}
+.right_ul li  span{
+  color: #feb4a8;
 }
 .h90{
   height: 90%;

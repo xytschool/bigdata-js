@@ -34,22 +34,22 @@
                 <ul class="leftMain_ul">
                   <li>
                     <p>今日接待(人)</p>
-                    <span>2020</span>
+                    <span id="customer_today">2020</span>
                   </li>
                   <li>
                     <p>上山人数</p>
-                    <span>3598</span>
+                    <span id="uphill">3598</span>
                   </li>
                 </ul>
                 <h3 class="h3title">本期</h3>
                 <ul class="leftMain_ul">
                   <li>
                     <p>下山人数</p>
-                    <span>180</span>
+                    <span id="downhill">180</span>
                   </li>
                   <li>
                     <p>山上停留人数</p>
-                    <span>3418</span>
+                    <span id="onhill">3418</span>
                   </li>
                 </ul>
                 <div class="boxfoot"></div>
@@ -65,27 +65,27 @@
                     <li class="leftMain_ol_header">分销</li>
                     <li>
                       <p>本期</p>
-                      <span>25195张</span>
+                      <span><b id="current_team">25195</b>张</span>
                     </li>
                     <li>
                       <p>本期</p>
-                      <span>25195张</span>
+                      <span><b id="current_tourist">25195</b>张</span>
                     </li>
                     <li>
                       <p>本期</p>
-                      <span>25195张</span>
+                      <span><b id="current_distribution">25195</b>张</span>
                     </li>
                     <li>
                       <p>同期</p>
-                      <span>25195张</span>
+                      <span><b>25195</b>张</span>
                     </li>
                     <li>
                       <p>同期</p>
-                      <span>25195张</span>
+                      <span><b>25195</b>张</span>
                     </li>
                     <li>
                       <p>同期</p>
-                      <span>25195张</span>
+                      <span><b>25195</b>张</span>
                     </li>
                   </ol>
                 </div>
@@ -215,53 +215,14 @@
             <div class="RightMain">
               <div class="rightMain_bottomIn leftMain_info public">
                 <div class="min-title">
-                  <span>近10年销售趋势</span>
+                  <span>产品销售排行</span>
                 </div>
                 <div
+                id="product"
                   class="biaoge biaoge_list"
                   style="width: 100%; height: 210px"
                 >
-                  <div class="biaoge_listIn">
-                    <ul class="ul_title">
-                      <li>用户</li>
-                      <li>类型号</li>
-                      <li>类别一</li>
-                      <li>类别二</li>
-                      <li>类别三</li>
-                    </ul>
-                    <div class="ul_list">
-                      <div class="ul_listIn">
-                        <ul class="ul_con">
-                          <li>张三</li>
-                          <li>11</li>
-                          <li>类别一</li>
-                          <li>类别二</li>
-                          <li>类别三</li>
-                        </ul>
-                        <ul class="ul_con">
-                          <li>张三</li>
-                          <li>12</li>
-                          <li>类别一</li>
-                          <li>类别二</li>
-                          <li>类别三</li>
-                        </ul>
-                        <ul class="ul_con">
-                          <li>张三</li>
-                          <li>13</li>
-                          <li>类别一</li>
-                          <li>类别二</li>
-                          <li>类别三</li>
-                        </ul>
-                        <ul class="ul_con">
-                          <li>张三</li>
-                          <li>14</li>
-                          <li>类别一</li>
-                          <li>类别二</li>
-                          <li>类别三</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+                
                 </div>
                 <div class="boxfoot"></div>
               </div>
@@ -290,249 +251,205 @@
           charset="utf-8"
         ></script>
         <script type="text/javascript">
-          char_6()
+          var buy_source = []
+          var group_type = []
+          var month = []
+          var day_group = []
+          var last_year_month = []
+          $.ajax({
+            type: 'GET',
+            url: 'http://bigdata.xyt/api/getCustomerSummary',
+            dataType: 'json',
+            success: function (data) {
+              month = data.month_group
+              last_year_month = data.day_group
+              day_group = data.day_group
+              char_6()
+            },
+            error: function (jqXHR) {
+              console.log('Error: ' + jqXHR.status)
+            }
+          })
+          $.ajax({
+            //票务
+            type: 'GET',
+            url: 'http://bigdata.xyt/api/getCustomerSummary',
+            dataType: 'json',
+            success: function (data) {
+              $('#customer_today').text(data.customer_today)
+              $('#uphill').text(data.uphill)
+              $('#downhill').text(data.downhill)
+              $('#onhill').text(data.onhill)
+              buy_source = data.buy_source
+              group_type = data.group_type
+              char_3()
+              char_2()
+              char_1()
+            },
+            error: function (jqXHR) {
+              console.log('Error: ' + jqXHR.status)
+            }
+          })
+
           char_5()
           char_4()
-          char_3()
-          char_2()
+          function char_1() {
+            for (var i = 0; i < group_type.length; i++) {
+              if (group_type[i].type == 'group') {
+                $('#current_team').text(group_type[i].value)
+              } else if (group_type[i].type == 'online') {
+                $('#current_tourist').text(group_type[i].value)
+              } else if (group_type[i].type == 'sigle') {
+                $('#current_distribution').text(group_type[i].value)
+              }
+            }
+          }
           function char_6() {
             var myChart = echarts.init(document.getElementById('chart_6'))
 
-            let data = [
-              {
-                name: '进场',
-                list: [
-                  {
-                    date: '周一',
-                    value: 20
-                  },
-                  {
-                    date: '周二',
-                    value: 13
-                  },
-                  {
-                    date: '周三',
-                    value: 15
-                  },
-                  {
-                    date: '周四',
-                    value: 18
-                  },
-                  {
-                    date: '周五',
-                    value: 6
-                  },
-                  {
-                    date: '周六',
-                    value: 11
-                  },
-                  {
-                    date: '周日',
-                    value: 14
-                  }
-                ]
-              },
-              {
-                name: '进场',
-                list: [
-                  {
-                    date: '周一',
-                    value: 20
-                  },
-                  {
-                    date: '周二',
-                    value: 13
-                  },
-                  {
-                    date: '周三',
-                    value: 15
-                  },
-                  {
-                    date: '周四',
-                    value: 18
-                  },
-                  {
-                    date: '周五',
-                    value: 6
-                  },
-                  {
-                    date: '周六',
-                    value: 11
-                  },
-                  {
-                    date: '周日',
-                    value: 14
-                  }
-                ]
-              }
-            ]
-            let dateList = []
-            let yData1 = []
-            let yData2 = []
-            data[0].list.forEach(function (item, index) {
-              dateList.push(data[0].list[index].date)
-              yData1.push(data[0].list[index].value)
-            })
-            data[1].list.forEach(function (item, index) {
-              yData2.push(data[1].list[index].value)
-            })
-
+            day_group_data = []
+            for (var i = 0; i < day_group.length; i++) {
+              day_group_data.push(day_group[i].value)
+            }
+            console.log(day_group_data)
             option = {
-              /*backgroundColor: 'rgb(3, 19, 52)',*/
-              color: ['#2ea5c3', '#e08f68'],
               tooltip: {
                 trigger: 'axis',
                 axisPointer: {
-                  type: 'shadow'
-                },
-
-                formatter: function (params) {
-                  var tiplabel =
-                    params[0].name +
-                    '<br/>' +
-                    '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:' +
-                    params[0].color.colorStops[0].color +
-                    '"></span>' +
-                    params[0].seriesName +
-                    ':' +
-                    params[0].value +
-                    '<br/>' +
-                    '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:' +
-                    params[1].color.colorStops[0].color +
-                    '"></span>' +
-                    params[1].seriesName +
-                    ':' +
-                    params[1].value
-                  return tiplabel
+                  type: 'cross',
+                  label: {
+                    backgroundColor: '#6a7985'
+                  }
                 }
               },
               legend: {
-                data: [data[0].name, data[1].name],
-                left: 'right',
-                icon: 'circle',
+                data: ['本期', '同期'],
                 textStyle: {
                   color: '#fff'
                 }
               },
-              grid: {
-                //top:80,
-                left: 20,
-                bottom: 20,
-                right: 40,
-                containLabel: true
-              },
-              xAxis: {
-                type: 'category',
-                data: dateList,
-                axisLabel: {
-                  tooltip: {
-                    show: true
-                  },
-                  inside: false,
-                  textStyle: {
-                    fontSize: 14
-                  },
-                  interval: 0,
-                  color: 'rgba(255,255,255,0.6)'
-                },
-                axisTick: {
-                  show: false
-                },
-                axisLine: {
-                  lineStyle: {
-                    color: '#0C1A5B'
-                  }
+              toolbox: {
+                feature: {
+                  saveAsImage: {}
                 }
               },
+              grid: {
+                left: '0%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+              },
+              xAxis: [
+                {
+                  type: 'category',
+                  boundaryGap: false,
+                  data: [
+                    '1',
+                    '2',
+                    '3',
+                    '4',
+                    '5',
+                    '6',
+                    '7',
+                    '8',
+                    '9',
+                    '10',
+                    '11',
+                    '12',
+                    '13',
+                    '14',
+                    '15',
+                    '16',
+                    '17',
+                    '18',
+                    '19',
+                    '20',
+                    '21',
+                    '22',
+                    '23',
+                    '24',
+                    '25',
+                    '26',
+                    '27',
+                    '28',
+                    '29',
+                    '30',
+                    '31'
+                  ],
+                  axisLabel: {
+                    formatter: '{value}',
+                    textStyle: {
+                      color: '#ffffff' //X轴文字颜色
+                    }
+                  }
+                }
+              ],
               yAxis: [
                 {
                   type: 'value',
-                  splitLine: {
-                    show: true,
-                    lineStyle: {
-                      color: 'rgba(255,255,255,0.1)'
-                    }
-                  },
-                  axisTick: {
-                    show: false
-                  },
-                  axisLine: {
-                    lineStyle: {
-                      color: '#0C1A5B'
-                    }
-                  },
+
                   axisLabel: {
+                    formatter: '{value}',
                     textStyle: {
-                      fontSize: 14
-                    },
-                    formatter: function (value) {
-                      return value
-                    },
-                    color: 'rgba(255,255,255,0.6)'
+                      color: '#ffffff' //X轴文字颜色
+                    }
                   }
                 }
               ],
               series: [
                 {
-                  name: data[0].name,
-                  yAxisIndex: 0,
-                  //barMinHeight:5,
-                  barCategoryGap: '30%',
-                  itemStyle: {
-                    normal: {
-                      label: {
-                        show: true,
-                        position: 'top',
-                        color: '#fff',
-                        fontSize: 14
-                      },
-                      color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                        {
-                          offset: 0,
-                          color: '#A43EE5'
-                        },
-                        {
-                          offset: 1,
-                          color: '#CE7C13'
-                        }
-                      ]),
-                      opacity: 1,
-                      shadowBlur: 5,
-                      shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
+                  name: '本期',
+                  type: 'line',
+                  stack: 'Total',
+                  smooth: true,
+                  lineStyle: {
+                    width: 0
                   },
-                  type: 'bar',
-                  data: yData1
+                  showSymbol: false,
+                  areaStyle: {
+                    opacity: 0.8,
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                      {
+                        offset: 0,
+                        color: 'rgba(128, 255, 165)'
+                      },
+                      {
+                        offset: 1,
+                        color: 'rgba(1, 191, 236)'
+                      }
+                    ])
+                  },
+                  emphasis: {
+                    focus: 'series'
+                  },
+                  data: day_group_data
                 },
                 {
-                  name: data[1].name,
-                  yAxisIndex: 0,
-                  //barMinHeight:5,
-                  itemStyle: {
-                    normal: {
-                      label: {
-                        show: true,
-                        position: 'top',
-                        color: '#fff',
-                        fontSize: 14
-                      },
-                      color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                        {
-                          offset: 0,
-                          color: '#00FFFF'
-                        },
-                        {
-                          offset: 1,
-                          color: '#004EFF'
-                        }
-                      ]),
-                      opacity: 1,
-                      shadowBlur: 10,
-                      shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
+                  name: '同期',
+                  type: 'line',
+                  stack: 'Total',
+                  smooth: true,
+                  lineStyle: {
+                    width: 0
                   },
-                  type: 'bar',
-                  data: yData2
+                  showSymbol: false,
+                  areaStyle: {
+                    opacity: 0.8,
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                      {
+                        offset: 0,
+                        color: 'rgba(0, 221, 255)'
+                      },
+                      {
+                        offset: 1,
+                        color: 'rgba(77, 119, 255)'
+                      }
+                    ])
+                  },
+                  emphasis: {
+                    focus: 'series'
+                  },
+                  data: last_year_month
                 }
               ]
             }
@@ -543,20 +460,16 @@
             })
           }
           function char_5() {
+            //获取dom容器
+            var myChart = echarts.init(document.getElementById('chart_5'))
+            var month_value = []
+            for (var i = 0; i < month.length; i++) {
+              month_value.push(month[i].value)
+            }
+            console.log(month_value)
             option = {
-              title: {
-                text: ''
-              },
               tooltip: {
                 trigger: 'axis'
-              },
-              legend: {
-                textStyle: {
-                  color: '#fff',
-                  fontSize: 12
-                },
-                right: '10%',
-                data: ['折线一', '折线二']
               },
               grid: {
                 x: 40,
@@ -592,18 +505,22 @@
                   }
                 },
                 data: [
-                  '00:00',
-                  '02:00',
-                  '04:00',
-                  '06:00',
-                  '08:00',
-                  '10:00',
-                  '12:00'
+                  '1月',
+                  '2月',
+                  '3月',
+                  '4月',
+                  '5月',
+                  '6月',
+                  '7月',
+                  '8月',
+                  '9月',
+                  '10月',
+                  '11月',
+                  '12月'
                 ]
               },
               yAxis: {
                 type: 'value',
-
                 axisLine: {
                   show: true,
                   symbol: ['none', 'arrow'],
@@ -624,10 +541,8 @@
               },
               series: [
                 {
-                  name: '折线一',
                   type: 'line',
-                  stack: '总量',
-                  data: [280, 102, 191, 134, 390, 230, 210],
+                  data:  [2, 2, 2, 28, 6, 4, 4, 23],
                   itemStyle: {
                     normal: {
                       color: '#0efdff', //折线点的颜色
@@ -637,102 +552,19 @@
                       }
                     }
                   }
-                },
-                {
-                  name: '折线二',
-                  type: 'line',
-                  stack: '总量',
-                  data: [100, 132, 131, 234, 290, 330, 110]
                 }
               ]
             }
-            //获取dom容器
-            var myChart = echarts.init(document.getElementById('chart_5'))
+
             // 使用刚指定的配置项和数据显示图表。
             myChart.setOption(option)
-            //};
+            window.addEventListener('resize', function () {
+              myChart.resize()
+            })
           }
           function char_4() {
             var myChart = echarts.init(document.getElementById('chart_4'))
-            let data = [
-              {
-                name: '进场',
-                list: [
-                  {
-                    date: '周一',
-                    value: 20
-                  },
-                  {
-                    date: '周二',
-                    value: 13
-                  },
-                  {
-                    date: '周三',
-                    value: 15
-                  },
-                  {
-                    date: '周四',
-                    value: 18
-                  },
-                  {
-                    date: '周五',
-                    value: 6
-                  },
-                  {
-                    date: '周六',
-                    value: 11
-                  },
-                  {
-                    date: '周日',
-                    value: 14
-                  }
-                ]
-              },
-              {
-                name: '进场',
-                list: [
-                  {
-                    date: '周一',
-                    value: 20
-                  },
-                  {
-                    date: '周二',
-                    value: 13
-                  },
-                  {
-                    date: '周三',
-                    value: 15
-                  },
-                  {
-                    date: '周四',
-                    value: 18
-                  },
-                  {
-                    date: '周五',
-                    value: 6
-                  },
-                  {
-                    date: '周六',
-                    value: 11
-                  },
-                  {
-                    date: '周日',
-                    value: 14
-                  }
-                ]
-              }
-            ]
-            let dateList = []
-            let yData1 = []
-            let yData2 = []
-            data[0].list.forEach(function (item, index) {
-              dateList.push(data[0].list[index].date)
-              yData1.push(data[0].list[index].value)
-            })
-            data[1].list.forEach(function (item, index) {
-              yData2.push(data[1].list[index].value)
-            })
-
+       
             option = {
               /*backgroundColor: 'rgb(3, 19, 52)',*/
               color: ['#2ea5c3', '#e08f68'],
@@ -742,34 +574,9 @@
                   type: 'shadow'
                 },
 
-                formatter: function (params) {
-                  var tiplabel =
-                    params[0].name +
-                    '<br/>' +
-                    '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:' +
-                    params[0].color.colorStops[0].color +
-                    '"></span>' +
-                    params[0].seriesName +
-                    ':' +
-                    params[0].value +
-                    '<br/>' +
-                    '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:' +
-                    params[1].color.colorStops[0].color +
-                    '"></span>' +
-                    params[1].seriesName +
-                    ':' +
-                    params[1].value
-                  return tiplabel
-                }
+           
               },
-              legend: {
-                data: [data[0].name, data[1].name],
-                left: 'right',
-                icon: 'circle',
-                textStyle: {
-                  color: '#fff'
-                }
-              },
+             
               grid: {
                 //top:80,
                 left: 20,
@@ -779,7 +586,7 @@
               },
               xAxis: {
                 type: 'category',
-                data: dateList,
+                data: ["2012","2013","2014","2015","2016","2017","2018","2010","2020","2021","2022"],
                 axisLabel: {
                   tooltip: {
                     show: true
@@ -830,7 +637,7 @@
               ],
               series: [
                 {
-                  name: data[0].name,
+              
                   yAxisIndex: 0,
                   //barMinHeight:5,
                   barCategoryGap: '30%',
@@ -858,38 +665,9 @@
                     }
                   },
                   type: 'bar',
-                  data: yData1
+                  data:  [0,0,0,0,0,0,0,0,0,0,10]
                 },
-                {
-                  name: data[1].name,
-                  yAxisIndex: 0,
-                  //barMinHeight:5,
-                  itemStyle: {
-                    normal: {
-                      label: {
-                        show: true,
-                        position: 'top',
-                        color: '#fff',
-                        fontSize: 14
-                      },
-                      color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                        {
-                          offset: 0,
-                          color: '#00FFFF'
-                        },
-                        {
-                          offset: 1,
-                          color: '#004EFF'
-                        }
-                      ]),
-                      opacity: 1,
-                      shadowBlur: 10,
-                      shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                  },
-                  type: 'bar',
-                  data: yData2
-                }
+               
               ]
             }
             // 使用刚指定的配置项和数据显示图表。
@@ -899,275 +677,62 @@
             })
           }
           function char_3() {
+            for (var i = 0; i < buy_source.length; i++) {
+              buy_source[i].name = buy_source[i].buy_source
+            }
             var myChart = echarts.init(document.getElementById('chart3'))
             option = {
-              /*backgroundColor: '#000',*/
-              animation: true,
-              title: {
-                /*"text": 24,*/
-                /* "subtext": "沥青工",*/
-                x: 'center',
-                y: 'center',
-                textStyle: {
-                  color: '#fff',
-                  fontSize: 10,
-                  fontWeight: 'normal',
-                  align: 'center',
-                  width: '200px'
-                },
-                subtextStyle: {
-                  color: '#fff',
-                  fontSize: 12,
-                  fontWeight: 'normal',
-                  align: 'center'
+              tooltip: {
+                trigger: 'item'
+              },
+              label: {
+                color: '#fff',
+                show: true, // 显示文字
+                formatter: function (arg) {
+                  console.log(arg)
+                  return (
+                    arg.name + '平台' + arg.value + '张\n' + arg.percent + '%'
+                  )
                 }
               },
               legend: {
-                width: '100%',
+                top: '5%',
                 left: 'center',
                 textStyle: {
-                  color: '#fff',
-                  fontSize: 12
-                },
-                icon: 'circle',
-                right: '0',
-                bottom: '0',
-                padding: [15, 20],
-                itemGap: 5,
-                data: [
-                  '化妆品',
-                  '手机',
-                  '电脑',
-                  '羽绒服',
-                  '扫地机',
-                  '电视',
-                  '洗发露',
-                  '其它'
-                ]
+                  color: '#fff'
+                }
               },
               series: [
                 {
                   type: 'pie',
-                  center: ['50%', '40%'],
-                  radius: ['20%', '43%'],
-                  color: [
-                    '#FEE449',
-                    '#00FFFF',
-                    '#00FFA8',
-                    '#9F17FF',
-                    '#FFE400',
-                    '#F76F01',
-                    '#01A4F7',
-                    '#FE2C8A'
-                  ],
-                  startAngle: 135,
+
                   labelLine: {
-                    normal: {
-                      length: 15
-                    }
-                  },
-                  label: {
-                    normal: {
-                      formatter: '{b|{b}:}  {per|{d}%} ',
-                      backgroundColor: 'rgba(255, 147, 38, 0)',
-                      borderColor: 'transparent',
-                      borderRadius: 4,
-                      rich: {
-                        a: {
-                          color: '#999',
-                          lineHeight: 12,
-                          align: 'center'
-                        },
-                        hr: {
-                          borderColor: '#aaa',
-                          width: '100%',
-                          borderWidth: 1,
-                          height: 0
-                        },
-                        b: {
-                          color: '#b3e5ff',
-                          fontSize: 16,
-                          lineHeight: 33
-                        },
-                        c: {
-                          fontSize: 14,
-                          color: '#eee'
-                        },
-                        per: {
-                          color: '#FDF44E',
-                          fontSize: 14,
-                          padding: [5, 8],
-                          borderRadius: 2
-                        }
-                      },
-                      textStyle: {
-                        color: '#fff',
-                        fontSize: 16
-                      }
-                    }
-                  },
-                  emphasis: {
-                    label: {
-                      show: true,
-                      formatter: '{b|{b}:}  {per|{d}%}  ',
-                      backgroundColor: 'rgba(255, 147, 38, 0)',
-                      borderColor: 'transparent',
-                      borderRadius: 4,
-                      rich: {
-                        a: {
-                          color: '#999',
-                          lineHeight: 22,
-                          align: 'center'
-                        },
-                        hr: {
-                          borderColor: '#aaa',
-                          width: '100%',
-                          borderWidth: 1,
-                          height: 0
-                        },
-                        b: {
-                          color: '#fff',
-                          fontSize: 14,
-                          lineHeight: 33
-                        },
-                        c: {
-                          fontSize: 14,
-                          color: '#eee'
-                        },
-                        per: {
-                          color: '#FDF44E',
-                          fontSize: 14,
-                          padding: [5, 6],
-                          borderRadius: 2
-                        }
-                      }
-                    }
-                  },
-                  data: [
-                    {
-                      name: '化妆品',
-                      value: 3
-                    },
-                    {
-                      name: '手机',
-                      value: 2
-                    },
-                    {
-                      name: '电脑',
-                      value: 26
-                    },
-                    {
-                      name: '羽绒服',
-                      value: 24
-                    },
-                    {
-                      name: '扫地机',
-                      value: 12
-                    },
-                    {
-                      name: '电视',
-                      value: 11
-                    },
-                    {
-                      name: '洗发露',
-                      value: 3
-                    },
-                    {
-                      name: '其它',
-                      value: 2
-                    }
-                  ]
-                },
-                {
-                  type: 'pie',
-                  center: ['50%', '40%'],
-                  radius: ['15%', '14%'],
-                  label: {
                     show: false
                   },
-                  data: [
-                    {
-                      value: 78,
-                      name: '实例1',
-                      itemStyle: {
-                        normal: {
-                          color: {
-                            x: 0,
-                            y: 0,
-                            x2: 1,
-                            y2: 0,
-                            type: 'linear',
-                            global: false,
-                            colorStops: [
-                              {
-                                offset: 0,
-                                color: '#9F17FF'
-                              },
-                              {
-                                offset: 0.2,
-                                color: '#01A4F7'
-                              },
-                              {
-                                offset: 0.5,
-                                color: '#FE2C8A'
-                              },
-                              {
-                                offset: 0.8,
-                                color: '#FEE449'
-                              },
-                              {
-                                offset: 1,
-                                color: '#00FFA8'
-                              }
-                            ]
-                          }
-                        }
-                      }
-                    }
-                  ]
+                  data: buy_source
                 }
               ]
             }
-
-            // 使用刚指定的配置项和数据显示图表。
             myChart.setOption(option)
-            myChart.currentIndex = -1
-            //myChart.setOption(option);
-            //console.log(option.series[0].data[0]);
-            setInterval(function () {
-              var dataLen = option.series[0].data.length
-              // 取消之前高亮的图形
-              myChart.dispatchAction({
-                type: 'downplay',
-                seriesIndex: 0,
-                dataIndex: myChart.currentIndex
-              })
-              myChart.currentIndex = (myChart.currentIndex + 1) % dataLen
-              // 高亮当前图形
-              myChart.dispatchAction({
-                type: 'highlight',
-                seriesIndex: 0,
-                dataIndex: myChart.currentIndex
-              })
-            }, 1000)
 
             window.addEventListener('resize', function () {
               myChart.resize()
             })
           }
           function char_2() {
+            let buy_source_name = []
+            let buy_source_value = []
+
+            for (var i = 0; i < buy_source.length; i++) {
+              buy_source_value.push(buy_source[i].value)
+              buy_source_name.push(buy_source[i].buy_source)
+            }
             var myChart = echarts.init(document.getElementById('chart2'))
-            var salvProName = [
-              '企业总数',
-              '废气企业',
-              '废水企业',
-              '铅污染',
-              '铬污染'
-            ]
+
             var salvProValue = [117, 74, 72, 67, 55]
             var salvProMax = [] //背景按最大值
-            for (let i = 0; i < salvProValue.length; i++) {
-              salvProMax.push(salvProValue[0])
+            for (let i = 0; i < buy_source_value.length; i++) {
+              salvProMax.push(buy_source_value[0])
             }
             option = {
               grid: {
@@ -1209,7 +774,7 @@
                   axisLine: {
                     show: false
                   },
-                  data: salvProName
+                  data: buy_source_name
                 },
                 {
                   type: 'category',
@@ -1223,7 +788,7 @@
                       fontSize: '12'
                     }
                   },
-                  data: salvProValue
+                  data: buy_source_value
                 }
               ],
               series: [
@@ -1247,7 +812,7 @@
                     }
                   },
                   barWidth: 10,
-                  data: salvProValue
+                  data: buy_source_value
                 },
                 {
                   name: '背景',
