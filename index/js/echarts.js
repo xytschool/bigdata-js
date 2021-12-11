@@ -23,7 +23,7 @@ $(function () {
       buy_source = data.buy_source
       month = data.month_group
       tickets_summary = data.tickets_summary
-      last_year_month = data.day_group
+      last_year_month = data.last_year_day_group
       group_type = data.group_type
       day_group = data.day_group
       ceshis1();
