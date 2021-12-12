@@ -3,7 +3,7 @@ $(function () {
   var day_group=[]
   $.ajax({
     type: "GET",
-    url: "http://bigdata.xyt/api/getCustomerSummary",
+    url: Customer,
     dataType: "json",
     success: function (data) {
       day_group = data.day_group

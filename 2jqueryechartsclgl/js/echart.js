@@ -6,7 +6,7 @@ $(function () {
 
   $.ajax({
     type: "GET",
-    url: "http://bigdata.xyt/api/getVehiclesSummary",
+    url: Vehicles,
     dataType: "json",
     success: function (data) {
       $("#total_seat").text(data.total_seat)

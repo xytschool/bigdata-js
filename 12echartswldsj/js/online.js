@@ -4,7 +4,7 @@ $(function () {
   var hour_group=[]
   $.ajax({
     type: "GET",
-    url: "http://bigdata.xyt/api/getCustomerSummary",
+    url: Customer,
     dataType: "json",
     success: function (data) {
       hour_group=data.hour_group
