@@ -25,7 +25,7 @@ $(function () {
       tickets_summary = data.tickets_summary
       last_year_month = data.last_year_day_group
       group_type = data.group_type
-      day_group = data.day_group
+      day_group = data.day_group_name
       ceshis1();
       ceshis2();
       ceshis3();
@@ -49,6 +49,20 @@ $(function () {
       hour_out_group = data.hour_out_group
 
       ceshis4();
+    },
+    error: function (jqXHR) {
+      console.log("Error: " + jqXHR.status);
+    }
+  });
+
+  $.ajax({
+    type: "GET",
+    url: "http://bigdata.xyt/api/getWeather",
+    dataType: "json",
+    success: function (data) {
+      $("#weather_text").text(data.weatherinfo.weather)
+      var text=  data.weatherinfo.temp1 + '-' + data.weatherinfo.temp2
+      $("#weather_value").text(text)
     },
     error: function (jqXHR) {
       console.log("Error: " + jqXHR.status);
@@ -162,11 +176,11 @@ $(function () {
   }
 
   function ceshis3() {
-    day_group_data = []
-    for (var i = 0; i < day_group.length; i++) {
-      day_group_data.push(day_group[i].value)
-    }
-
+    day_group_data = day_group
+    // for (var i = 0; i < day_group.length; i++) {
+    //   day_group_data.push(day_group[i].value)
+    // }
+    console.log("day_group_data", day_group_data)
     var myChart = echarts.init(document.getElementById('chart4'));
     option = {
       tooltip: {
