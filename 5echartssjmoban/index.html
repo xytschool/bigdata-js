@@ -243,6 +243,7 @@
         </div>
         <!--数字增长累加动画-->
         <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+        <script src="../commonInterface.js"></script>
         <script
           src="js/jquery.numscroll.js"
           type="text/javascript"
@@ -256,7 +257,7 @@
           var last_year_month = []
           $.ajax({
             type: 'GET',
-            url: 'http://bigdata.xyt/api/getCustomerSummary',
+            url: 'http://bigdata.xytschool.com/api/getCustomerSummary',
             dataType: 'json',
             success: function (data) {
               month = data.month_group
@@ -271,7 +272,7 @@
           $.ajax({
             //票务
             type: 'GET',
-            url: 'http://bigdata.xyt/api/getCustomerSummary',
+            url: 'http://bigdata.xytschool.com/api/getCustomerSummary',
             dataType: 'json',
             success: function (data) {
               $('#customer_today').text(data.customer_today)

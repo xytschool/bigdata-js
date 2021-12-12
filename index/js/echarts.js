@@ -57,7 +57,7 @@ $(function () {
 
   $.ajax({
     type: "GET",
-    url: "http://bigdata.xyt/api/getWeather",
+    url: "http://bigdata.xytschool.com/api/getWeather",
     dataType: "json",
     success: function (data) {
       $("#weather_text").text(data.weatherinfo.weather)
@@ -530,7 +530,7 @@ $(function () {
       series: [{
         name: 'Access From',
         type: 'pie',
-        radius: '55%',
+        radius: '15%',
         data: tickets_summary,
         roseType: 'radius',
         label: {
