@@ -2,7 +2,6 @@
     'use strict';
     var myChart = echarts.init(document.getElementById('left-header-nong'));
 
-
     var option = {
         title: {
             textStyle: {
@@ -15,8 +14,9 @@
         legend: {
             show: false
         },
+      
         xAxis: {
-            data: ["日至市", "烟台市", "无锡市", "北京市", "抚顺市", "海城市", "葫芦岛市", "上海市", "上海市", "盘锦市", "沈阳市", "铁岭市", "广州市"],
+            data: ["0-5分钟", "5-30分钟", "30-120分钟", "120分钟及以上"],
             axisLabel: {
                 // X 轴标签
                 rotate: 40,
@@ -46,10 +46,11 @@
                 show: false
             }
         },
-        series: [{
+        series: [
+          {
                 name: '浅蓝',
                 type: 'bar',
-                data: [2, 4, 6, 2, 8, 12, 7, 10, 15, 4, 6, 4, 7],
+                data: [2, 4, 6, 2, 8],
                 itemStyle: {
                     color: '#52d2ff'
                 },
@@ -61,21 +62,7 @@
                     color: '#52d2ff'
                 }
             },
-            {
-                name: '深蓝',
-                type: 'bar',
-                data: [5, 8, 6, 5, 10, 12, 3, 6, 8, 3, 7, 9, 10],
-                itemStyle: {
-                    color: '#1763ff'
-                },
-                barWidth: 10,
-                label: {
-                    show: true,
-                    position: 'top',
-                    fontSize: 10,
-                    color: '#1763ff'
-                }
-            }
+          
         ]
     };
     myChart.setOption(option);
