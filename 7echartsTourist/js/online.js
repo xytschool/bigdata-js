@@ -1,223 +1,183 @@
 $(function () {
+  var province_customer = []
+  var city_customer = []
+  $.ajax({
+    type: "GET",
+    url: "http://bigdata.xyt/api/getVehiclesSummary",
+    dataType: "json",
+    success: function (data) {
+
+      province_customer = data.province_customer
+      city_customer = data.city_customer
+      char1();
+      char2()
+    },
+    error: function (jqXHR) {
+      console.log("Error: " + jqXHR.status);
+    }
+  });
+
+  function char1() {
+    var myChart = echarts.init(document.getElementById('container2'));
+    var city = []
+    var value = []
 
 
-  var myChart = echarts.init(document.getElementById('container2'));
-  option = {
-      /*backgroundColor: '#000',*/
-      "animation": true,
-      "title": {
-          /*"text": 24,*/
-         /* "subtext": "沥青工",*/
-          "x": "center",
-          "y": "center",
-          "textStyle": {
-              "color": "#fff",
-              "fontSize": 10,
-              "fontWeight": "normal",
-              "align": "center",
-              "width": "200px"
-          },
-          "subtextStyle": {
-              "color": "#fff",
-              "fontSize": 12,
-              "fontWeight": "normal",
-              "align": "center"
+    for (var i = 0; i < city_customer.length; i++) {
+      city.push(city_customer[i].city)
+      value.push(city_customer[i].value)
+
+    }
+    console.log(city);
+    const seriesLabel = {
+      show: true
+    };
+    option = {
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow'
+        }
+      },
+      legend: {
+        data: ["城市1"],
+        textStyle: {
+          color: "#fff"
+        }
+      },
+      grid: {
+        left: 100
+      },
+      xAxis: {
+        show: false,
+        type: 'value',
+        name: 'Days',
+      },
+      yAxis: {
+        type: 'category',
+        inverse: true,
+        data: city,
+        axisLabel: {
+          formatter: '{value}',
+          textStyle: {
+            color: "#fff" //X轴文字颜色
           }
+        },
       },
-      "legend": {
-          "width": "100%",
-          "left": "center",
-          "textStyle": {
-              "color": "#fff",
-              "fontSize": 12
-          },
-          "icon": "circle",
-          "right": "0",
-          "bottom": "0",
-          "padding": [15, 20],
-          "itemGap": 5,
-          "data": ["化妆品", "手机", "电脑", "羽绒服", "扫地机", "电视", "洗发露", "其它"]
-      },
-      "series": [{
-          "type": "pie",
-          "center": ["50%", "40%"],
-          "radius": ["20%", "43%"],
-          "color": ["#FEE449", "#00FFFF", "#00FFA8", "#9F17FF", "#FFE400", "#F76F01", "#01A4F7", "#FE2C8A"],
-          "startAngle": 135,
-          "labelLine": {
-              "normal": {
-                  "length": 15
-              }
-          },
-          "label": {
-              "normal": {
-                  "formatter": "{b|{b}:}  {per|{d}%} ",
-                  "backgroundColor": "rgba(255, 147, 38, 0)",
-                  "borderColor": "transparent",
-                  "borderRadius": 4,
-                  "rich": {
-                      "a": {
-                          "color": "#999",
-                          "lineHeight": 12,
-                          "align": "center"
-                      },
-                      "hr": {
-                          "borderColor": "#aaa",
-                          "width": "100%",
-                          "borderWidth": 1,
-                          "height": 0
-                      },
-                      "b": {
-                          "color": "#b3e5ff",
-                          "fontSize": 16,
-                          "lineHeight": 33
-                      },
-                      "c": {
-                          "fontSize": 14,
-                          "color": "#eee"
-                      },
-                      "per": {
-                          "color": "#FDF44E",
-                          "fontSize": 14,
-                          "padding": [5, 8],
-                          "borderRadius": 2
-                      }
-                  },
-                  "textStyle": {
-                      "color": "#fff",
-                      "fontSize": 16
-                  }
-              }
-          },
-          "emphasis": {
-              "label": {
-                  "show": true,
-                  "formatter": "{b|{b}:}  {per|{d}%}  ",
-                  "backgroundColor": "rgba(255, 147, 38, 0)",
-                  "borderColor": "transparent",
-                  "borderRadius": 4,
-                  "rich": {
-                      "a": {
-                          "color": "#999",
-                          "lineHeight": 22,
-                          "align": "center"
-                      },
-                      "hr": {
-                          "borderColor": "#aaa",
-                          "width": "100%",
-                          "borderWidth": 1,
-                          "height": 0
-                      },
-                      "b": {
-                          "color": "#fff",
-                          "fontSize": 14,
-                          "lineHeight": 33
-                      },
-                      "c": {
-                          "fontSize": 14,
-                          "color": "#eee"
-                      },
-                      "per": {
-                          "color": "#FDF44E",
-                          "fontSize": 14,
-                          "padding": [5, 6],
-                          "borderRadius": 2
-                      }
-                  }
-              }
-          },
-          "data": [{
-              "name": "化妆品",
-              "value": 3
-          }, {
-              "name": "手机",
-              "value": 2
-          }, {
-              "name": "电脑",
-              "value": 26
-          }, {
-              "name": "羽绒服",
-              "value": 24
-          }, {
-              "name": "扫地机",
-              "value": 12
-          }, {
-              "name": "电视",
-              "value": 11
-          }, {
-              "name": "洗发露",
-              "value": 3
-          }, {
-              "name": "其它",
-              "value": 2
-          }]
-      }, {
-          "type": "pie",
-          "center": ["50%", "40%"],
-          "radius": ["15%", "14%"],
-          "label": {
-              "show": false
-          },
-          "data": [{
-              "value": 78,
-              "name": "实例1",
-              "itemStyle": {
-                  "normal": {
-                      "color": {
-                          "x": 0,
-                          "y": 0,
-                          "x2": 1,
-                          "y2": 0,
-                          "type": "linear",
-                          "global": false,
-                          "colorStops": [{
-                              "offset": 0,
-                              "color": "#9F17FF"
-                          }, {
-                              "offset": 0.2,
-                              "color": "#01A4F7"
-                          }, {
-                              "offset": 0.5,
-                              "color": "#FE2C8A"
-                          }, {
-                              "offset": 0.8,
-                              "color": "#FEE449"
-                          }, {
-                              "offset": 1,
-                              "color": "#00FFA8"
-                          }]
-                      }
-                  }
-              }
-          }]
-      }]
+      series: [{
+        name: '城市',
+        type: 'bar',
+        data: value,
+        label: seriesLabel,
+        markPoint: {
+          symbolSize: 1,
+          symbolOffset: [0, '50%'],
+        },
+        itemStyle: {
+          normal: {
+            barBorderRadius: 5,
+            color: new echarts.graphic.LinearGradient(
+              0, 0, 0, 1,
+              [{
+                offset: 0,
+                color: '#f3c96b'
+              }, ]
+            )
+          }
+        },
+      }, ]
+    };
+    myChart.setOption(option);
+
+    window.addEventListener("resize", function () {
+      myChart.resize();
+    });
   }
 
-  // 使用刚指定的配置项和数据显示图表。
-  myChart.setOption(option);
-  myChart.currentIndex = -1;
-  //myChart.setOption(option);
-  //console.log(option.series[0].data[0]);
-  setInterval(function () {
-      var dataLen = option.series[0].data.length;
-      // 取消之前高亮的图形
-      myChart.dispatchAction({
-          type: 'downplay',
-          seriesIndex: 0,
-          dataIndex: myChart.currentIndex
-      });
-      myChart.currentIndex = (myChart.currentIndex + 1) % dataLen;
-      // 高亮当前图形
-      myChart.dispatchAction({
-          type: 'highlight',
-          seriesIndex: 0,
-          dataIndex: myChart.currentIndex
-      });
-  }, 1000);
+  function char2() {
+    var province = []
+    var value = []
 
-  window.addEventListener("resize",function(){
+    var worldMapContainer1 = document.getElementById('province');
+    var myChart = echarts.init(worldMapContainer1);
+    for (var i = 0; i < province_customer.length; i++) {
+      province.push(province_customer[i].province)
+      value.push(province_customer[i].value)
+
+    }
+    console.log(province);
+    const seriesLabel = {
+      show: true
+    };
+    option = {
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow'
+        }
+      },
+      legend: {
+
+        data: ["省份"],
+        textStyle: {
+          color: "#fff"
+        }
+      },
+      grid: {
+        left: 100
+      },
+
+      xAxis: {
+        show: false,
+        type: 'value',
+        name: 'Days',
+        axisLabel: {
+          formatter: '{value}',
+          textStyle: {
+            color: "#ffffff" //X轴文字颜色
+          }
+        }
+      },
+      yAxis: {
+
+        type: 'category',
+        inverse: false,
+        data: province,
+        axisLabel: {
+          formatter: '{value}',
+          textStyle: {
+            color: "#ffffff" //X轴文字颜色
+          }
+        },
+      },
+      series: [{
+        name: '省份',
+        type: 'bar',
+        data: value,
+        label: seriesLabel,
+        markPoint: {
+          symbolSize: 1,
+          symbolOffset: [0, '50%'],
+        },
+        itemStyle: {
+          normal: {
+            barBorderRadius: 5,
+            color: new echarts.graphic.LinearGradient(
+              0, 0, 0, 1,
+              [{
+                offset: 0,
+                color: '#788fd8'
+              }, ]
+            )
+          }
+        },
+      }, ]
+    };
+    myChart.setOption(option);
+
+    window.addEventListener("resize", function () {
       myChart.resize();
-  });
- 
+    });
+  }
 
 });
