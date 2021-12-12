@@ -10,7 +10,7 @@
                 orient: 'vertical',
                 // 文字和图形对齐方式
                 align: 'left',
-                right: '25%',
+                right: '5%',
                 top: '10%',
                 // 图形形状
                 icon: 'circle',
@@ -20,71 +20,42 @@
                     borderRadius: 100,
                     color:'#fff'
                 },
-                data: ["荔枝", '黄瓜', "白菜", "蘑菇", "草莓"]
+                data: ["12:00-13:00", '13:00-14:00', "其他", "10:00-11:00", "11:00-12:00"]
             },
-            {
-                orient: 'vertical',
-                right: '6%',
-                top: '10%',
-                padding: [20, 0, 0, 0],
-                itemGap: 20,
-                // 文字和图形对齐方式
-                align: 'left',
-                // 图形形状
-                icon: 'circle',
-                textStyle: {
-                    borderRadius: 100,
-                    color:'#fff'
-                },
-                data: ["南果梨", "大葱", "西瓜", "花生", "棚"]
-            }
+           
         ],
+        grid: [{
+        
+          left:"0%",
+          width: '80%'
+        }],
         series: [{
             name: '销量',
             type: 'pie',
             radius: '50%',
-            right: '40%',
+            left: '0%',
             bottom:'10%',
             data: [{
                     value: 200,
-                    name: '荔枝'
+                    name: '12:00-13:00'
                 },
                 {
                     value: 156,
-                    name: '黄瓜'
+                    name: '13:00-14:00'
                 },
                 {
                     value: 400,
-                    name: '白菜'
+                    name: '其他'
                 },
                 {
                     value: 991,
-                    name: '蘑菇'
+                    name: '10:00-11:00'
                 },
                 {
                     value: 332,
-                    name: '草莓'
+                    name: '11:00-12:00'
                 },
-                {
-                    value: 100,
-                    name: '南果梨'
-                },
-                {
-                    value: 455,
-                    name: '大葱'
-                },
-                {
-                    value: 378,
-                    name: '西瓜'
-                },
-                {
-                    value: 230,
-                    name: '花生'
-                },
-                {
-                    value: 50,
-                    name: '棚'
-                }
+                
             ]
         }]
     };
