@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>订单信息</title>
+    <link rel="stylesheet" href="css/public.css" />
+    <link rel="stylesheet" href="css/index1.css" />
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+  </head>
+  <script>
+    $(document).ready(function () {
+      var whei = $(window).width()
+      $('html').css({ fontSize: whei / 22 })
+      $(window).resize(function () {
+        var whei = $(window).width()
+        $('html').css({ fontSize: whei / 22 })
+      })
+    })
+  </script>
+  <body>
+    <div class="main">
+      <div class="header">
+        <div class="header-left fl" id="time"></div>
+        <div class="header-center fl">
+          <div class="header-title">票务预订分析</div>
+          <div class="header-img"></div>
+        </div>
+        <div class="header-right fl"></div>
+        <div class="header-bottom fl"></div>
+      </div>
+
+      <div class="center">
+        <div class="center-left fl">
+          <div class="left-top mb40 rightTop border">
+            <div class="title">预订渠道分析</div>
+            <div class="right-cen-cent">
+              <div id="chart1" style="height: 100%;width: 100%;"></div>
+          </div>
+          </div>
+
+          <div class="left-bottom mb40 rightTop border">
+            <div class="title">产品预定销量排行</div>
+            <div class="right-cen-cent">
+              <div id="chart2" class="allnav"></div>
+          </div>
+          </div>
+
+          <div class="left-bottom  mb40 rightTop border">
+            <div class="title">客户类型</div>
+            <div class="right-cen-cent">
+              <div id="chart3" class="allnav"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="center-cen fl">
+          <div class="cen-bottom rightTop border">
+            <div class="title">地区销售数据</div>
+            <div class="bottom-b">
+              <div id="chart4" class="allnav"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://www.jq22.com/jquery/echarts-4.2.1.min.js"></script>
+    <script src="js/china.js"></script>
+    <script src="js/index2.js"></script>
+  </body>
+</html>
