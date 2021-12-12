@@ -530,7 +530,7 @@ $(function () {
       series: [{
         name: 'Access From',
         type: 'pie',
-        radius: '15%',
+        radius: '55%',
         data: tickets_summary,
         roseType: 'radius',
         label: {

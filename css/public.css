@@ -99,13 +99,7 @@ ol {
 .border:hover::after {
   height: 0%;
 }
-.border:hover {
-  box-shadow: -5px 0px 2px rgba(255, 255, 255, 0.1),
-    /*左边阴影*/ 0px -5px 2px rgba(255, 255, 255, 0.1),
-    /*上边阴影*/ 5px 0px 2px rgba(255, 255, 255, 0.1),
-    /*右边阴影*/ 0px 5px 2px rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.1);
-}
+
 .border h4 {
   margin: 15px 0 5px 20px;
   color: #8adeff;
