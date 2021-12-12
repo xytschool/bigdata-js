@@ -44,14 +44,14 @@
           <div class="weather-box mb40">
             <div class="data">
               <p class="time" id="time2">00:00:00</p>
-              <p id="date"></p>
+              <p class="date1"></p>
             </div>
             <div class="weather border">
               <img id="weatherImg" src="images/weather_img01.png" alt="" />
               <div id="weather">
-                <p class="active" id="weather_text">多云</p>
-                <p id="weather_value">16-22℃</p>
-                <p>洛阳</p>
+                <p class="active">多云</p>
+                <p>16-22℃</p>
+                <p>栾州</p>
               </div>
             </div>
           </div>
@@ -152,39 +152,10 @@
     <script src="js/fontscroll.js"></script>
     <script src="js/echarts.js"></script>
     <script src="js/china.js"></script>
+    <script src="../time.js"></script>
     <!--<script src="js/mymap.js"></script>-->
     <script>
-      function fnW(str) {
-        var num
-        str >= 10 ? (num = str) : (num = '0' + str)
-        return num
-      }
-      //获取当前时间
-      var timer = setInterval(function () {
-        var date = new Date()
-        var year = date.getFullYear() //当前年份
-        var month = date.getMonth() //当前月份
-        var data = date.getDate() //天
-        var hours = date.getHours() //小时
-        var minute = date.getMinutes() //分
-        var second = date.getSeconds() //秒
-        var day = date.getDay() //获取当前星期几
-        var ampm = hours < 12 ? 'am' : 'pm'
-        $('#time2').html(fnW(hours) + ':' + fnW(minute) + ':' + fnW(second))
-        $('#date').html(
-          '<span>' +
-            year +
-            '/' +
-            (month + 1) +
-            '/' +
-            data +
-            '</span><span>' +
-            ampm +
-            '</span><span>周' +
-            day +
-            '</span>'
-        )
-      }, 1000)
+    
       function fillZero(str) {
         var realNum
         if (str < 10) {

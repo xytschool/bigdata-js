@@ -3,7 +3,8 @@
 <title>警情警力分析</title>
 <link href="css/style.css"  rel="stylesheet" type="text/css" media="all" />
 <script src="https://www.jq22.com/jquery/echarts-4.2.1.min.js"></script>
-
+<script src="js/jquery-3.2.0.min.js"></script>
+<script src="../time.js"></script>
 
 <body>
 <div class="bnt">
@@ -14,7 +15,7 @@
 <!-- bnt end -->
 <div class="puleft fl">
     <div class="pulefttop"><h2 class="tith2"><span>舆情关键词分析</span></h2>
-    <div class="lefttoday_tit"><p class="fl">关键词</p><p class="fr">时间：2021-12-12</p></div>
+    <div class="lefttoday_tit"><p class="fl">关键词</p><p class="fr">时间：<span class="date1"></span> </p></div>
     <div class="box pbox">
       <div class="lefttoday_bar pulefttoday_bar fl">
         <ul>
@@ -44,7 +45,7 @@
     </div>
     <div class="puleftboxtmidd">
       <h2 class="tith2">舆情来源分析</h2>
-          <div class="lefttoday_tit"><p class="fl">来源</p><p class="fr">时间：2021-12-12</p></div>
+          <div class="lefttoday_tit"><p class="fl">来源</p><p class="fr">时间：<span class="date1"></span></p></div>
     <div class="box pbox">
       <div id="puleftboxtmidd1" class="fl puleftboxtmidd1"></div>
           <div class="pvr fr pulefttoday_bar2" >
@@ -61,7 +62,7 @@
   </div>
   <div class="puleftboxtbott">
     <h2 class="tith2 pt1">舆情环比分析</h2>
-        <div class="lefttoday_tit"><p class="fl">状态：已调节</p><p class="fr">时间：2021-12-12</p></div>
+        <div class="lefttoday_tit"><p class="fl">状态：已调节</p><p class="fr">时间：<span class="date1"></span></p></div>
     <div class="box pbox">
       <div id="puleftboxtbott1" class="fl puleftboxtbott1" ></div>
       <div  class="puleftboxtbott2 fr" >
@@ -90,7 +91,7 @@
         <div class="pmidd_bott">
           <div class="pumiddboxttop1 fl">
               <h2 class="tith2 pt3">今日舆情</h2>
-              <div class="lefttoday_tit"><p class="fl">状态：已调节</p><p class="fr">时间段：2021-12-12</p></div>
+              <div class="lefttoday_tit"><p class="fl">状态：已调节</p><p class="fr">时间段：<span class="date1"></span></p></div>
               <div class="puleft2height">
                     <div class="widget-inline-box text-center ">
                       <p>今日舆情总数</p>
@@ -116,7 +117,7 @@
             </div>
             <div class="pumiddboxttop2 fl">
                 <h2 class="tith2 pt3">热门信息</h2>
-                <div class="lefttoday_tit "><p class="fl">状态：已调节</p><p class="fr">时间段：2021-12-12</p></div>
+                <div class="lefttoday_tit "><p class="fl">状态：已调节</p><p class="fr">时间段：<span class="date1"></span></p></div>
                 <div class="left2_table pumiddboxttop2_cont">
                    <ul>
                         <li>
@@ -154,7 +155,7 @@
             <!--  amidd_bott end-->
             <div class="pmiddboxtbott" >
               <h2 class="tith2 pt1">舆情同比分析</h2>
-              <div class="lefttoday_tit"><p class="fl">状态：已调节</p><p class="fr">时间段：2021-12-12</p></div>
+              <div class="lefttoday_tit"><p class="fl">状态：已调节</p><p class="fr">时间段：<span class="date1"></span></p></div>
               <div class="box pbox">
                 <div id="pumiddboxtbott1" class="fl pumiddboxtbott1cont"></div>
                 <div  class="pumiddboxtbott2 fr"  >
@@ -172,15 +173,15 @@
         <!-- mrbox_top end -->
         <div class="mr_right fl">
           <div class="purightboxtop"><h2 class="tith2 pt12">舆情类别分析</h2>
-            <div class="lefttoday_tit"><p class="fl">状态：已调节</p><p class="fr">时间段：2021-12-12</p></div>
+            <div class="lefttoday_tit"><p class="fl">状态：已调节</p><p class="fr">时间段：<span class="date1"></span></p></div>
             <div id="purightboxtop" class="purightboxtopcont"></div>
           </div>
           <div class="purightboxmidd"><h2 class="tith2 pt12">七日舆情走势分析</h2>
-            <div class="lefttoday_tit"><p class="fl">状态：已调节</p><p class="fr">时间段：2021-12-12</p></div>
+            <div class="lefttoday_tit"><p class="fl">状态：已调节</p><p class="fr">时间段：<span class="date1"></span></p></div>
             <div id="purightboxmidd" class="purightboxmiddcont"></div>
           </div>
             <div class="purightboxbott"><h2 class="tith2 pt12">投诉七日数据分析</h2>
-              <div class="lefttoday_tit"><p class="fl">状态：已调节</p><p class="fr">时间段：2021-12-12</p></div>
+              <div class="lefttoday_tit"><p class="fl">状态：已调节</p><p class="fr">时间段：<span class="date1"></span></p></div>
                 <div id="purightboxbott" class="purightboxbottcont" ></div>
             </div>
         </div>
