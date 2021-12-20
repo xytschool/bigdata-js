@@ -8,11 +8,25 @@
 .header .header-left {
   width: 25%;
   height: 1.05rem;
-  color: white;
+  padding-left: 0.1rem;
   /*    border: 1px solid green;*/
-  text-align: center;
+
   line-height: 1.05rem;
 }
+.header .header-left .btnstyle {
+  padding: 10px;
+  background: #141c2a;
+  border: none;
+  height: 40px;
+}
+.menuBar {
+  position: relative;
+}
+.header .header-left .menuBar:hover {
+  background: rgb(255, 255, 0);
+  color: rgb(0, 0, 0);
+}
+
 .header .header-center {
   width: 50%;
   height: 1.2rem;
@@ -41,6 +55,7 @@
   width: 25%;
   height: 1.05rem;
   /*border: 1px solid gold;*/
+  line-height: 1.05rem;
 }
 .header .header-bottom {
   width: calc(100% - 0.4rem);
@@ -297,7 +312,7 @@
   line-height: 20px;
 }
 .center-right-ul li i {
-  font-style:normal
+  font-style: normal;
 }
 .center-right-ul li b {
   font-size: 16px;
@@ -420,3 +435,4 @@
   margin-top: 0.8rem;
   text-align: center;
 }
+

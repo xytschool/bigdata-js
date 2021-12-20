@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script type="text/javascript" src="./vue.min.js"></script> -->
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.11.1/theme-chalk/index.css"
+    />
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.11.1/index.js"></script> -->
+    <style>
+    
+
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="header-left fl">
+        <nav class="menu radius">
+          <ul class="nav">
+            <li>
+              <a href="http://127.0.0.1:5500/index.html" id="returnHome">
+                返回首页
+              </a>
+            </li>
+            <li>
+              <a href="#">菜单项</a>
+              <ul>
+                <li>
+                  <a href="http://127.0.0.1:5500/index/bigdata.html"
+                    >景区综合检测</a
+                  >
+                </li>
+                <li>
+                  <a href="http://127.0.0.1:5500/2jqueryechartsclgl/index.html"
+                    >停车场数据分析</a
+                  >
+                </li>
+                <li>
+                  <a href="http://127.0.0.1:5500/5echartssjmoban/index.html"
+                    >票务收入分析</a
+                  >
+                </li>
+                <li>
+                  <a href="http://127.0.0.1:5500/12echartswldsj/index.html"
+                    >游客接待分析</a
+                  >
+                </li>
+                <li>
+                  <a href="http://127.0.0.1:5500/7echartsTourist/index.html"
+                    >游客客源分析</a
+                  >
+                </li>
+                <li>
+                  <a href="http://127.0.0.1:5500/4estsjksh/index.html"
+                    >游客画像分析</a
+                  >
+                </li>
+                <li>
+                  <a href="http://127.0.0.1:5500/8echartsjkmooban/index.html"
+                    >WIFI数据分析</a
+                  >
+                </li>
+                <li>
+                  <a href="http://127.0.0.1:5500/order_ticket/index.html"
+                    >票务预订分析</a
+                  >
+                </li>
+                <li>
+                  <a href="http://127.0.0.1:5500/6jquerygndsjmoban/index.html"
+                    >舆情分析</a
+                  >
+                </li>
+                <li>
+                  <a href="http://127.0.0.1:5500/17eslydsj/index.html"
+                    >指挥调度</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="header-center fl">
+        <div class="header-title">景区综合检测</div>
+        <!-- <div class="header-img"></div> -->
+      </div>
+      <div class="header-right fl">
+        <el-date-picker
+          v-model="value1"
+          type="daterange"
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
+          @change="datachange"
+        >
+        </el-date-picker>
+      </div>
+      <div class="header-bottom fl"></div>
+    </div>
+    <script>
+      new Vue({
+        el: '.header',
+        data: function () {
+          return {
+            value1: ''
+          }
+        },
+        methods:{
+          datachange(value){
+            console.log(value);
+          }
+        }
+      })
+    </script>
+    
+  </body>
+</html>

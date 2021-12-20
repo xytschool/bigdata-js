@@ -15,7 +15,8 @@ li{
 }
 .header{
     width: 700px;
-    margin: 0 auto;
+    margin: 20px auto;
+  
 }
 .header p.p1{
     width: 60px;
@@ -37,7 +38,7 @@ li{
     margin: 0 auto;
     text-align: center;
     line-height: 40px;
-    font-size: 28px;
+    font-size: 38px;
     color: #bddde6;
 }
 .contain{
