@@ -1,3 +1,19 @@
+
+  var time=''
+  new Vue({
+    el: '.header',
+    data: function () {
+      return {
+        value1: ''
+      }
+    },
+    methods:{
+      datachange(value){
+        console.log(value);
+        time=value
+      }
+    }
+  })
 $(function () {
   var hour_in_group = []
   var hour_out_group = []

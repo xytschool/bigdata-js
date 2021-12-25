@@ -3,17 +3,99 @@
   <head>
     <meta charset="UTF-8" />
     <title>数据大屏</title>
+    <link rel="stylesheet" href="../header.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="js/vue.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.11.1/theme-chalk/index.css"
+    />
+    <script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.11.1/index.js"></script>
   </head>
+
   <body>
-    <header>
-      游客接待分析
-      <span
-        id="localtime"
-        style="font-size: 14px; position: absolute; right: 30px; top: -20px"
-      ></span>
-    </header>
+    <div class="header">
+      <div class="header-left fl">
+        <nav class="menu radius">
+          <ul class="nav">
+            <li>
+              <a href="http://127.0.0.1:5500/index.html" id="returnHome">
+                返回首页
+              </a>
+            </li>
+            <li>
+              <a href="#">菜单项</a>
+              <ul>
+                <li>
+                  <a href="http://127.0.0.1:5500/index/bigdata.html"
+                    >景区综合检测</a
+                  >
+                </li>
+                <li>
+                  <a href="http://127.0.0.1:5500/2jqueryechartsclgl/index.html"
+                    >停车场数据分析</a
+                  >
+                </li>
+                <li>
+                  <a href="http://127.0.0.1:5500/5echartssjmoban/index.html"
+                    >票务收入分析</a
+                  >
+                </li>
+                <li>
+                  <a href="http://127.0.0.1:5500/12echartswldsj/index.html"
+                    >游客接待分析</a
+                  >
+                </li>
+                <li>
+                  <a href="http://127.0.0.1:5500/7echartsTourist/index.html"
+                    >游客客源分析</a
+                  >
+                </li>
+                <li>
+                  <a href="http://127.0.0.1:5500/4estsjksh/index.html"
+                    >游客画像分析</a
+                  >
+                </li>
+                <li>
+                  <a href="http://127.0.0.1:5500/8echartsjkmooban/index.html"
+                    >WIFI数据分析</a
+                  >
+                </li>
+                <li>
+                  <a href="http://127.0.0.1:5500/order_ticket/index.html"
+                    >票务预订分析</a
+                  >
+                </li>
+                <li>
+                  <a href="http://127.0.0.1:5500/6jquerygndsjmoban/index.html"
+                    >舆情分析</a
+                  >
+                </li>
+                <li>
+                  <a href="http://127.0.0.1:5500/17eslydsj/index.html"
+                    >指挥调度</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="header-center fl">
+        <div class="header-title">游客接待分析</div>
+      </div>
+      <div class="header-right fl">
+        <el-date-picker
+          v-model="value1"
+          type="daterange"
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
+          @change="datachange"
+        >
+        </el-date-picker>
+      </div>
+    </div>
     <div id="content">
       <div class="content_left">
         <div class="content_left_top mb16">
@@ -53,22 +135,22 @@
           <div class="title-box">
             <h6>接待趋势</h6>
           </div>
-          <div  id="container3" style="height: 180px"></div>
+          <div id="container3" style="height: 180px"></div>
         </div>
       </div>
       <div class="content_center">
         <div class="center_top">
           <div class="title">客源地分析</div>
-          <div class="center_top_con" id="distribution_map" ></div>
+          <div class="center_top_con" id="distribution_map"></div>
         </div>
       </div>
     </div>
     <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
     <script src="https://cdn.bootcss.com/echarts/4.0.0/echarts.js"></script>
     <script type="text/javascript" src="js/china.js"></script>
-    <script type="text/javascript" src="js/vue.min.js"></script>
+
     <script type="text/javascript" src="js/map.js"></script>
-    <script type="text/javascript" src="js/times.js"></script>
+    <!-- <script type="text/javascript" src="js/times.js"></script> -->
     <!-- <script type="text/javascript" src="js/DTU.js"></script> -->
     <!-- <script type="text/javascript" src="js/PLC.js"></script> -->
     <script type="text/javascript" src="js/online.js"></script>
@@ -76,5 +158,17 @@
     <!-- <script type="text/javascript" src="js/data.js"></script> -->
     <script type="text/javascript" src="js/index.js"></script>
     <script src="../commonInterface.js"></script>
+
+    <script>
+        $(document).ready(function () {
+          var whei = $(window).width()
+          $('html').css({ fontSize: whei / 22 })
+          $(window).resize(function () {
+            var whei = $(window).width()
+            $('html').css({ fontSize: whei / 22 })
+          })
+        })
+   
+    </script>
   </body>
 </html>

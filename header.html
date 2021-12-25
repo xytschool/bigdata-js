@@ -5,17 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <!-- <script type="text/javascript" src="./vue.min.js"></script> -->
-    <!-- <link
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="./vue.min.js"></script>
+
+    <link
       rel="stylesheet"
       href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.11.1/theme-chalk/index.css"
     />
-
-    <script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.11.1/index.js"></script> -->
-    <style>
-    
-
-    </style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.11.1/index.js"></script>
+    <link rel="stylesheet" href="./header.css">
+    <script>
+      $(document).ready(function () {
+        var whei = $(window).width()
+        $('html').css({ fontSize: whei / 22 })
+        $(window).resize(function () {
+          var whei = $(window).width()
+          $('html').css({ fontSize: whei / 22 })
+        })
+      })
+    </script>
   </head>
   <body>
     <div class="header">
@@ -87,7 +95,6 @@
       </div>
       <div class="header-center fl">
         <div class="header-title">景区综合检测</div>
-        <!-- <div class="header-img"></div> -->
       </div>
       <div class="header-right fl">
         <el-date-picker
@@ -100,7 +107,7 @@
         >
         </el-date-picker>
       </div>
-      <div class="header-bottom fl"></div>
+     
     </div>
     <script>
       new Vue({

@@ -8,7 +8,7 @@
   background-size: cover;
   padding-top: 0rem;
   padding: 0rem 0.2rem;
-  background-color: #29292f;
+  background: #141c2a;
 }
 
 .title {
@@ -63,6 +63,8 @@
 
 .content {
   display: flex;
+  padding-top: 0.4rem;
+
 }
 .leftMain {
   width: 20%;

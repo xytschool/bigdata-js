@@ -1,13 +1,31 @@
+
+  var time=''
+new Vue({
+  el: '.header',
+  data: function () {
+    return {
+      value1: ''
+    }
+  },
+  methods:{
+    datachange(value){
+      console.log(value);
+      time=value
+    }
+  }
+})
+
 $(function () {
+
   var province_customer = []
   var buy_source = []
-  var month = []
   var tickets_summary = []
   var last_year_month = []
   var hour_in_group = []
   var hour_out_group = []
   var group_type = []
   var day_group=[]
+  console.log(time);
   $.ajax({
     type: "GET",
     url: Customer,

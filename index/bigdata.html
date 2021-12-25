@@ -4,29 +4,20 @@
     <meta charset="UTF-8" />
     <title>数据展示</title>
     <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="../vue.min.js"></script>
     <link
       rel="stylesheet"
       href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.11.1/theme-chalk/index.css"
     />
-    <script src="../vue.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.11.1/index.js"></script>
- 
-    <script type="text/javascript" src="js/layer/layer.min.js"></script>
-    <script type="text/javascript" src="js/layer/laydate/laydate.js"></script>
+
+    <!-- <script type="text/javascript" src="js/layer/layer.min.js"></script>
+    <script type="text/javascript" src="js/layer/laydate/laydate.js"></script> -->
     <link rel="stylesheet" href="css/wodry.css" />
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/public.css" />
-    <link rel="stylesheet" href="../header.css">
-    <!-- <script src="../js/include.js"></script> -->
+    <link rel="stylesheet" href="../header.css" />
     <script>
-      $(function () {
-        $(".headerpage").load("../header.html");
-        $('.myscroll').myScroll({
-          speed: 60, //数值越大，速度越慢
-          rowHeight: 38 //li的高度
-        })
-      })
-
       $(document).ready(function () {
         var whei = $(window).width()
         $('html').css({ fontSize: whei / 22 })
@@ -35,15 +26,93 @@
           $('html').css({ fontSize: whei / 22 })
         })
       })
+     
     </script>
   </head>
   <body>
- 
     <div class="main">
       <div class="header">
-        <header class="headerpage">
-        </header>
-        <!-- <include src="../header.html"></include> -->
+        <div class="header-left fl">
+          <nav class="menu radius">
+            <ul class="nav">
+              <li>
+                <a href="http://127.0.0.1:5500/index.html" id="returnHome">
+                  返回首页
+                </a>
+              </li>
+              <li>
+                <a href="#">菜单项</a>
+                <ul>
+                  <li>
+                    <a href="http://127.0.0.1:5500/index/bigdata.html"
+                      >景区综合检测</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="http://127.0.0.1:5500/2jqueryechartsclgl/index.html"
+                      >停车场数据分析</a
+                    >
+                  </li>
+                  <li>
+                    <a href="http://127.0.0.1:5500/5echartssjmoban/index.html"
+                      >票务收入分析</a
+                    >
+                  </li>
+                  <li>
+                    <a href="http://127.0.0.1:5500/12echartswldsj/index.html"
+                      >游客接待分析</a
+                    >
+                  </li>
+                  <li>
+                    <a href="http://127.0.0.1:5500/7echartsTourist/index.html"
+                      >游客客源分析</a
+                    >
+                  </li>
+                  <li>
+                    <a href="http://127.0.0.1:5500/4estsjksh/index.html"
+                      >游客画像分析</a
+                    >
+                  </li>
+                  <li>
+                    <a href="http://127.0.0.1:5500/8echartsjkmooban/index.html"
+                      >WIFI数据分析</a
+                    >
+                  </li>
+                  <li>
+                    <a href="http://127.0.0.1:5500/order_ticket/index.html"
+                      >票务预订分析</a
+                    >
+                  </li>
+                  <li>
+                    <a href="http://127.0.0.1:5500/6jquerygndsjmoban/index.html"
+                      >舆情分析</a
+                    >
+                  </li>
+                  <li>
+                    <a href="http://127.0.0.1:5500/17eslydsj/index.html"
+                      >指挥调度</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="header-center fl">
+          <div class="header-title">景区综合检测</div>
+        </div>
+        <div class="header-right fl">
+          <el-date-picker
+            v-model="value1"
+            type="daterange"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+            @change="datachange"
+          >
+          </el-date-picker>
+        </div>
       </div>
       <div class="center">
         <div class="center-left fl">
@@ -59,9 +128,9 @@
                 <p>16-22℃</p>
                 <p>洛阳市</p> -->
 
-                <p class="active" id="weather_text">多云</p >
-                  <p id="weather_value">16-22℃</p >
-                  <p>洛阳</p >
+                <p class="active" id="weather_text">多云</p>
+                <p id="weather_value">16-22℃</p>
+                <p>洛阳</p>
               </div>
             </div>
           </div>
@@ -76,7 +145,7 @@
               <h6>客户类型占比</h6>
             </div>
             <div class="bottom-b">
-              <div id="chart3" class="allnav" style="height: 100%;"></div>
+              <div id="chart3" class="allnav" style="height: 100%"></div>
             </div>
           </div>
         </div>
@@ -120,11 +189,15 @@
               <h6>停车场检测</h6>
             </div>
             <ul class="center-right-ul">
-              <li><span>已停停车位：</span> <b id="in">333</b>/<i id="total_seat">6330</i></li>
+              <li>
+                <span>已停停车位：</span> <b id="in">333</b>/<i id="total_seat"
+                  >6330</i
+                >
+              </li>
               <li><span>今日收入</span> <b id="ticket_amount">840</b></li>
             </ul>
             <div class="chat">
-              <div id="chart5" class="allnav" style="height:94%"></div>
+              <div id="chart5" class="allnav" style="height: 94%"></div>
             </div>
           </div>
           <div class="right-cen border">
@@ -166,17 +239,7 @@
     <script src="../commonInterface.js"></script>
     <!--<script src="js/mymap.js"></script>-->
     <script>
-
-      function fillZero(str) {
-        var realNum
-        if (str < 10) {
-          realNum = '0' + str
-        } else {
-          realNum = str
-        }
-        return realNum
-      }
-      // setInterval(getTime, 1000)
+    
     </script>
   </body>
 </html>

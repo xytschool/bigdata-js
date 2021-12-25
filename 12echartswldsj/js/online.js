@@ -1,3 +1,18 @@
+var time=''
+new Vue({
+  el: '.header',
+  data: function () {
+    return {
+      value1: ''
+    }
+  },
+  methods:{
+    datachange(value){
+      console.log(value);
+      time=value
+    }
+  }
+})
 $(function () {
   // var dom = document.getElementById("container2");
   // var myChart = echarts.init(dom);
