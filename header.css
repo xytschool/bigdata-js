@@ -4,12 +4,12 @@
   background: #141c2a;
   display: flex;
 }
-.topHeder  .header-left {
+.topHeder .header-left {
   width: 25%;
   height: 75px;
   line-height: 75px;
 }
-.topHeder  .header-center {
+.topHeder .header-center {
   width: 50%;
   height: 75px;
   position: relative;
@@ -42,10 +42,10 @@ ol {
   color: #fff;
 }
 .topHeder .nav > .navli > a {
-width: 130px;
+  width: 130px;
   text-decoration: none;
-  height:40px;
-text-align: center;
+  height: 40px;
+  text-align: center;
   line-height: 40px;
 }
 .topHeder .nav > .navli:hover > a {
@@ -88,7 +88,7 @@ text-align: center;
   background-color: rgb(255, 255, 0);
   color: rgb(0, 0, 0);
   height: 40px;
-  line-height:40px;
+  line-height: 40px;
 }
 .el-picker-panel {
   color: #000 !important;
@@ -98,7 +98,7 @@ text-align: center;
   color: #fff;
 }
 .el-date-editor .el-range-separator {
-  color: #fff  !important;
+  color: #fff !important;
 }
 .el-range-editor .el-range-input {
   background: #141c2a;
@@ -109,5 +109,12 @@ text-align: center;
   color: #fff;
 }
 .el-date-editor .el-range-input {
+  color: #fff !important;
+}
+.el-date-table td span {
+  color: #000 !important;
+}
+.start-date span,
+.end-date span {
   color: #fff !important;
 }

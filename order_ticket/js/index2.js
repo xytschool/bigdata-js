@@ -1,19 +1,5 @@
 
-  var time=''
-  new Vue({
-    el: '.topHeder',
-    data: function () {
-      return {
-        value1: ''
-      }
-    },
-    methods:{
-      datachange(value){
-        console.log(value);
-        time=value
-      }
-    }
-  })
+
 $(function () {
     var province_customer = []
     var buy_source = []
@@ -24,9 +10,31 @@ $(function () {
     var hour_out_group = []
     var group_type = []
     var day_group=[]
-    $.ajax({
+    var startDate = ""
+    var endDate = ""
+  
+    new Vue({
+      el: '.topHeder',
+      data: function () {
+        return {
+          value1: ''
+        }
+      },
+      methods:{
+        datachange(value){
+          console.log('time', value);
+          startDate = value[0]
+          endDate = value[1]
+          getPageDate()
+        }
+      }
+    })
+    getPageDate()
+    function getPageDate(){
+      $.ajax({
         type: "GET",
         url: Customer,
+        data: {start:startDate , end: endDate},
         dataType: "json",
         success: function (data) {
             $("#customer_today").text(data.customer_today)
@@ -52,6 +60,8 @@ $(function () {
         }
     });
 
+    }
+   
     function ceshis() {
         var myChart = echarts.init(document.getElementById('chart4'));
         var option = null;
@@ -65,6 +75,7 @@ $(function () {
         barData = province_customer.sort(function(a,b){
             return b.value-a.value;
         });
+        console.log(barData);
         for(var j =0;j<barData.length;j++){
             if(j<10){
                 yData.push('0'+j + barData[j].name);
