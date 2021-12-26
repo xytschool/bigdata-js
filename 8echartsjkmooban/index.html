@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../font/iconfont.css" />
+       <script src="../vue.min.js"></script>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/scroll.css">
@@ -12,6 +14,12 @@
     <link rel="stylesheet" href="css/date.css">
     <!-- <link rel="stylesheet" href="css/info.css"> -->
     <script src="js/shipei.js"></script>
+    <script src="../vue.min.js"></script>
+    <link
+    rel="stylesheet"
+    href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.11.1/theme-chalk/index.css"
+  />
+  <script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.11.1/index.js"></script>
     <script src="https://www.jq22.com/jquery/echarts-4.2.1.min.js"></script>
     <script type="text/javascript" src="https://developer.baidu.com/map/custom/stylelist.js"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=fbXf9j0aPH4EwxPBaixZ8Ll2rGwMbFe8"></script>
@@ -20,9 +28,78 @@
 <body>
     <div class="bg">
         <!-- 顶部 -->
-        <div class="header">
-            <span class="header-title">WIFI数据分析</span>
-        </div>
+          <div class="topHeder">
+            <div class="header-left fl">
+              <nav class="menu radius">
+                <ul class="nav">
+                  <li style="font-size: 20px; margin-left: 80px" class="navli">
+                    景区综合监测
+                  </li>
+                  <li class="navli">
+                    <a href="#" style="width: 119px">
+                      <span
+                        class="iconfont icon-sanjiaodown"
+                        style="font-size: 20px"
+                      ></span>
+                    </a>
+  
+                    <ul>
+                      <li>
+                        <a href="../index.html">返回首页</a>
+                      </li>
+                      <li>
+                        <a href="../index/bigdata.html">景区综合检测</a>
+                      </li>
+                      <li>
+                        <a href="../2jqueryechartsclgl/index.html"
+                          >停车场数据分析</a
+                        >
+                      </li>
+                      <li>
+                        <a href="../5echartssjmoban/index.html">票务收入分析</a>
+                      </li>
+                      <li>
+                        <a href="../12echartswldsj/index.html">游客接待分析</a>
+                      </li>
+                      <li>
+                        <a href="../7echartsTourist/index.html">游客客源分析</a>
+                      </li>
+                      <li>
+                        <a href="../4estsjksh/index.html">游客画像分析</a>
+                      </li>
+                      <li>
+                        <a href="../8echartsjkmooban/index.html">WIFI数据分析</a>
+                      </li>
+                      <li>
+                        <a href="../order_ticket/index.html">票务预订分析</a>
+                      </li>
+                      <li>
+                        <a href="../6jquerygndsjmoban/index.html">舆情分析</a>
+                      </li>
+                      <li>
+                        <a href="../17eslydsj/index.html">指挥调度</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <div class="header-center fl">
+              <div class="header-title">WIFI数据分析</div>
+            </div>
+            <div class="header-right fl" style="padding-top: 15px">
+              <el-date-picker
+                v-model="value1"
+                type="daterange"
+                range-separator="至"
+                start-placeholder="开始日期"
+                end-placeholder="结束日期"
+                @change="datachange"
+              >
+              </el-date-picker>
+            </div>
+          </div>
+   
         <!-- 内容 -->
         <div class="wrap">
             <!-- 左侧 -->

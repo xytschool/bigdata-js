@@ -1,7 +1,7 @@
 
   var time=''
   new Vue({
-    el: '.header',
+    el: '.topHeder',
     data: function () {
       return {
         value1: ''
