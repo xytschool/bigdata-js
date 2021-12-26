@@ -469,7 +469,8 @@ $(function () {
           }
         },
       },
-      series: [{
+      series: [
+          {
           name: '购票人数',
           type: 'map',
           aspectScale: 0.75,
