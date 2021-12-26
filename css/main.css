@@ -33,11 +33,11 @@ li {
   color: #fec468;
 }
 .header p.p3 {
-  height: 40px;
-  margin: 0 auto;
+  height: 60px;
+  margin-top: 60px;
   text-align: center;
   line-height: 40px;
-  font-size: 38px;
+  font-size: 48px;
   color: #bddde6;
 }
 .header .data {
@@ -73,7 +73,7 @@ li {
   background-image: url('../images/kuang.png');
   background-position: center center;
   background-repeat: no-repeat;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
   background-color: transparent;
 }
 .contain ul li:hover {
