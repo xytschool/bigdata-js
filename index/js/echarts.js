@@ -1,5 +1,4 @@
-
-  var time=''
+var time=''
 new Vue({
   el: '.header',
   data: function () {
@@ -195,9 +194,6 @@ $(function () {
 
   function ceshis3() {
     day_group_data = day_group
-    // for (var i = 0; i < day_group.length; i++) {
-    //   day_group_data.push(day_group[i].value)
-    // }
     console.log("day_group_data", day_group_data)
     var myChart = echarts.init(document.getElementById('chart4'));
     option = {
@@ -418,9 +414,12 @@ $(function () {
     var province_customer_index = []
     var province_customer_value = []
     for (var i = 0; i < province_customer.length; i++) {
-      province_customer_value.push(province_customer[i].value)
+      province_customer_value.push({
+        name: province_customer[i].province.replace('省', ''),
+        value:province_customer[i].value})
       province_customer_index.push(province_customer[i].province)
     }
+    console.log('province_customer_value', province_customer_value)
 
     var worldMapContainer1 = document.getElementById('map');
     var myChart = echarts.init(worldMapContainer1);
@@ -497,7 +496,7 @@ $(function () {
             }
           },
           data: function () {
-            return province_customer;
+            return province_customer_value;
           }()
         },
         {
@@ -574,7 +573,12 @@ $(function () {
         }
       }]
     };
+
     myChart.setOption(option);
+
+    setTimeout(function (){myChart.resize()},500)
+    setTimeout(function (){myChart.resize()},1000)
+    setTimeout(function (){myChart.resize()},3000)
     window.addEventListener("resize", function () {
       myChart.resize();
     });

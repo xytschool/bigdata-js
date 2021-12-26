@@ -2,15 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>数据展示</title>
+    <title>青要山大数据平台</title>
     <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
     <script src="../vue.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.11.1/theme-chalk/index.css"
-    />
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.11.1/theme-chalk/index.css"/>
     <script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.11.1/index.js"></script>
-
     <!-- <script type="text/javascript" src="js/layer/layer.min.js"></script>
     <script type="text/javascript" src="js/layer/laydate/laydate.js"></script> -->
     <link rel="stylesheet" href="css/wodry.css" />
@@ -26,73 +23,57 @@
           $('html').css({ fontSize: whei / 22 })
         })
       })
-     
+
     </script>
   </head>
   <body>
     <div class="main">
+
       <div class="header">
         <div class="header-left fl">
           <nav class="menu radius">
             <ul class="nav">
-              <li>
-                <a href="http://127.0.0.1:5500/index.html" id="returnHome">
-                  返回首页
-                </a>
+              <li style="font-size: 20px;margin-left: 80px;">
+                景区综合监测
               </li>
               <li>
-                <a href="#">菜单项</a>
+                <a href="#"  style="width: 130px">
+                  <span class="iconfont icon-sanjiaodown" style="font-size: 20px"></span>
+                </a>
+
                 <ul>
                   <li>
-                    <a href="http://127.0.0.1:5500/index/bigdata.html"
-                      >景区综合检测</a
-                    >
+                    <a href="../index.html">返回首页</a>
                   </li>
                   <li>
-                    <a
-                      href="http://127.0.0.1:5500/2jqueryechartsclgl/index.html"
-                      >停车场数据分析</a
-                    >
+                    <a href="../index/bigdata.html">景区综合检测</a>
                   </li>
                   <li>
-                    <a href="http://127.0.0.1:5500/5echartssjmoban/index.html"
-                      >票务收入分析</a
-                    >
+                    <a href="../2jqueryechartsclgl/index.html">停车场数据分析</a>
                   </li>
                   <li>
-                    <a href="http://127.0.0.1:5500/12echartswldsj/index.html"
-                      >游客接待分析</a
-                    >
+                    <a href="../5echartssjmoban/index.html">票务收入分析</a>
                   </li>
                   <li>
-                    <a href="http://127.0.0.1:5500/7echartsTourist/index.html"
-                      >游客客源分析</a
-                    >
+                    <a href="../12echartswldsj/index.html">游客接待分析</a>
                   </li>
                   <li>
-                    <a href="http://127.0.0.1:5500/4estsjksh/index.html"
-                      >游客画像分析</a
-                    >
+                    <a href="../7echartsTourist/index.html">游客客源分析</a>
                   </li>
                   <li>
-                    <a href="http://127.0.0.1:5500/8echartsjkmooban/index.html"
-                      >WIFI数据分析</a
-                    >
+                    <a href="../4estsjksh/index.html">游客画像分析</a>
                   </li>
                   <li>
-                    <a href="http://127.0.0.1:5500/order_ticket/index.html"
-                      >票务预订分析</a
-                    >
+                    <a href="../8echartsjkmooban/index.html">WIFI数据分析</a>
                   </li>
                   <li>
-                    <a href="http://127.0.0.1:5500/6jquerygndsjmoban/index.html"
-                      >舆情分析</a
-                    >
+                    <a href="../order_ticket/index.html">票务预订分析</a>
                   </li>
                   <li>
-                    <a href="http://127.0.0.1:5500/17eslydsj/index.html"
-                      >指挥调度</a
-                    >
+                    <a href="../6jquerygndsjmoban/index.html">舆情分析</a>
+                  </li>
+                  <li>
+                    <a href="../17eslydsj/index.html">指挥调度</a>
                   </li>
                 </ul>
               </li>
@@ -100,9 +81,9 @@
           </nav>
         </div>
         <div class="header-center fl">
-          <div class="header-title">景区综合检测</div>
+          <div class="header-title">青要山大数据综合管控平台</div>
         </div>
-        <div class="header-right fl">
+        <div class="header-right fl" style="padding-top: 15px">
           <el-date-picker
             v-model="value1"
             type="daterange"
@@ -114,6 +95,8 @@
           </el-date-picker>
         </div>
       </div>
+
+
       <div class="center">
         <div class="center-left fl">
           <div class="weather-box mb40">
@@ -159,15 +142,15 @@
                 </li>
                 <li>
                   <p>上山人数</p>
-                  <span id="uphill">3598</span>
+                  <span id="uphill">0</span>
                 </li>
                 <li>
                   <p>下山人数</p>
-                  <span id="downhill">180</span>
+                  <span id="downhill">0</span>
                 </li>
                 <li>
                   <p>山上停留人数</p>
-                  <span id="onhill">3418</span>
+                  <span id="onhill">0</span>
                 </li>
               </ul>
             </div>
@@ -239,7 +222,7 @@
     <script src="../commonInterface.js"></script>
     <!--<script src="js/mymap.js"></script>-->
     <script>
-    
+
     </script>
   </body>
 </html>

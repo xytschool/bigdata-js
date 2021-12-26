@@ -10,7 +10,15 @@
       type="text/css"
     />
   </head>
-  <style></style>
+
+  <link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet" />
+  <style>
+    .video-box{
+      width: 49.5%;
+      height: 49%;
+      display: inline-block;
+    }
+  </style>
   <body>
     <!--顶部-->
     <header class="header left">
@@ -26,27 +34,37 @@
             <a class="tab_a tab_aActive">当天游客人数变化</a>
           </div>
           <div id="container2" style="height: 100%"></div>
-          <!-- <p>
-            <input type="text" placeholder="输入车牌号" class="carNo_input"><input type="button" class="find_but">
-        </p>
-
-        <p class="set_list"><i class="list_i"></i> 设备列表：</p>
-        <p ><ul id="treeDemo" class="ztree"></ul></p> -->
         </div>
         <div class="left_down bow_shadow">
           <div class="text_center">
             <a class="tab_a tab_aActive">近七天游客人数变化</a>
           </div>
           <div  id="container3" style="height: 200px" >
-           
+
           </div>
         </div>
       </div>
       <div class="left car_center">
-        <video controls="controls"></video>
-        <video controls="controls" class="magin_left"></video>
-        <video controls="controls" class="magin_top"></video>
-        <video controls="controls" class="magin_top magin_left"></video>
+        <video class="video-js video-box" controls="controls" preload="auto" data-setup="{}" autoplay="autoplay" muted="muted">
+          <source src="https://cmgw-vpc.lechange.com:8890/LCO/6M0C2C6PAG76882/0/1/20211225T152155/6e6669568015acb4500108abecbdb456.m3u8?proto=https"
+                  type="application/x-mpegURL"/>
+        </video>
+
+        <video class="video-js video-box" controls="controls" preload="auto" data-setup="{}" autoplay="autoplay" muted="muted">
+          <source src="https://cmgw-vpc.lechange.com:8890/LCO/7L0A2B1PAG9B083/0/1/20211225T151831/ad79eb8f260815ae143340a747a560ae.m3u8?proto=https"
+                  type="application/x-mpegURL"/>
+        </video>
+
+        <video class="video-js video-box" controls="controls" preload="auto" data-setup="{}" autoplay="autoplay" muted="muted">
+          <source src="https://cmgw-vpc.lechange.com:8890/LCO/6M0C2C6PAG76882/0/1/20211225T152155/6e6669568015acb4500108abecbdb456.m3u8?proto=https"
+                  type="application/x-mpegURL"/>
+        </video>
+
+        <video class="video-js video-box" controls="controls" preload="auto" data-setup="{}" autoplay="autoplay" muted="muted">
+          <source src="https://cmgw-vpc.lechange.com:8890/LCO/6M0C2C6PAG76882/0/1/20211225T152155/6e6669568015acb4500108abecbdb456.m3u8?proto=https"
+                  type="application/x-mpegURL"/>
+        </video>
+
       </div>
       <div class="right car_right" id="map"></div>
     </div>
@@ -62,5 +80,8 @@
     <!-- <script src="js/listTree.js"></script> -->
     <script src="js/echarts.js"></script>
     <script src="../commonInterface.js"></script>
+    <script src="https://vjs.zencdn.net/7.17.0/video.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
+
   </body>
 </html>
