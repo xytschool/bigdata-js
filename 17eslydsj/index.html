@@ -6,14 +6,14 @@
     <link rel="stylesheet" href="css/base.css" />
   </head>
   <link rel="stylesheet" href="../font/iconfont.css" />
-    <link rel="stylesheet" href="../header.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.11.1/theme-chalk/index.css"
-    />
+  <link rel="stylesheet" href="../header.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.11.1/theme-chalk/index.css"
+  />
   <link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet" />
   <style>
-    .video-box{
+    .video-box {
       width: 49.5%;
       height: 49%;
       display: inline-block;
@@ -31,7 +31,7 @@
         <nav class="menu radius">
           <ul class="nav">
             <li style="font-size: 20px; margin-left: 80px" class="navli">
-              景区综合监测
+              指挥调度
             </li>
             <li class="navli">
               <a href="#">
@@ -81,9 +81,9 @@
         </nav>
       </div>
       <div class="header-center fl">
-        <div class="header-title">指挥调度</div>
+        <div class="header-title">青要山大数据综合管控平台</div>
       </div>
-      <div class="header-right fl" >
+      <div class="header-right fl">
         <!-- <el-date-picker
           v-model="value1"
           type="daterange"
@@ -110,67 +110,101 @@
           <div class="text_center">
             <a class="tab_a tab_aActive">近七天游客人数变化</a>
           </div>
-          <div  id="container3" style="height: 200px" >
-
-          </div>
+          <div id="container3" style="height: 200px"></div>
         </div>
       </div>
       <div class="left car_center">
-        <video class="video-js video-box" controls="controls" preload="auto" data-setup="{}" autoplay="autoplay" muted="muted">
-          <source src="https://cmgw-vpc.lechange.com:8890/LCO/6M0C2C6PAG76882/0/1/20211225T152155/6e6669568015acb4500108abecbdb456.m3u8?proto=https"
-                  type="application/x-mpegURL"/>
+        <video
+          class="video-js video-box"
+          controls="controls"
+          preload="auto"
+          data-setup="{}"
+          autoplay="autoplay"
+          muted="muted"
+        >
+          <source
+            src="https://cmgw-vpc.lechange.com:8890/LCO/6M0C2C6PAG76882/0/1/20211225T152155/6e6669568015acb4500108abecbdb456.m3u8?proto=https"
+            type="application/x-mpegURL"
+          />
         </video>
 
-        <video class="video-js video-box" controls="controls" preload="auto" data-setup="{}" autoplay="autoplay" muted="muted">
-          <source src="https://cmgw-vpc.lechange.com:8890/LCO/7L0A2B1PAG9B083/0/1/20211225T151831/ad79eb8f260815ae143340a747a560ae.m3u8?proto=https"
-                  type="application/x-mpegURL"/>
+        <video
+          class="video-js video-box"
+          controls="controls"
+          preload="auto"
+          data-setup="{}"
+          autoplay="autoplay"
+          muted="muted"
+        >
+          <source
+            src="https://cmgw-vpc.lechange.com:8890/LCO/7L0A2B1PAG9B083/0/1/20211225T151831/ad79eb8f260815ae143340a747a560ae.m3u8?proto=https"
+            type="application/x-mpegURL"
+          />
         </video>
 
-        <video class="video-js video-box" controls="controls" preload="auto" data-setup="{}" autoplay="autoplay" muted="muted">
-          <source src="https://cmgw-vpc.lechange.com:8890/LCO/6M0C2C6PAG76882/0/1/20211225T152155/6e6669568015acb4500108abecbdb456.m3u8?proto=https"
-                  type="application/x-mpegURL"/>
+        <video
+          class="video-js video-box"
+          controls="controls"
+          preload="auto"
+          data-setup="{}"
+          autoplay="autoplay"
+          muted="muted"
+        >
+          <source
+            src="https://cmgw-vpc.lechange.com:8890/LCO/6M0C2C6PAG76882/0/1/20211225T152155/6e6669568015acb4500108abecbdb456.m3u8?proto=https"
+            type="application/x-mpegURL"
+          />
         </video>
 
-        <video class="video-js video-box" controls="controls" preload="auto" data-setup="{}" autoplay="autoplay" muted="muted">
-          <source src="https://cmgw-vpc.lechange.com:8890/LCO/6M0C2C6PAG76882/0/1/20211225T152155/6e6669568015acb4500108abecbdb456.m3u8?proto=https"
-                  type="application/x-mpegURL"/>
+        <video
+          class="video-js video-box"
+          controls="controls"
+          preload="auto"
+          data-setup="{}"
+          autoplay="autoplay"
+          muted="muted"
+        >
+          <source
+            src="https://cmgw-vpc.lechange.com:8890/LCO/6M0C2C6PAG76882/0/1/20211225T152155/6e6669568015acb4500108abecbdb456.m3u8?proto=https"
+            type="application/x-mpegURL"
+          />
         </video>
       </div>
 
       <div class="right car_right" id="map">
-<!--        <div class="right car_right" >-->
+        <!--        <div class="right car_right" >-->
         <div class="pumiddboxttop2 fl">
           <h2 class="tith2 pt3">巡查通报</h2>
-          <div class="lefttoday_tit "><p class="fl">当前无应急事件</p></div>
+          <div class="lefttoday_tit"><p class="fl">当前无应急事件</p></div>
           <div class="left2_table pumiddboxttop2_cont">
             <ul>
               <li>
                 <p class="text_l">一切正常</p>
-                <p class="text_r">景管部姚杰  畛湖   2021-12-26 12:02</p>
+                <p class="text_r">景管部姚杰 畛湖 2021-12-26 12:02</p>
               </li>
               <li class="bg">
                 <p class="text_l">一切正常</p>
-                <p class="text_r">景管部姚杰  始祖山   2021-12-26 12:02</p>
+                <p class="text_r">景管部姚杰 始祖山 2021-12-26 12:02</p>
               </li>
               <li>
                 <p class="text_l">一切正常</p>
-                <p class="text_r">景管部姚杰  城崖地   2021-12-26 12:02</p>
+                <p class="text_r">景管部姚杰 城崖地 2021-12-26 12:02</p>
               </li>
               <li class="bg">
                 <p class="text_l">一切正常</p>
-                <p class="text_r">景管部姚杰  袁山   2021-12-26 12:02</p>
+                <p class="text_r">景管部姚杰 袁山 2021-12-26 12:02</p>
               </li>
               <li>
                 <p class="text_l">一切正常</p>
-                <p class="text_r">景管部姚杰  龙潭沟  2021-12-26 12:02</p>
+                <p class="text_r">景管部姚杰 龙潭沟 2021-12-26 12:02</p>
               </li>
               <li class="bg">
                 <p class="text_l">一切正常</p>
-                <p class="text_r">景管部姚杰  城崖地   2021-12-26 12:02</p>
+                <p class="text_r">景管部姚杰 城崖地 2021-12-26 12:02</p>
               </li>
               <li>
                 <p class="text_l">一切正常</p>
-                <p class="text_r">景管部姚杰  袁山   2021-12-26 12:02</p>
+                <p class="text_r">景管部姚杰 袁山 2021-12-26 12:02</p>
               </li>
             </ul>
           </div>
@@ -186,6 +220,5 @@
     <script src="../commonInterface.js"></script>
     <script src="https://vjs.zencdn.net/7.17.0/video.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
-
   </body>
 </html>
