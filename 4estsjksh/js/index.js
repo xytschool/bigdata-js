@@ -1,20 +1,24 @@
 
 
-var time=''
-new Vue({
-  el: '.topHeder',
-  data: function () {
-    return {
-      value1: ''
-    }
-  },
-  methods:{
-    datachange(value){
-      console.log(value);
-      time=value
-    }
-  }
-})
+ var startDate = ""
+ var endDate = ""
+
+ new Vue({
+   el: '.topHeder',
+   data: function () {
+     return {
+       value1: ''
+     }
+   },
+   methods:{
+     datachange(value){
+       console.log('time', value);
+       startDate = value[0]
+       endDate = value[1]
+       getPageDate()
+     }
+   }
+ })
 
 // 折线图定制
 
@@ -26,32 +30,37 @@ new Vue({
   var tickets_summary = []
   var month = []
   var age_group = []
-  $.ajax({
-    type: "GET",
-    url: Customer,
-    dataType: "json",
-    success: function (data) {
-      console.log(data);
-      sex_group = data.sex_group
-      day_group = data.day_group
-      last_year_month = data.day_group
-      buy_source = data.buy_source
-      group_type = data.group_type
-      tickets_summary = data.tickets_summary
-      month = data.month_group
-      age_group = data.age_group
-      char_1()
-      char_2()
-      char_3()
-      char_4()
-      char_5()
-      char_6()
-      char_7()
-    },
-    error: function (jqXHR) {
-      console.log("Error: " + jqXHR.status);
-    }
-  });
+  getPageDate()
+  function getPageDate(){
+    $.ajax({
+      type: "GET",
+      url: Customer,
+      data: {start:startDate , end: endDate},
+      dataType: "json",
+      success: function (data) {
+        console.log(data);
+        sex_group = data.sex_group
+        day_group = data.day_group
+        last_year_month = data.day_group
+        buy_source = data.buy_source
+        group_type = data.group_type
+        tickets_summary = data.tickets_summary
+        month = data.month_group
+        age_group = data.age_group
+        char_1()
+        char_2()
+        char_3()
+        char_4()
+        char_5()
+        char_6()
+        char_7()
+      },
+      error: function (jqXHR) {
+        console.log("Error: " + jqXHR.status);
+      }
+    });
+  }
+
   //游客性别分析
   function char_1() {
     // 1. 实例化对象

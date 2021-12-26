@@ -1,28 +1,32 @@
-var time=''
-new Vue({
-  el: '.topHeder',
-  data: function () {
-    return {
-      value1: ''
-    }
-  },
-  methods:{
-    datachange(value){
-      console.log(value);
-      time=value
-    }
-  }
-})
-
 $(function () {
+  var startDate = ""
+  var endDate = ""
+  new Vue({
+    el: '.topHeder',
+    data: function () {
+      return {
+        value1: ''
+      }
+    },
+    methods:{
+      datachange(value){
+        console.log('time', value);
+        startDate = value[0]
+        endDate = value[1]
+        getPageDate()
+      }
+    }
+  })
   var province_customer = []
   var city_customer = []
+
+  function getPageDate(){
   $.ajax({
     type: "GET",
     url:Vehicles,
     dataType: "json",
+    data: {start:startDate , end: endDate},
     success: function (data) {
-
       province_customer = data.province_customer
       city_customer = data.city_customer
       char1();
@@ -32,7 +36,8 @@ $(function () {
       console.log("Error: " + jqXHR.status);
     }
   });
-
+}
+getPageDate()
   function char1() {
     var myChart = echarts.init(document.getElementById('container2'));
     var city = []
@@ -133,7 +138,6 @@ $(function () {
         }
       },
       legend: {
-
         data: ["省份"],
         textStyle: {
           color: "#fff"

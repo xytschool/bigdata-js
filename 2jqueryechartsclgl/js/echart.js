@@ -1,5 +1,7 @@
+$(function () {
+  var startDate = ""
+  var endDate = ""
 
-  var time=''
   new Vue({
     el: '.topHeder',
     data: function () {
@@ -7,46 +9,51 @@
         value1: ''
       }
     },
-    methods:{
-      datachange(value){
-        console.log(value);
-        time=value
+    methods: {
+      datachange(value) {
+        console.log('time', value);
+        startDate = value[0]
+        endDate = value[1]
+        getPageDate()
       }
     }
   })
-$(function () {
   var hour_in_group = []
   var hour_out_group = []
   var province_customer = []
   var city_customer = []
 
-  $.ajax({
-    type: "GET",
-    url: Vehicles,
-    dataType: "json",
-    success: function (data) {
-      $("#total_seat").text(data.total_seat)
-      $("#in").text(data.in)
-      $("#free_seat").text(data.free_seat)
-      $("#ticket_amount").text(data.ticket_amount)
-      hour_in_group = data.hour_in_group
-      hour_out_group = data.hour_out_group
-      province_customer = data.province_customer
-      city_customer = data.city_customer
+  function getPageDate() {
+    $.ajax({
+      type: "GET",
+      url: Vehicles,
+      data: {start:startDate , end: endDate},
+      dataType: "json",
+      success: function (data) {
+        $("#total_seat").text(data.total_seat)
+        $("#in").text(data.in)
+        $("#free_seat").text(data.free_seat)
+        $("#ticket_amount").text(data.ticket_amount)
+        hour_in_group = data.hour_in_group
+        hour_out_group = data.hour_out_group
+        province_customer = data.province_customer
+        city_customer = data.city_customer
 
-      echart_3();
-      echarts_5()
-      echarts_6()
-    },
-    error: function (jqXHR) {
-      console.log("Error: " + jqXHR.status);
-    }
-  });
+        echart_3();
+        echarts_5()
+        echarts_6()
+      },
+      error: function (jqXHR) {
+        console.log("Error: " + jqXHR.status);
+      }
+    });
+  }
+  getPageDate()
   // echarts_1();
   echarts_4();
   echarts_2();
 
-  
+
   function echart_3() {
     // 基于准备好的dom，初始化echarts实例
     var hour_in_group_data = []
@@ -218,7 +225,7 @@ $(function () {
           }, //左线色
 
         },
-  
+
       ],
       "grid": {
         "top": "10%",
@@ -285,7 +292,7 @@ $(function () {
           },
           "barGap": "0"
         },
-       
+
       ]
     };
 
