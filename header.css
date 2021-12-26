@@ -1,22 +1,22 @@
-.header {
+.topHeder {
   width: 100%;
   height: 1rem;
   background: #141c2a;
   display: flex;
 }
-.header .header-left {
+.topHeder  .header-left {
   width: 25%;
   height: 1.05rem;
   padding-left: 0.1rem;
 
   line-height: 1.05rem;
 }
-.header .header-center {
+.topHeder  .header-center {
   width: 50%;
   height: 1rem;
   position: relative;
 }
-.header .header-center .header-title {
+.topHeder .header-center .header-title {
   text-align: center;
   color: #ffffff;
   font-size: 0.4rem;
@@ -24,68 +24,68 @@
   line-height: 1rem;
 }
 
-.header .header-right {
+.topHeder .header-right {
   width: 25%;
-  height: 0.7rem;
-  line-height: 0.7rem;
+  height: 0.1rem;
+  line-height: 0.1rem;
 }
-ul,
+.topHeder ul,
 ol {
   list-style: none;
 }
 
-.menu {
+.topHeder .menu {
   position: relative;
   font-size: 14px;
 }
-.nav > li {
+.topHeder .nav > .navli {
   display: inline-block;
   position: relative;
-  height: 0.5rem;
+  color: #fff;
 }
-.nav > li > a {
-  padding-left: 2em;
-  padding-right: 2em;
+.topHeder .nav > .navli > a {
+width: 130px;
   text-decoration: none;
   height: 0.7rem;
+text-align: center;
   line-height: 0.7rem;
 }
-.nav > li:hover > a {
+.topHeder .nav > .navli:hover > a {
   background-color: rgb(255, 255, 0);
   color: rgb(0, 0, 0);
 }
-.nav a {
+.topHeder .nav a {
   color: #f5f5f5;
   display: block;
   text-decoration: none;
 }
-.nav ul {
+.topHeder .nav .navBar {
   display: none;
   position: absolute;
   background-color: transparent;
   z-index: 999;
 }
-.nav ul li {
+.topHeder .nav .navBar li {
   position: relative;
 }
-.nav ul li + li {
+.topHeder .nav .navBar li + li {
   border-top: 1px solid rgb(70, 70, 70);
 }
 
-.nav > li:hover > ul {
+.topHeder .nav > .navli:hover > .navBar {
   display: block;
   padding-top: 0.4em;
   padding-left: 0;
 }
-.nav > li > ul > li > a {
-  padding-left: 1em;
-  padding-right: 1em;
+.topHeder .nav > li.navli > .navBar > li > a {
+
   background-color: rgb(50, 50, 50);
   height: 0.7rem;
   line-height: 0.7rem;
   width: 130px;
+  text-align: center;
 }
-.nav > li > ul > li:hover > a {
+.topHeder .nav > .navli > .navBar > li:hover > a {
   background-color: rgb(255, 255, 0);
   color: rgb(0, 0, 0);
   height: 0.7rem;
@@ -99,7 +99,7 @@ ol {
   color: #fff;
 }
 .el-date-editor .el-range-separator {
-  color: #fff;
+  color: #fff  !important;
 }
 .el-range-editor .el-range-input {
   background: #141c2a;
