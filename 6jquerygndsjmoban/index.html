@@ -13,6 +13,7 @@
 <script src="../time.js"></script>
 <script type="text/javascript" src="../vue.min.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.11.1/index.js"></script>
+<script src="../commonInterface.js"></script>
 
 <body>
 
@@ -21,7 +22,7 @@
     <nav class="menu radius">
       <ul class="nav">
         <li style="font-size: 20px; margin-left: 80px" class="navli">
-          景区综合监测
+          舆情分析
         </li>
         <li class="navli">
           <a href="#">
@@ -71,7 +72,7 @@
     </nav>
   </div>
   <div class="header-center fl">
-    <div class="header-title">舆情分析</div>
+    <div class="header-title">青要山大数据综合管控平台</div>
   </div>
   <div class="header-right fl" style="padding-top: 15px">
     <!-- <el-date-picker
@@ -194,35 +195,8 @@
                 <h2 class="tith2 pt3">热门信息</h2>
                 <div class="lefttoday_tit "><p class="fl">状态：已调节</p><p class="fr">时间段：<span class="date1"></span></p></div>
                 <div class="left2_table pumiddboxttop2_cont">
-                   <ul>
-                        <li>
-                        <p class="text_l">环境还不错，中原第一攀，玻璃索道正在建设中，景区消费价格不高。</p>
-                        <p class="text_r">马蜂窝  转发：86  2021-12-12 10:07:56</p>
-                        </li>
-                        <li class="bg">
-                        <p class="text_l">我们没有登山，只是走了联珠峡、双龙峡，一路游山玩水，走下来也不太累。</p>
-                        <p class="text_r">马蜂窝  转发：86   2021-12-12 12:02:56</p>
-                        </li>
-                        <li>
-                        <p class="text_l">总体来说，青要山的水清冽静潋，幽深惬意，</p>
-                        <p class="text_r">马蜂窝  转发：86  2021-12-12 09:08:02</p>
-                        </li>
-                        <li class="bg">
-                        <p class="text_l">当时感觉风景很不错，山青水秀，尤其是山很有特色，想着有空了再来玩一次。。</p>
-                        <p class="text_r">马蜂窝  转发：86   2021-12-12 11:08:51</p>
-                        </li>
-                        <li>
-                        <p class="text_l">青要山一日游非常开心，郑重向大家推荐，人不多玩的很棒，还能有效锻炼</p>
-                        <p class="text_r">马蜂窝  转发：86  2021-12-12 12:20:26</p>
-                        </li>
-                        <li class="bg">
-                        <p class="text_l">嗯…比龙潭峡长很多，很多很多，所以不要在固执的徒步了，建议坐车</p>
-                        <p class="text_r">马蜂窝  转发：86   2021-12-12 10:09:06</p>
-                        </li>
-                        <li>
-                        <p class="text_l">没有过多的商业网红要素，只是大家闺秀般的呈现在每位游客的眼前，质朴自然，小有灵媚！</p>
-                        <p class="text_r">马蜂窝  转发：86  2021-12-12 10:08:55</p>
-                        </li>
+                   <ul id="resText">
+                        
                    </ul>
                 </div>
               </div>
@@ -280,6 +254,32 @@ new Vue({
       time=value
     }
   }
+})
+
+
+$.ajax({
+        type: "GET",
+        url: comments,
+        dataType: "json",
+        success: function (data) {
+   
+          var html = '';
+          $.each(data.data.comment, function(commentIndex, comment){
+        
+         
+            if(commentIndex%2==1){
+              html +=' <li><p class="text_l">'+comment['content']+'</p> <p class="text_r">'+comment['source']+'  转发：86  '+comment['date']+'</p></li>'
+             
+            }else{
+              html +=' <li class="bg"><p class="text_l">'+comment['content']+'</p> <p class="text_r">'+comment['source']+'  转发：86  '+comment['date']+'</p></li>'
+            }
+         
+            });
+            $('#resText').html(html);
+        },
+        error: function (jqXHR) {
+            console.log("Error: " + jqXHR.status);
+        }
 })
 </script>
 <script type="text/javascript">
