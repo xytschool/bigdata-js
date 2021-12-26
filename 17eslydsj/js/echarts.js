@@ -1,6 +1,3 @@
-
-
-
 var time=''
 new Vue({
   el: '.topHeder',
@@ -16,7 +13,9 @@ new Vue({
     }
   }
 })
+
 $(function () {
+
   var hour_group = []
   var day_group=[]
   $.ajax({
@@ -29,6 +28,59 @@ $(function () {
       day_group=data.day_group_name
       char()
       char_2()
+    },
+    error: function (jqXHR) {
+      console.log("Error: " + jqXHR.status);
+    }
+  });
+
+  $.ajax({
+    type: "GET",
+    url: videoDevicesUrl,
+    dataType: "json",
+    success: function (data) {
+      console.log(data);
+      var videos = data.data
+      // document.getElementById('video_1').setAttribute('src', videos[0].addr )
+      // document.getElementById('video_2').setAttribute('src', videos[1].addr )
+      // document.getElementById('video_3').setAttribute('src', videos[2].addr )
+      // document.getElementById('video_4').setAttribute('src', videos[3].addr )
+
+      document.getElementById('video_1').src = videos[0].addr;
+      document.getElementById('video_1').play();
+      document.getElementById('video_2').src = videos[1].addr;
+      document.getElementById('video_2').play()
+      document.getElementById('video_3').src = videos[2].addr;
+      document.getElementById('video_3').play()
+      document.getElementById('video_4').src = videos[3].addr;
+      document.getElementById('video_4').play()
+    },
+    error: function (jqXHR) {
+      console.log("Error: " + jqXHR.status);
+    }
+  });
+
+
+  $.ajax({
+    type: "GET",
+    url: eventsUrl,
+    dataType: "json",
+    success: function (data) {
+      console.log(data);
+      var events = data.data
+      events.forEach(function (event){
+        $('#event_wrap').innerHTML = ''
+        $('#event_wrap').append(
+            " <li>\n" +
+            "<p class=\"text_l\">一切正常</p>\n" +
+            "<p class=\"text_r\">景管部 " + event.staff +
+            "  " + event.position +
+            "   " + event.time +
+            "</p>\n" +
+            "</li>"
+        )
+      })
+
     },
     error: function (jqXHR) {
       console.log("Error: " + jqXHR.status);
