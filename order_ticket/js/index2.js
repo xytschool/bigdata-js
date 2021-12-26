@@ -1,3 +1,19 @@
+
+  var time=''
+  new Vue({
+    el: '.topHeder',
+    data: function () {
+      return {
+        value1: ''
+      }
+    },
+    methods:{
+      datachange(value){
+        console.log(value);
+        time=value
+      }
+    }
+  })
 $(function () {
     var province_customer = []
     var buy_source = []

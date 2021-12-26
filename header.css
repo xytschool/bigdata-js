@@ -1,33 +1,31 @@
 .topHeder {
   width: 100%;
-  height: 1rem;
+  height: 75px;
   background: #141c2a;
   display: flex;
 }
 .topHeder  .header-left {
   width: 25%;
-  height: 1.05rem;
-  padding-left: 0.1rem;
-
-  line-height: 1.05rem;
+  height: 75px;
+  line-height: 75px;
 }
 .topHeder  .header-center {
   width: 50%;
-  height: 1rem;
+  height: 75px;
   position: relative;
 }
 .topHeder .header-center .header-title {
   text-align: center;
   color: #ffffff;
-  font-size: 0.4rem;
-  text-shadow: 0 0 0.3rem #00d8ff;
-  line-height: 1rem;
+  font-size: 26px;
+  text-shadow: 0 0 30px #00d8ff;
+  line-height: 75px;
 }
 
 .topHeder .header-right {
   width: 25%;
-  height: 0.1rem;
-  line-height: 0.1rem;
+  height: 75px;
+  line-height: 75px;
 }
 .topHeder ul,
 ol {
@@ -46,9 +44,9 @@ ol {
 .topHeder .nav > .navli > a {
 width: 130px;
   text-decoration: none;
-  height: 0.7rem;
+  height:40px;
 text-align: center;
-  line-height: 0.7rem;
+  line-height: 40px;
 }
 .topHeder .nav > .navli:hover > a {
   background-color: rgb(255, 255, 0);
@@ -71,25 +69,26 @@ text-align: center;
 .topHeder .nav .navBar li + li {
   border-top: 1px solid rgb(70, 70, 70);
 }
-
+.topHeder .nav > .navli:hover .iconfont {
+  color: #000;
+}
 .topHeder .nav > .navli:hover > .navBar {
   display: block;
-  padding-top: 0.4em;
+  padding-top: 5px;
   padding-left: 0;
 }
 .topHeder .nav > li.navli > .navBar > li > a {
-
   background-color: rgb(50, 50, 50);
-  height: 0.7rem;
-  line-height: 0.7rem;
+  height: 40px;
+  line-height: 40px;
   width: 130px;
   text-align: center;
 }
 .topHeder .nav > .navli > .navBar > li:hover > a {
   background-color: rgb(255, 255, 0);
   color: rgb(0, 0, 0);
-  height: 0.7rem;
-  line-height: 0.7rem;
+  height: 40px;
+  line-height:40px;
 }
 .el-picker-panel {
   color: #000 !important;
