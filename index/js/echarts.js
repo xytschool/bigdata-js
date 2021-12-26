@@ -1,20 +1,23 @@
-var time=''
-new Vue({
-  el: '.topHeder',
-  data: function () {
-    return {
-      value1: ''
-    }
-  },
-  methods:{
-    datachange(value){
-      console.log(value);
-      time=value
-    }
-  }
-})
-
 $(function () {
+  var startDate = ""
+  var endDate = ""
+
+  new Vue({
+    el: '.topHeder',
+    data: function () {
+      return {
+        value1: ''
+      }
+    },
+    methods:{
+      datachange(value){
+        console.log('time', value);
+        startDate = value[0]
+        endDate = value[1]
+        getPageDate()
+      }
+    }
+  })
 
   var province_customer = []
   var buy_source = []
@@ -24,53 +27,58 @@ $(function () {
   var hour_out_group = []
   var group_type = []
   var day_group=[]
-  console.log(time);
-  $.ajax({
-    type: "GET",
-    url: Customer,
-    dataType: "json",
-    success: function (data) {
-      $("#customer_today").text(data.customer_today)
-      $("#uphill").text(data.uphill)
-      $("#downhill").text(data.downhill)
-      $("#onhill").text(data.onhill)
-      $("#todayTickets").text(data.customer_today)
-      $("#ticket_amount").text(data.ticket_amount)
-      province_customer = data.province_customer
-      buy_source = data.buy_source
-      month = data.month_group
-      tickets_summary = data.tickets_summary
-      last_year_month = data.last_year_day_group
-      group_type = data.group_type
-      day_group = data.day_group_name
-      ceshis1();
-      ceshis2();
-      ceshis3();
-      ceshis5();
-      ceshis6()
-    },
-    error: function (jqXHR) {
-      console.log("Error: " + jqXHR.status);
-    }
-  });
 
-  $.ajax({
-    type: "GET",
-    url: Vehicles,
-    dataType: "json",
-    success: function (data) {
-      $("#in").text(data.customer_todinay)
-      $("#total_seat").text(data.total_seat)
-      $("#ticket_amount").text(data.ticket_amount)
-      hour_in_group = data.hour_in_group
-      hour_out_group = data.hour_out_group
+  function getPageDate(){
+    $.ajax({
+      type: "GET",
+      data: {start:startDate , end: endDate},
+      url: Customer,
+      dataType: "json",
+      success: function (data) {
+        $("#customer_today").text(data.customer_today)
+        $("#uphill").text(data.uphill)
+        $("#downhill").text(data.downhill)
+        $("#onhill").text(data.onhill)
+        $("#todayTickets").text(data.customer_today)
+        $("#ticket_amount").text(data.ticket_amount)
+        province_customer = data.province_customer
+        buy_source = data.buy_source
+        month = data.month_group
+        tickets_summary = data.tickets_summary
+        last_year_month = data.last_year_day_group
+        group_type = data.group_type
+        day_group = data.day_group_name
+        ceshis1();
+        ceshis2();
+        ceshis3();
+        ceshis5();
+        ceshis6()
+      },
+      error: function (jqXHR) {
+        console.log("Error: " + jqXHR.status);
+      }
+    });
 
-      ceshis4();
-    },
-    error: function (jqXHR) {
-      console.log("Error: " + jqXHR.status);
-    }
-  });
+    $.ajax({
+      type: "GET",
+      url: Vehicles,
+      data: {start:startDate , end: endDate},
+      dataType: "json",
+      success: function (data) {
+        $("#in").text(data.in)
+        $("#total_seat").text(data.total_seat)
+        $("#ticket_amount").text(data.ticket_amount)
+        hour_in_group = data.hour_in_group
+        hour_out_group = data.hour_out_group
+        ceshis4();
+      },
+      error: function (jqXHR) {
+        console.log("Error: " + jqXHR.status);
+      }
+    });
+  }
+
+  getPageDate()
 
   $.ajax({
     type: "GET",

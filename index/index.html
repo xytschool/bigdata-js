@@ -97,11 +97,13 @@
               range-separator="至"
               start-placeholder="开始日期"
               end-placeholder="结束日期"
+              format="yyyy-MM-dd"
+              value-format="yyyy-MM-dd"
               @change="datachange"
             >
             </el-date-picker>
           </div>
-  
+
       </div>
 
       <div class="center">
@@ -180,11 +182,9 @@
             </div>
             <ul class="center-right-ul">
               <li>
-                <span>已停停车位：</span> <b id="in">333</b>/<i id="total_seat"
-                  >6330</i
-                >
+                <span>已停停车位：</span> <b id="in">0</b>/<i id="total_seat">2000</i>
               </li>
-              <li><span>今日收入</span> <b id="ticket_amount">840</b></li>
+              <li><span>今日收入</span> <b id="ticket_amount">0</b></li>
             </ul>
             <div class="chat">
               <div id="chart5" class="allnav" style="height: 94%"></div>
