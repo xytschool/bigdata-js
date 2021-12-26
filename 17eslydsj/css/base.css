@@ -985,3 +985,137 @@ border-radius: 3px;
     border-bottom: 3px solid #4b8df8 !important;
     box-sizing: border-box;
 }
+
+/**/
+
+/** new import part */
+.pumiddboxttop2 {
+    background: url(../img/pumiddtop2.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: top center;
+    width: 100%;
+    height: 100%;
+    margin-left: 1.4%;
+}
+.pumiddboxtbott2 {
+    width: 30.9%;
+    height: 100%;
+    margin-right: 2.5%;
+}
+.lefttoday_tit p.fl {
+    font-size: 14px;
+    color: rgba(255,255,255,1);
+    position: absolute;
+    left: 5%;
+    top: 22%;
+}
+.lefttoday_tit {
+    overflow: hidden;
+    padding: 1.9% 5% .2%;
+    height: 6%;
+    position: relative;
+}
+.lefttoday_tit p.fr {
+    font-size: 12px;
+    color: rgba(255,255,255,.6);
+    position: absolute;
+    right: 5%;
+    top: 25%;
+}
+
+.fl {
+    float: left;
+}
+.pt3 {
+    padding-top: 3.3%;
+}
+.tith2 {
+    text-align: center;
+    width: 100%;
+    font-size: 18px;
+    padding-top: 1.9%;
+    font-weight: normal;
+    letter-spacing: 2px;
+    font-weight: normal;
+    overflow: hidden;
+    color: white;
+    line-height: 32px;
+}
+.pumiddboxtbott2 .widget-inline-box {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
+.pumiddboxtbott2 .widget-inline-box p {
+    padding-top: 19%
+}
+.pumiddboxttop2_cont {
+    width: 90%;
+    margin-left: 4.5%;
+    margin-top: 0;
+    height: 85.4%;
+    overflow: hidden;
+    text-align: left;
+}
+.pumiddboxttop2_cont ul {
+    height: 100%;
+}
+.pumiddboxttop2_cont li {
+    background: rgba(1,202,217,.2) url(../img/hot.png) no-repeat 12px 12px;
+    height: 13.8%;
+    color: white;
+}
+.pumiddboxttop2_cont li p.text_l {
+    line-height: 160%;
+    width: 95%;
+    overflow: hidden;
+    padding-left: 10%;
+}
+.pumiddboxttop2_cont li p.text_r {
+    text-align: right;
+    width: 99%;
+    height: 40%;
+}
+.pumiddboxttop2_cont li.bg {
+    background: rgba(0,255,255,.4) url(../img/hot.png) no-repeat 12px 12px;
+}
+
+.pumiddboxttop2_cont li p.text_r {
+    text-align: right;
+    width: 99%;
+    height: 40%;
+}
+
+.pumiddboxttop2_cont li p.text_l {
+    padding-top: 5px;
+    line-height: 160%;
+    width: 95%;
+    overflow: hidden;
+    padding-left: 10%;
+}
+.pumiddboxttop2_cont li p.text_r {
+    text-align: left;
+    width: 99%;
+    height: 40%;
+    margin-top: 20px;
+    margin-left: 45px;
+}
+
+/*h1, h2, h3, h4, h5, h6, p, ul, ol, pre, table, blockquote, input, button, select, em, textarea {*/
+/*    margin: 0;*/
+/*    font-weight: normal;*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    list-style: none;*/
+/*    font-style: normal;*/
+/*}*/
+
+/*.left2_table li {*/
+/*    background: rgba(1,202,217,.2) url(../img/icosjx.png) no-repeat top left;*/
+/*    position: relative;*/
+/*    overflow: hidden;*/
+/*    padding: 2% 6%;*/
+/*    color: rgba(255,255,255,.7);*/
+/*    line-height: 150%;*/
+/*}*/

@@ -1,5 +1,4 @@
 $(function () {
-
   var hour_group = []
   var day_group=[]
   $.ajax({
@@ -9,7 +8,7 @@ $(function () {
     success: function (data) {
       console.log(data);
       hour_group = data.hour_group
-      day_group=data.day_group
+      day_group=data.day_group_name
       char()
       char_2()
     },
@@ -24,39 +23,41 @@ $(function () {
     }
     var myChart = echarts.init(document.getElementById('container2'));
     option = {
-      tooltip: {
-        trigger: 'item',
-      },
+      // tooltip: {
+      //   trigger: 'item',
+      // },
       color: ['#00c2ff', '#f9cf67', '#e92b77'],
       legend: {
         top: '5%',
         left: 'center'
       },
       series: [{
-        name: 'Access From',
+        name: '游客人数变化',
         type: 'pie',
-        radius: ['40%', '70%'],
+        radius: ['25%', '50%'],
         avoidLabelOverlap: false,
         itemStyle: {
-          borderRadius: 10,
+          borderRadius: 20,
           borderColor: '#fff',
           borderWidth: 2
         },
-        emphasis: {
-          label: {
-            show: true,
-            fontWeight: 'bold'
-          }
-        },
-        labelLine: {
-          show: false
-        },
+        // emphasis: {
+        //   label: {
+        //     show: true,
+        //     fontWeight: 'bold',
+        //     formatter: function (arg) {
+        //       return arg.name + '点'
+        //     },
+        //   }
+        // },
+        // labelLine: {
+        //   show: false
+        // },
         label: {
           color: '#fff',
-        fontSize:"14",
+          fontSize:"14",
           formatter: function (arg) {
-            return arg.name + '时' + arg.value + '人数'
-
+            return arg.name + '点' + arg.value + '人'
           },
         },
         data: hour_group
@@ -67,11 +68,7 @@ $(function () {
     myChart.setOption(option);
   }
 function char_2(){
-  day_group_data = []
-  for (var i = 0; i < day_group.length; i++) {
-    day_group_data.push(day_group[i].value)
-  }
-  console.log(day_group_data);
+
   var myChart = echarts.init(document.getElementById('container3'));
   console.log(myChart);
   var option = {
@@ -82,42 +79,14 @@ function char_2(){
       type: 'pie',
       radius: ['30%', '60%'],
       right: '20%',
-      data: [{
-          value: 124,
-          name: '6日',
-         
+      data: day_group.reverse().slice(0,7),
+      label: {
+        color: '#fff',
+        fontSize:"14",
+        formatter: function (arg) {
+          return arg.name + '日' + arg.value + '人'
         },
-        {
-          value: 154,
-          name: '7日',
-        
-        }, {
-          value: 99,
-          name: '8日',
-        
-        },
-        {
-          value: 57,
-          name: '9日',
-       
-        }, {
-          value: 197,
-          name: '10日',
-        
-        },
-        {
-          value: 76,
-          name: '11日',
-          
-        },
-        {
-          value: 136,
-          name: '12日',
-        
-        },
-
-
-      ]
+      },
     }]
   };
   // 使用刚指定的配置项和数据显示图表。
@@ -128,3 +97,14 @@ function char_2(){
 }
 
 });
+
+$(function(){
+  getHt();
+  //initMap();
+})
+//获取div的高度
+function getHt(){
+  var all_height=$(window).height();
+  var div_height=all_height-84;
+  $("#car_control").css("height",div_height+"px");
+}
