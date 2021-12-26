@@ -36,12 +36,13 @@ $(function () {
         $("#ticket_amount").text(data.ticket_amount)
         hour_in_group = data.hour_in_group
         hour_out_group = data.hour_out_group
-        province_customer = data.province_customer
+        province_customer = data.province_customer_name
         city_customer = data.city_customer
-
+        console.log('province_customer_name', province_customer)
         echart_3();
         echarts_5()
         echarts_6()
+        echarts_2();
       },
       error: function (jqXHR) {
         console.log("Error: " + jqXHR.status);
@@ -51,7 +52,6 @@ $(function () {
   getPageDate()
   // echarts_1();
   echarts_4();
-  echarts_2();
 
 
   function echart_3() {
@@ -322,38 +322,46 @@ $(function () {
           color: '#ccc'
         }
       },
-
-      series: [{
+      series: [
+          {
           name: '购票人数',
           type: 'map',
           aspectScale: 0.75,
           zoom: 1.2,
           mapType: 'china',
           roam: false,
-          label: {
-            normal: {
-              show: true, //显示省份标签
-              textStyle: {
-                color: "#c71585"
-              } //省份标签字体颜色
-            },
-            emphasis: { //对应的鼠标悬浮效果
-              show: true,
-              textStyle: {
-                color: "#800080"
+            label: {
+              normal: {
+                show: true, //显示省份标签
+                textStyle: {
+                  color: "#c71585"
+                } //省份标签字体颜色
+              },
+              emphasis: { //对应的鼠标悬浮效果
+                show: true,
+                textStyle: {
+                  color: "#800080"
+                }
               }
-            }
-          },
-
-
+            },
+            itemStyle: {
+              normal: {
+                borderWidth: .5, //区域边框宽度
+                borderColor: '#009fe8', //区域边框颜色
+                areaColor: "#ffffff", //区域颜色
+              },
+              emphasis: {
+                borderWidth: .5,
+                borderColor: '#4b0082',
+                areaColor: "#ffdead",
+              }
+            },
+          data: province_customer
         },
-
       ],
-
     };
 
     myChart.setOption(option);
-
     window.addEventListener("resize", function () {
       myChart.resize();
     });
@@ -366,9 +374,8 @@ $(function () {
     var worldMapContainer1 = document.getElementById('province');
     var myChart = echarts.init(worldMapContainer1);
     for (var i = 0; i < province_customer.length; i++) {
-      province.push(province_customer[i].province)
+      province.push(province_customer[i].name)
       value.push(province_customer[i].value)
-
     }
     console.log(province);
     const seriesLabel = {

@@ -63,7 +63,7 @@ var vm = new Vue({
 	data: scn_data,
 	methods: {
 		details: function() {
-			
+
 		}
 	}
 })

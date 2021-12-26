@@ -37,7 +37,7 @@
               <a href="../index.html">返回首页</a>
             </li>
             <li>
-              <a href="../index/bigdata.html">景区综合检测</a>
+              <a href="../index/bigdata.html">景区综合监测</a>
             </li>
             <li>
               <a href="../2jqueryechartsclgl/index.html">停车场数据分析</a>
@@ -196,7 +196,7 @@
                 <div class="lefttoday_tit "><p class="fl">状态：已调节</p><p class="fr">时间段：<span class="date1"></span></p></div>
                 <div class="left2_table pumiddboxttop2_cont">
                    <ul id="resText">
-                        
+
                    </ul>
                 </div>
               </div>
@@ -262,18 +262,18 @@ $.ajax({
         url: comments,
         dataType: "json",
         success: function (data) {
-   
+
           var html = '';
           $.each(data.data.comment, function(commentIndex, comment){
-        
-         
+
+
             if(commentIndex%2==1){
               html +=' <li><p class="text_l">'+comment['content']+'</p> <p class="text_r">'+comment['source']+'  转发：86  '+comment['date']+'</p></li>'
-             
+
             }else{
               html +=' <li class="bg"><p class="text_l">'+comment['content']+'</p> <p class="text_r">'+comment['source']+'  转发：86  '+comment['date']+'</p></li>'
             }
-         
+
             });
             $('#resText').html(html);
         },

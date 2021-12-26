@@ -5,7 +5,7 @@ $(function () {
   var hour_group=[]
   var startDate = ""
   var endDate = ""
-
+  var province_customer = []
   new Vue({
     el: '.topHeder',
     data: function () {
@@ -32,8 +32,11 @@ $(function () {
         day_group = data.day_group
         last_year_month = data.last_year_day_group
         hour_group=data.hour_group
+        province_customer = data.province_customer_name
+        console.log('province_customer', province_customer)
         char()
         char_1()
+        map()
       },
       error: function (jqXHR) {
         console.log("Error: " + jqXHR.status);
@@ -41,13 +44,13 @@ $(function () {
     });
   }
   getPageDate()
+
   function char() {
     day_group_data = []
     console.log(day_group);
     for (var i = 0; i < day_group.length; i++) {
       day_group_data.push(day_group[i].value)
     }
-
     var myChart = echarts.init(document.getElementById('container3'));
     option = {
       tooltip: {
@@ -63,11 +66,6 @@ $(function () {
         data: ['本期', '同期', ],
         textStyle: {
           color: '#fff'
-        }
-      },
-      toolbox: {
-        feature: {
-          saveAsImage: {}
         }
       },
       grid: {
@@ -153,10 +151,10 @@ $(function () {
       ]
     };
 
-
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
   }
+
   function char_1(){
     day_group_data = []
     for (var i = 0; i < hour_group.length; i++) {
@@ -205,7 +203,7 @@ $(function () {
           fontWeight: 100,
           textStyle: {
             color: '#9faeb5',
-  
+
           }
         },
         axisLine: {
@@ -230,7 +228,7 @@ $(function () {
         splitArea: {
           show: false
         },
-  
+
         axisLabel: {
           formatter: '{value}',
           textStyle: {
@@ -242,7 +240,7 @@ $(function () {
             color: '#fff'
           }
         },
-      
+
       },
       "tooltip": {
         "trigger": "axis",
@@ -317,5 +315,69 @@ $(function () {
     dom.setOption(option);
   }
 
+  function map(){
+    var worldMapContainer1 = document.getElementById('distribution_map');
+    var myChart = echarts.init(worldMapContainer1);
+    var option = {
+      tooltip: {
+        trigger: 'item'
+      },
+      legend: {
+        orient: 'vertical',
+        x: 'left',
+        y: 'bottom',
+        data: [
+          '游客数量'
+        ],
+        textStyle: {
+          color: '#ccc'
+        }
+      },
+      series: [{
+        name: '',
+        type: 'map',
+        aspectScale: 0.75,
+        zoom: 1.2,
+        mapType: 'china',
+        roam: false,
+        label: {
+          normal: {
+            show: true, //显示省份标签
+            textStyle: {
+              color: "#c71585"
+            } //省份标签字体颜色
+          },
+          emphasis: { //对应的鼠标悬浮效果
+            show: true,
+            textStyle: {
+              color: "#800080"
+            }
+          }
+        },
+        itemStyle: {
+          normal: {
+            borderWidth: .5, //区域边框宽度
+            borderColor: '#009fe8', //区域边框颜色
+            areaColor: "#ffffff", //区域颜色
+          },
+          emphasis: {
+            borderWidth: .5,
+            borderColor: '#4b0082',
+            areaColor: "#ffdead",
+          }
+        },
+        data: province_customer
+
+      }]
+    };
+
+    myChart.setOption(option);
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+    myChart.on('click', function (params) { //点击事件
+      if (params.componentType === 'series') {}
+    })
+  }
 
 });
