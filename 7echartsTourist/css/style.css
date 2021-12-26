@@ -38,8 +38,9 @@ header {
 }
 #content {
   height: 100%;
-  margin: 20px auto 0 auto;
+  padding: 20px ;
   display: flex;
+  background: #141c2a;
 }
 #content .content_left {
   width: 37%;

@@ -1,5 +1,23 @@
+
+
+var time=''
+new Vue({
+  el: '.topHeder',
+  data: function () {
+    return {
+      value1: ''
+    }
+  },
+  methods:{
+    datachange(value){
+      console.log(value);
+      time=value
+    }
+  }
+})
+
 // 折线图定制
-(function () {
+
   var sex_group = []
   var day_group = []
   var last_year_month = []
@@ -7,7 +25,7 @@
   var group_type = []
   var tickets_summary = []
   var month = []
-  var age_group=[]
+  var age_group = []
   $.ajax({
     type: "GET",
     url: Customer,
@@ -21,7 +39,7 @@
       group_type = data.group_type
       tickets_summary = data.tickets_summary
       month = data.month_group
-      age_group=data.age_group
+      age_group = data.age_group
       char_1()
       char_2()
       char_3()
@@ -229,6 +247,7 @@
     });
 
   }
+
   function char_2() {
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.querySelector(".line .chart"));
@@ -330,6 +349,7 @@
       myChart.resize();
     });
   }
+
   function char_3() {
     let buy_source_name = []
     let buy_source_value = []
@@ -443,13 +463,14 @@
       myChart.resize();
     });
   }
+
   function char_4() {
     // 1. 实例化对象
     var myChart = echarts.init(document.querySelector("#echarts_1"));
     console.log(group_type);
     let group_type_name = []
     for (var i = 0; i < group_type.length; i++) {
-  
+
       if (group_type[i].type == "group") {
         group_type[i].name = "团队"
         group_type_name.push(group_type[i].name)
@@ -463,7 +484,7 @@
 
       }
     }
-console.log(group_type,group_type_name);
+    console.log(group_type, group_type_name);
     var data = [{
         value: 12,
         name: '行业一'
@@ -549,132 +570,133 @@ console.log(group_type,group_type_name);
       myChart.resize();
     });
   }
-  function char_5(){
-    var tickets_summary_name=[]
-for(var i=0;i<tickets_summary.length;i++){
-  tickets_summary_name.push(tickets_summary[i].goods_name)
-  tickets_summary[i].name=tickets_summary[i].goods_name
-}
-      // 基于准备好的dom，初始化echarts实例
-  var myChart = echarts.init(document.querySelector("#funnel_a"));
-  console.log(myChart);
-  option = {
 
-    tooltip: {
-      trigger: 'item',
-      formatter: '{a} <br/>{b} : {c}%'
-    },
-    legend: {
-      data: tickets_summary_name,
-      textStyle: {
-        color: '#ffffff'
+  function char_5() {
+    var tickets_summary_name = []
+    for (var i = 0; i < tickets_summary.length; i++) {
+      tickets_summary_name.push(tickets_summary[i].goods_name)
+      tickets_summary[i].name = tickets_summary[i].goods_name
+    }
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.querySelector("#funnel_a"));
+    console.log(myChart);
+    option = {
+
+      tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b} : {c}%'
       },
-    },
-    calculable: true,
-    series: [{
-      name: '金字塔',
-      type: 'funnel',
-      x: '50%',
-      sort: 'ascending',
-      itemStyle: {
-        normal: {
-          // color: 各异,
-          label: {
-            position: 'left'
+      legend: {
+        data: tickets_summary_name,
+        textStyle: {
+          color: '#ffffff'
+        },
+      },
+      calculable: true,
+      series: [{
+        name: '金字塔',
+        type: 'funnel',
+        x: '50%',
+        sort: 'ascending',
+        itemStyle: {
+          normal: {
+            // color: 各异,
+            label: {
+              position: 'left'
+            }
+          }
+        },
+        data: tickets_summary
+      }]
+    }
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+    window.addEventListener("resize", function () {
+      myChart.resize();
+    });
+  }
+
+  function char_6() {
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.querySelector(".line1 .chart"));
+    var month_value = []
+    for (var i = 0; i < month.length; i++) {
+      month_value.push(month[i].value)
+    }
+    console.log(month_value)
+    option = {
+      tooltip: {
+        trigger: 'axis'
+      },
+      grid: {
+        x: 40,
+        y: 40,
+        x2: 20,
+        y2: 20
+      },
+      toolbox: {
+        feature: {
+          //saveAsImage: {}
+        }
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        axisLabel: {
+          /*inside: true,*/
+          interval: 0,
+          textStyle: {
+            color: '#fff',
+            fontSize: 12
+          }
+        },
+        axisTick: {
+          show: false
+        },
+        axisLine: {
+          show: true,
+          symbol: ['none', 'arrow'],
+          symbolOffset: 12,
+          lineStyle: {
+            color: '#fff'
+          }
+        },
+        data: [
+          '1月',
+          '2月',
+          '3月',
+          '4月',
+          '5月',
+          '6月',
+          '7月',
+          '8月',
+          '9月',
+          '10月',
+          '11月',
+          '12月'
+        ]
+      },
+      yAxis: {
+        type: 'value',
+        axisLine: {
+          show: true,
+          symbol: ['none', 'arrow'],
+          symbolOffset: 12,
+          lineStyle: {
+            color: '#fff'
+          }
+        },
+        axisTick: {
+          show: false
+        },
+        axisLabel: {
+          textStyle: {
+            color: '#fff',
+            fontSize: 12
           }
         }
       },
-      data: tickets_summary
-    }]
-  }
-  // 使用刚指定的配置项和数据显示图表。
-  myChart.setOption(option);
-  window.addEventListener("resize", function () {
-    myChart.resize();
-  });
-  }
-  function char_6(){
-    // 基于准备好的dom，初始化echarts实例
-  var myChart = echarts.init(document.querySelector(".line1 .chart"));
-  var month_value = []
-  for (var i = 0; i < month.length; i++) {
-    month_value.push(month[i].value)
-  }
-  console.log(month_value)
-  option = {
-    tooltip: {
-      trigger: 'axis'
-    },
-    grid: {
-      x: 40,
-      y: 40,
-      x2: 20,
-      y2: 20
-    },
-    toolbox: {
-      feature: {
-        //saveAsImage: {}
-      }
-    },
-    xAxis: {
-      type: 'category',
-      boundaryGap: false,
-      axisLabel: {
-        /*inside: true,*/
-        interval: 0,
-        textStyle: {
-          color: '#fff',
-          fontSize: 12
-        }
-      },
-      axisTick: {
-        show: false
-      },
-      axisLine: {
-        show: true,
-        symbol: ['none', 'arrow'],
-        symbolOffset: 12,
-        lineStyle: {
-          color: '#fff'
-        }
-      },
-      data: [
-        '1月',
-        '2月',
-        '3月',
-        '4月',
-        '5月',
-        '6月',
-        '7月',
-        '8月',
-        '9月',
-        '10月',
-        '11月',
-        '12月'
-      ]
-    },
-    yAxis: {
-      type: 'value',
-      axisLine: {
-        show: true,
-        symbol: ['none', 'arrow'],
-        symbolOffset: 12,
-        lineStyle: {
-          color: '#fff'
-        }
-      },
-      axisTick: {
-        show: false
-      },
-      axisLabel: {
-        textStyle: {
-          color: '#fff',
-          fontSize: 12
-        }
-      }
-    },
-    series: [
-      {
+      series: [{
         type: 'line',
         data: [2, 2, 2, 28, 6, 4, 4, 23],
         itemStyle: {
@@ -686,19 +708,19 @@ for(var i=0;i<tickets_summary.length;i++){
             }
           }
         }
-      }
-    ]
+      }]
+    }
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+    window.addEventListener("resize", function () {
+      myChart.resize();
+    });
   }
 
-  // 使用刚指定的配置项和数据显示图表。
-  myChart.setOption(option);
-  window.addEventListener("resize", function () {
-    myChart.resize();
-  });
-  }
-  function char_7(){
-    for(var i=0;i<age_group.length;i++){
-      age_group[i].name=age_group[i].age
+  function char_7() {
+    for (var i = 0; i < age_group.length; i++) {
+      age_group[i].name = age_group[i].age
     }
     var myChart = echarts.init(document.querySelector(".pie1  .chart"));
     // 2. 指定配置项和数据
@@ -717,7 +739,7 @@ for(var i=0;i<tickets_summary.length;i++){
         // formatter: "{a} <br/>{b} : {c} ({d}%)"
         formatter: function (params) {
           console.log(params);
-          return params.name + ' 岁: ' + params.value+'人'
+          return params.name + ' 岁: ' + params.value + '人'
         }
       },
       // 注意颜色写的位置
@@ -752,7 +774,7 @@ for(var i=0;i<tickets_summary.length;i++){
         }
       }]
     };
-  
+
     // 3. 配置项和数据给我们的实例化对象
     myChart.setOption(option);
     // 4. 当我们浏览器缩放的时候，图表也等比例缩放
@@ -761,5 +783,3 @@ for(var i=0;i<tickets_summary.length;i++){
       myChart.resize();
     });
   }
-
-})();

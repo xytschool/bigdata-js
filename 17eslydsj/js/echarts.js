@@ -1,3 +1,21 @@
+
+
+
+var time=''
+new Vue({
+  el: '.topHeder',
+  data: function () {
+    return {
+      value1: ''
+    }
+  },
+  methods:{
+    datachange(value){
+      console.log(value);
+      time=value
+    }
+  }
+})
 $(function () {
   var hour_group = []
   var day_group=[]

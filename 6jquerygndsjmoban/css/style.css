@@ -7,7 +7,7 @@ body {
     right: 0;
     margin: 0;
     padding: 0;
-    background: #051655;
+    background: #141c2a;
     font-family: 微软雅黑, MicrosoftYahei, sans-serif;
     color: #fff;
 }
@@ -438,6 +438,7 @@ margin: 0 auto;
 }
 .fl {
     float: left;
+    background: #141c2a;
 }
 .fr {
     float: right;

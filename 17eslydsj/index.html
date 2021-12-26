@@ -5,6 +5,12 @@
     <title>指挥调度</title>
     <link rel="stylesheet" href="css/base.css" />
   </head>
+  <link rel="stylesheet" href="../font/iconfont.css" />
+    <link rel="stylesheet" href="../header.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.11.1/theme-chalk/index.css"
+    />
   <link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet" />
   <style>
     .video-box{
@@ -15,11 +21,82 @@
   </style>
   <body>
     <!--顶部-->
-    <header class="header left">
+    <!-- <header class="header left">
       <div class="header_center left">
         <h2><strong>指挥调度</strong></h2>
       </div>
-    </header>
+    </header> -->
+    <div class="topHeder">
+      <div class="header-left fl">
+        <nav class="menu radius">
+          <ul class="nav">
+            <li style="font-size: 20px; margin-left: 80px" class="navli">
+              景区综合监测
+            </li>
+            <li class="navli">
+              <a href="#">
+                <span
+                  class="iconfont icon-sanjiaodown"
+                  style="font-size: 20px"
+                ></span>
+              </a>
+
+              <ul class="navBar">
+                <li>
+                  <a href="../index.html">返回首页</a>
+                </li>
+                <li>
+                  <a href="../index/bigdata.html">景区综合检测</a>
+                </li>
+                <li>
+                  <a href="../2jqueryechartsclgl/index.html">停车场数据分析</a>
+                </li>
+                <li>
+                  <a href="../5echartssjmoban/index.html">票务收入分析</a>
+                </li>
+                <li>
+                  <a href="../12echartswldsj/index.html">游客接待分析</a>
+                </li>
+                <li>
+                  <a href="../7echartsTourist/index.html">游客客源分析</a>
+                </li>
+                <li>
+                  <a href="../4estsjksh/index.html">游客画像分析</a>
+                </li>
+                <li>
+                  <a href="../8echartsjkmooban/index.html">WIFI数据分析</a>
+                </li>
+                <li>
+                  <a href="../order_ticket/index.html">票务预订分析</a>
+                </li>
+                <li>
+                  <a href="../6jquerygndsjmoban/index.html">舆情分析</a>
+                </li>
+                <li>
+                  <a href="../17eslydsj/index.html">指挥调度</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="header-center fl">
+        <div class="header-title">指挥调度</div>
+      </div>
+      <div class="header-right fl" >
+        <el-date-picker
+          v-model="value1"
+          type="daterange"
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
+          @change="datachange"
+          format="yyyy-MM-dd"
+              value-format="yyyy-MM-dd"
+        >
+        </el-date-picker>
+      </div>
+    </div>
     <!--内容部分-->
     <div class="con1 left" id="car_control">
       <div class="left car_left">
@@ -100,6 +177,8 @@
         </div>
       </div>
     </div>
+    <script type="text/javascript" src="../vue.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.11.1/index.js"></script>
     <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
     <script src="https://www.jq22.com/jquery/echarts-4.2.1.min.js"></script>
     <!-- <script src="js/base.js"></script> -->

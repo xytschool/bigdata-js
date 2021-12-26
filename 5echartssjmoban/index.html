@@ -15,7 +15,7 @@
 
         <link rel="stylesheet" href="../font/iconfont.css" />
 
-        <link rel="stylesheet" href="../header2.css" />
+        <link rel="stylesheet" href="../header.css" />
 
         <link type="text/css" href="css/public.css" rel="stylesheet" />
         <link type="text/css" href="css/index.css" rel="stylesheet" />
@@ -29,8 +29,6 @@
         <script type="text/javascript">
           document.documentElement.style.fontSize =
             (document.documentElement.clientWidth / 768) * 100 + 'px'
-
-         
         </script>
 
         <script src="https://www.jq22.com/jquery/echarts-4.2.1.min.js"></script>
@@ -39,90 +37,79 @@
         <div class="bg">
           <!-- <div class="title"></div> -->
           <div class="topHeder">
-          
-              <div class="header-left fl">
-                <nav class="menu radius">
-                  <ul class="nav">
-                    <li
-                      style="font-size: 20px; margin-left: 80px"
-                      class="navli"
-                    >
-                      景区综合监测
-                    </li>
-                    <li class="navli">
-                      <a href="#" style="width: 130px;text-align: center;">
-                        <span
-                          class="iconfont icon-sanjiaodown"
-                          style="font-size: 20px"
-                        ></span>
-                      </a>
+            <div class="header-left fl">
+              <nav class="menu radius">
+                <ul class="nav">
+                  <li style="font-size: 20px; margin-left: 80px" class="navli">
+                    景区综合监测
+                  </li>
+                  <li class="navli">
+                    <a href="#" style="width: 130px; text-align: center">
+                      <span
+                        class="iconfont icon-sanjiaodown"
+                        style="font-size: 20px"
+                      ></span>
+                    </a>
 
-                      <ul class="navBar">
-                        <li>
-                          <a href="../index.html">返回首页</a>
-                        </li>
-                        <li>
-                          <a href="../index/bigdata.html">景区综合检测</a>
-                        </li>
-                        <li>
-                          <a href="../2jqueryechartsclgl/index.html"
-                            >停车场数据分析</a
-                          >
-                        </li>
-                        <li>
-                          <a href="../5echartssjmoban/index.html"
-                            >票务收入分析</a
-                          >
-                        </li>
-                        <li>
-                          <a href="../12echartswldsj/index.html"
-                            >游客接待分析</a
-                          >
-                        </li>
-                        <li>
-                          <a href="../7echartsTourist/index.html"
-                            >游客客源分析</a
-                          >
-                        </li>
-                        <li>
-                          <a href="../4estsjksh/index.html">游客画像分析</a>
-                        </li>
-                        <li>
-                          <a href="../8echartsjkmooban/index.html"
-                            >WIFI数据分析</a
-                          >
-                        </li>
-                        <li>
-                          <a href="../order_ticket/index.html">票务预订分析</a>
-                        </li>
-                        <li>
-                          <a href="../6jquerygndsjmoban/index.html">舆情分析</a>
-                        </li>
-                        <li>
-                          <a href="../17eslydsj/index.html">指挥调度</a>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </nav>
-              </div>
-              <div class="header-center fl">
-                <div class="header-title">票务收入分析</div>
-              </div>
-              <div class="header-right fl" >
-                <el-date-picker
-                  v-model="value1"
-                  type="daterange"
-                  range-separator="至"
-                  start-placeholder="开始日期"
-                  end-placeholder="结束日期"
-                  @change="datachange"
-                >
-                </el-date-picker>
-              </div>
-          
+                    <ul class="navBar">
+                      <li>
+                        <a href="../index.html">返回首页</a>
+                      </li>
+                      <li>
+                        <a href="../index/bigdata.html">景区综合检测</a>
+                      </li>
+                      <li>
+                        <a href="../2jqueryechartsclgl/index.html"
+                          >停车场数据分析</a
+                        >
+                      </li>
+                      <li>
+                        <a href="../5echartssjmoban/index.html">票务收入分析</a>
+                      </li>
+                      <li>
+                        <a href="../12echartswldsj/index.html">游客接待分析</a>
+                      </li>
+                      <li>
+                        <a href="../7echartsTourist/index.html">游客客源分析</a>
+                      </li>
+                      <li>
+                        <a href="../4estsjksh/index.html">游客画像分析</a>
+                      </li>
+                      <li>
+                        <a href="../8echartsjkmooban/index.html"
+                          >WIFI数据分析</a
+                        >
+                      </li>
+                      <li>
+                        <a href="../order_ticket/index.html">票务预订分析</a>
+                      </li>
+                      <li>
+                        <a href="../6jquerygndsjmoban/index.html">舆情分析</a>
+                      </li>
+                      <li>
+                        <a href="../17eslydsj/index.html">指挥调度</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <div class="header-center fl">
+              <div class="header-title">票务收入分析</div>
+            </div>
+            <div class="header-right fl">
+              <el-date-picker
+                v-model="value1"
+                type="daterange"
+                range-separator="至"
+                start-placeholder="开始日期"
+                end-placeholder="结束日期"
+                @change="datachange"
+              >
+              </el-date-picker>
+            </div>
           </div>
-       
+
           <div class="content">
             <div class="leftMain">
               <div class="leftMain_info public">

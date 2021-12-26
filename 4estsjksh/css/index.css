@@ -45,6 +45,7 @@ header .showTime {
   max-width: 1920px;
   padding: 0.125rem 0.125rem 0;
   display: flex;
+  background: #141c2a;
 }
 .mainbox .column {
   flex: 3;

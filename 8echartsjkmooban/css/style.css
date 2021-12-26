@@ -3,13 +3,13 @@
     background-repeat: no-repeat;
     background-size: cover;
     width: 10rem;
-    height: 5.454545rem;
+    height: 5rem;
     position: relative;
     left: 50%;
     margin-left: -5rem;
     padding: 0 .20202rem;
     box-sizing: border-box;
-    background-color: #15213D;
+    background-color: #141c2a;
 }
 
 .header {
@@ -46,7 +46,7 @@
 /* left neirong */
 .wrap {
     position: absolute;
-    top: .727273rem;
+    top: .2rem;
 }
 
 .left {
