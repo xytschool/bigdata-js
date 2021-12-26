@@ -346,7 +346,7 @@ a{text-decoration:none !important;}*/
   position: relative;
   margin-bottom: 20px;
   overflow: hidden;
-  height: 25rem;
+  height: 6.15rem;
 }
 .wenzi {
   margin-top: 30px;
@@ -446,6 +446,7 @@ a{text-decoration:none !important;}*/
   display: flex;
   justify-content: space-between;
   flex-wrap: nowrap;
+  font-size: 16px;
 }
 .right_info_top_left {
  

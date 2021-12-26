@@ -88,7 +88,7 @@
         <div class="header-center fl">
           <div class="header-title">停车场数据分析</div>
         </div>
-        <div class="header-right fl" style="padding-top: 15px">
+        <div class="header-right fl"  style="    line-height: 49px;">
           <el-date-picker
             v-model="value1"
             type="daterange"
@@ -96,6 +96,8 @@
             start-placeholder="开始日期"
             end-placeholder="结束日期"
             @change="datachange"
+            format="yyyy-MM-dd"
+            value-format="yyyy-MM-dd"
           >
           </el-date-picker>
         </div>
