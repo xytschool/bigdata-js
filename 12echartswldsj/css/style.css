@@ -53,7 +53,7 @@ header {
 #content {
   height: 100%;
   margin: 20px auto 0 auto;
-  display: flex;
+  /* display: flex; */
 }
 #content .content_left {
   width: 37%;
@@ -129,10 +129,10 @@ header {
   float: left;
 }
 #content .content_center {
-  width: 60%;
+  width: 61%;
   height: 100%;
-  float: left;
-  margin-left: 20px;
+  float: right;
+  margin-right: 10px;
 }
 .content_center .center_top {
   width: 100%;
@@ -155,7 +155,7 @@ header {
 }
 .content_center .center_top_con {
   height: 550px;
-  width: 100%;
+  width: 95%;
   padding: 10px;
   float: left;
 }

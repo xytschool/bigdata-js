@@ -554,7 +554,7 @@ $(function () {
         trigger: 'item'
       },
       series: [{
-        name: 'Access From',
+     
         type: 'pie',
         radius: '55%',
         data: tickets_summary,
