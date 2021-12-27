@@ -40,7 +40,7 @@ $(function () {
         $("#downhill").text(data.downhill)
         $("#onhill").text(data.onhill)
         $("#todayTickets").text(data.customer_today)
-        $("#ticket_amount").text(data.ticket_amount)
+        $("#ticketAmount").text(data.ticket_amount)
         province_customer = data.province_customer
         buy_source = data.buy_source
         month = data.month_group
@@ -554,7 +554,7 @@ $(function () {
         trigger: 'item'
       },
       series: [{
-     
+
         type: 'pie',
         radius: '55%',
         data: tickets_summary,

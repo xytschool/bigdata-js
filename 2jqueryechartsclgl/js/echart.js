@@ -22,6 +22,8 @@ $(function () {
   var hour_out_group = []
   var province_customer = []
   var city_customer = []
+  var month_group = []
+  var last_year_month_group = []
 
   function getPageDate() {
     $.ajax({
@@ -34,15 +36,26 @@ $(function () {
         $("#in").text(data.in)
         $("#free_seat").text(data.free_seat)
         $("#ticket_amount").text(data.ticket_amount)
+
+        $("#total_self_city").text(data.total_self_city)
+        $("#total_self_province").text(data.total_self_province)
+        $("#total_other_province").text(data.total_other_province)
+        $("#total_Fuel").text(data.total_Fuel)
+        $("#total_NEV").text(data.total_NEV)
+
         hour_in_group = data.hour_in_group
         hour_out_group = data.hour_out_group
         province_customer = data.province_customer_name
         city_customer = data.city_customer
+        month_group = data.month_group.map(function (item){ return item.value})
+        last_year_month_group = data.last_year_month_group.map(function (item){ return item.value})
+        console.log('month_group', month_group)
         console.log('province_customer_name', province_customer)
-        echart_3();
+        echart_3()
         echarts_5()
         echarts_6()
-        echarts_2();
+        echarts_2()
+        echarts_4()
       },
       error: function (jqXHR) {
         console.log("Error: " + jqXHR.status);
@@ -56,17 +69,28 @@ $(function () {
 
   function echart_3() {
     // 基于准备好的dom，初始化echarts实例
-    var hour_in_group_data = []
-    var hour_out_group_data = []
     var myChart = echarts.init(document.getElementById('chart_3'));
 
-    for (var i = 0; i < hour_in_group.length; i++) {
-      hour_in_group_data.push(hour_in_group[i].value)
-      console.log(hour_in_group_data);
-    }
-    for (var i = 0; i < hour_out_group.length; i++) {
-      hour_out_group_data.push(hour_out_group[i].value)
-    }
+    var xLables =  ['06', '07','08','09' ,'10','11' ,'12', '13', '14','15' ,'16', '17','18','19', '20','21','22']
+    var hour_in_group_data = xLables.map(function (item){
+      for (var i = 1; i < hour_in_group.length; i++) {
+          if(hour_in_group[i].hour == parseInt(item)){
+            return hour_in_group[i].value
+          }
+      }
+      return 0
+    })
+
+    var hour_out_group_data = xLables.map(function (item){
+      for (var i = 1; i < hour_out_group.length; i++) {
+        if(hour_out_group[i].hour == parseInt(item)){
+          return hour_in_group[i].value
+        }
+      }
+      return 0
+    })
+
+
     console.log(hour_in_group_data, hour_out_group_data);
     option = {
       tooltip: {
@@ -93,7 +117,7 @@ $(function () {
       xAxis: [{
         type: 'category',
         boundaryGap: false,
-        data: ['06', '08', '10', '12', '14', '16', '18', '20', '22'],
+        data: xLables,
         axisLabel: {
           formatter: '{value}',
           textStyle: {
@@ -177,7 +201,6 @@ $(function () {
         }
       },
       "legend": {
-
         "data": [{
             "name": "本期"
           },
@@ -212,31 +235,25 @@ $(function () {
           "type": "value",
           "name": "",
           "min": 0,
-          "max": 50,
-          "interval": 10,
-          "axisLabel": {
-            "show": true,
-
-          },
+          "max": 5000,
+          "axisLabel": {"show": true,},
           axisLine: {
             lineStyle: {
               color: 'rgba(255,255,67,.8)'
             }
           }, //左线色
-
         },
-
       ],
       "grid": {
         "top": "10%",
-        "right": "30",
+        "right": "40",
         "bottom": "30",
         "left": "30",
       },
       "series": [{
           "name": "本期",
           "type": "bar",
-          "data": [4, 6, 36, 6, 8, 6, 4, 6, 30, 6, 8, 12],
+          "data": month_group,
           "barWidth": "auto",
           "itemStyle": {
             "normal": {
@@ -264,9 +281,7 @@ $(function () {
         {
           "name": "同期",
           "type": "bar",
-          "data": [
-            4, 2, 34, 6, 8, 6, 4, 2, 32, 6, 8, 18
-          ],
+          "data": last_year_month_group,
           "barWidth": "auto",
 
           "itemStyle": {
@@ -315,16 +330,14 @@ $(function () {
         orient: 'vertical',
         x: 'left',
         y: 'bottom',
-        data: [
-          '购票人数'
-        ],
+        data: ['车辆数'],
         textStyle: {
           color: '#ccc'
         }
       },
       series: [
           {
-          name: '购票人数',
+          name: '车辆数',
           type: 'map',
           aspectScale: 0.75,
           zoom: 1.2,

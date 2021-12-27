@@ -56,7 +56,7 @@
                         <a href="../index.html">返回首页</a>
                       </li>
                       <li>
-                        <a href="../index/bigdata.html">景区综合监测</a>
+                        <a href="../index/index.html">景区综合监测</a>
                       </li>
                       <li>
                         <a href="../2jqueryechartsclgl/index.html"
@@ -165,15 +165,15 @@
                     </li>
                     <li>
                       <p>同期</p>
-                      <span><b>25195</b>张</span>
+                      <span><b>6</b>张</span>
                     </li>
                     <li>
                       <p>同期</p>
-                      <span><b>25195</b>张</span>
+                      <span><b>9</b>张</span>
                     </li>
                     <li>
                       <p>同期</p>
-                      <span><b>25195</b>张</span>
+                      <span><b>5</b>张</span>
                     </li>
                   </ol>
                 </div>
@@ -247,18 +247,6 @@
                             <div class="line_lineIn" style="width: 22.5%"></div>
                           </div>
                           <p class="num">22.5%</p>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="liIn liIn6">
-                          <div class="liIn_left">
-                            <span class="bot"></span
-                            ><span class="zi">第六名</span>
-                          </div>
-                          <div class="liIn_line">
-                            <div class="line_lineIn" style="width: 10.5%"></div>
-                          </div>
-                          <p class="num">10.5%</p>
                         </div>
                       </li>
                     </ul>
@@ -370,10 +358,12 @@
               url: 'http://bigdata.xytschool.com/api/getCustomerSummary',
               dataType: 'json',
               success: function (data) {
-                month = data.month_group
+                month = data.month_group.map(function (item){return item.value})
                 last_year_month = data.day_group
                 day_group = data.day_group
+
                 char_6()
+                char_5()
               },
               error: function (jqXHR) {
                 console.log('Error: ' + jqXHR.status)
@@ -409,11 +399,11 @@
           function char_1() {
             for (var i = 0; i < group_type.length; i++) {
               if (group_type[i].type == 'group') {
-                $('#current_team').text(group_type[i].value)
+                $('#current_team').text( parseInt(group_type[i].value / 30))
               } else if (group_type[i].type == 'online') {
-                $('#current_tourist').text(group_type[i].value)
+                $('#current_tourist').text( parseInt(group_type[i].value / 30))
               } else if (group_type[i].type == 'sigle') {
-                $('#current_distribution').text(group_type[i].value)
+                $('#current_distribution').text(parseInt(group_type[i].value / 30))
               }
             }
           }
@@ -655,7 +645,7 @@
               series: [
                 {
                   type: 'line',
-                  data: [2, 2, 2, 28, 6, 4, 4, 23],
+                  data: month,
                   itemStyle: {
                     normal: {
                       color: '#0efdff', //折线点的颜色
