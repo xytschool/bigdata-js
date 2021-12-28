@@ -19,17 +19,15 @@ $(function () {
   })
   var province_customer = []
   var city_customer = []
-  var province_customer_name = []
 
   function getPageDate(){
     $.ajax({
     type: "GET",
-    url:Vehicles,
+    url: Customer,
     dataType: "json",
     data: {start:startDate , end: endDate},
     success: function (data) {
-      province_customer = data.province_customer
-      province_customer_name = data.province_customer_name
+      province_customer = data.province_customer_name
       city_customer = data.city_customer
       char1();
       char2()
@@ -50,11 +48,11 @@ $(function () {
 
 
     for (var i = 0; i < city_customer.length; i++) {
-      city.push(city_customer[i].city)
+      city.push(city_customer[i].name)
       value.push(city_customer[i].value)
-
     }
-    console.log(city);
+
+    console.log('city', city);
     const seriesLabel = {
       show: true
     };
@@ -128,11 +126,10 @@ $(function () {
     var worldMapContainer1 = document.getElementById('province');
     var myChart = echarts.init(worldMapContainer1);
     for (var i = 0; i < province_customer.length; i++) {
-      province.push(province_customer[i].province)
+      province.push(province_customer[i].name)
       value.push(province_customer[i].value)
-
     }
-    console.log(province);
+    console.log('province',province);
     const seriesLabel = {
       show: true
     };
@@ -216,6 +213,7 @@ $(function () {
       tooltip: {
         trigger: 'item'
       },
+      "color":       ["#DD6B66",  "#EEDD78", "#73A373", "#73B9BC", "#7289AB", "#91CA8C", "#F49F42"],
       legend: {
         orient: 'vertical',
         x: 'left',
@@ -227,6 +225,28 @@ $(function () {
           color: '#ccc'
         }
       },
+      grid: [{
+        right: '4%',
+        top: '35%',
+        bottom: '10%',
+        width: '20%'
+      }],
+      xAxis: {
+        max: 'dataMax',
+        type: 'value',
+        show: false,
+      },
+      yAxis: {
+        inverse: true,
+        type: 'category',
+        data: province_customer.map( function (v){ return v.name }),
+        axisLabel: {
+          formatter: '{name}',
+          textStyle: {
+            color: "#d9d2c9"
+          }
+        },
+      },
       series: [{
         name: '游客数量',
         type: 'map',
@@ -234,6 +254,7 @@ $(function () {
         zoom: 1.2,
         mapType: 'china',
         roam: false,
+        left: '10%',
         label: {
           normal: {
             show: true, //显示省份标签
@@ -260,8 +281,30 @@ $(function () {
             areaColor: "#ffdead",
           }
         },
-        data: province_customer_name
-      }]
+        data: province_customer
+      },
+        {
+          type: 'bar',
+          zlevel: 1,
+          realtimeSort: true,
+          sort: true,
+          data: province_customer,
+          showBackground: true,
+          backgroundStyle: {
+            color: 'rgb(191,239,123)'
+          },
+          label: {
+            show: true,
+            position: 'right',
+            valueAnimation: true,
+            color: 'rgb(191,239,123)'
+          }
+        },
+      ],
+      animationDuration: 0,
+      animationDurationUpdate: 3000,
+      animationEasing: 'linear',
+      animationEasingUpdate: 'linear'
     };
 
     myChart.setOption(option);

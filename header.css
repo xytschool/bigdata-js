@@ -19,7 +19,11 @@
   color: #ffffff;
   font-size: 26px;
   text-shadow: 0 0 30px #00d8ff;
-  line-height: 75px;
+  line-height: 60px;
+  background: url(./images/head.gif) no-repeat 50% 43%;
+  background-size: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 .topHeder .header-right {
@@ -84,6 +88,7 @@ ol {
   width: 130px;
   text-align: center;
 }
+
 .topHeder .nav > .navli > .navBar > li:hover > a {
   background-color: rgb(255, 255, 0);
   color: rgb(0, 0, 0);

@@ -30,6 +30,7 @@
   var tickets_summary = []
   var month = []
   var age_group = []
+  var province_customer_name = []
   getPageDate()
   function getPageDate(){
     $.ajax({
@@ -47,6 +48,7 @@
         tickets_summary = data.tickets_summary
         month = data.month_group
         age_group = data.age_group
+        province_customer_name = data.province_customer_name
         char_1()
         char_2()
         char_3()
@@ -363,9 +365,9 @@
     let buy_source_name = []
     let buy_source_value = []
 
-    for (var i = 0; i < buy_source.length; i++) {
-      buy_source_value.push(buy_source[i].value)
-      buy_source_name.push(buy_source[i].buy_source)
+    for (var i = 0; i < province_customer_name.length; i++) {
+      buy_source_value.push(province_customer_name[i].value)
+      buy_source_name.push(province_customer_name[i].name)
     }
     console.log(buy_source, buy_source_name, buy_source_value);
     var myChart = echarts.init(document.querySelector(".pie .chart"));
@@ -479,7 +481,6 @@
     console.log(group_type);
     let group_type_name = []
     for (var i = 0; i < group_type.length; i++) {
-
       if (group_type[i].type == "group") {
         group_type[i].name = "团队"
         group_type_name.push(group_type[i].name)
@@ -490,31 +491,10 @@
       } else if (group_type[i].type == "sigle") {
         group_type[i].name = "散客"
         group_type_name.push(group_type[i].name)
-
       }
     }
     console.log(group_type, group_type_name);
-    var data = [{
-        value: 12,
-        name: '行业一'
-      },
-      {
-        value: 13,
-        name: '行业二'
-      },
-      {
-        value: 70,
-        name: '行业三'
-      },
-      {
-        value: 52,
-        name: '行业四'
-      },
-      {
-        value: 35,
-        name: '行业五'
-      }
-    ];
+
     option = {
       backgroundColor: 'rgba(0,0,0,0)',
       tooltip: {
@@ -630,9 +610,9 @@
     var myChart = echarts.init(document.querySelector(".line1 .chart"));
     var month_value = []
     for (var i = 0; i < month.length; i++) {
-      month_value.push(month[i].value)
+      month_value.push( parseInt(month[i].value/5 + month[i].value %96 ))
     }
-    console.log(month_value)
+
     option = {
       tooltip: {
         trigger: 'axis'
@@ -707,7 +687,7 @@
       },
       series: [{
         type: 'line',
-        data: [2, 2, 2, 28, 6, 4, 4, 23],
+        data: month_value ,
         itemStyle: {
           normal: {
             color: '#0efdff', //折线点的颜色
