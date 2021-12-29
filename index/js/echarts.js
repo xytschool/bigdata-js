@@ -26,7 +26,25 @@ $(function () {
   var hour_in_group = []
   var hour_out_group = []
   var group_type = []
-  var day_group=[]
+  var day_group = []
+  var user_flowings =[]
+
+  $.ajax({
+    type: "GET",
+    data: {start:startDate , end: endDate},
+    url: Customer,
+    dataType: "json",
+    success: function (data) {
+      $("#customer_today").text(data.customer_today)
+      $("#uphill").text(data.uphill)
+      $("#downhill").text(data.downhill)
+      $("#onhill").text(data.onhill)
+      ceshis5();
+    },
+    error: function (jqXHR) {
+      console.log("Error: " + jqXHR.status);
+    }
+  });
 
   function getPageDate(){
     $.ajax({
@@ -35,10 +53,10 @@ $(function () {
       url: Customer,
       dataType: "json",
       success: function (data) {
-        $("#customer_today").text(data.customer_today)
-        $("#uphill").text(data.uphill)
-        $("#downhill").text(data.downhill)
-        $("#onhill").text(data.onhill)
+        // $("#customer_today").text(data.customer_today)
+        // $("#uphill").text(data.uphill)
+        // $("#downhill").text(data.downhill)
+        // $("#onhill").text(data.onhill)
         $("#todayTickets").text(data.customer_today)
         $("#ticketAmount").text(data.ticket_amount)
         province_customer = data.province_customer
@@ -48,10 +66,10 @@ $(function () {
         last_year_month = data.last_year_day_group
         group_type = data.group_type
         day_group = data.day_group_name
+        user_flowings = data.user_flowings
         ceshis1();
         ceshis2();
         ceshis3();
-        ceshis5();
         ceshis6()
       },
       error: function (jqXHR) {
@@ -553,8 +571,8 @@ $(function () {
       tooltip: {
         trigger: 'item'
       },
+      color: ['#af89d6', '#4ac7f5', '#9089ff',  '#f5c847'],
       series: [{
-
         type: 'pie',
         radius: '55%',
         data: tickets_summary,
