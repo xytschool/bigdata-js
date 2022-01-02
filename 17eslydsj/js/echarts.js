@@ -175,6 +175,6 @@ $(function(){
 //获取div的高度
 function getHt(){
   var all_height=$(window).height();
-  var div_height=all_height-84;
+  var div_height=1009;
   $("#car_control").css("height",div_height+"px");
 }
