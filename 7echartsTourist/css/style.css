@@ -40,15 +40,22 @@ header {
   height: 100%;
   padding: 20px ;
   display: flex;
-  background: #141c2a;
+  /* background: #141c2a; */
+}
+#topHeder {
+  width: 100%;
+  height: 75px;
+  background: rgb(11, 18, 46);
+  display: flex;
 }
 #content .content_left {
-  width: 37%;
+  width: 36%;
   height: 100%;
   float: left;
+  margin-left: 50px;
 }
 .content_left_top {
-  height: 310px;
+  height: 348px;
 }
 .content_left .dtuplc {
   width: 100%;
@@ -89,9 +96,9 @@ header {
 }
 .content_center .center_top {
   width: 100%;
-  height: 650px;
+  height: 800px;
   float: left;
-  background: url(../images/center01.png) no-repeat;
+  background: url(../images/center800.png) no-repeat;
 }
 .content_center .title {
   width: 100%;
