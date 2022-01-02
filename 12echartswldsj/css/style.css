@@ -52,7 +52,7 @@ header {
 }
 #content {
   height: 100%;
-  margin: 20px auto 0 auto;
+  margin: 40px auto 0 auto;
   /* display: flex; */
 }
 #content .content_left {
@@ -136,9 +136,9 @@ header {
 }
 .content_center .center_top {
   width: 100%;
-  height: 650px;
+  height: 800px;
   float: left;
-  background: url(../images/center01.png) no-repeat;
+  background: url(../images/center800.png) no-repeat;
 }
 .content_center .title {
   width: 100%;
