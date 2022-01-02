@@ -1045,3 +1045,7 @@ a:hover {
 /*    color: rgba(255,255,255,.7);*/
 /*    line-height: 150%;*/
 /*}*/
+/* 鼠标特效 */
+* {
+	cursor: url(../img/pointer.png) 8 3, auto !important;
+}

@@ -68,3 +68,7 @@
 	html{
 		overflow-x: hidden;
 	}
+	/* 鼠标特效 */
+* {
+	cursor: url(../img/pointer.png) 8 3, auto !important;
+}

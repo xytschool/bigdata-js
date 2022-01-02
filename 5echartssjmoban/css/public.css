@@ -1039,4 +1039,8 @@ body {
 	}
 		
 		
-}		
+}	
+/* 鼠标特效 */
+* {
+	cursor: url(../images/pointer.png) 8 3, auto !important;
+}	

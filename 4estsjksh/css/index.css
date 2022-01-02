@@ -184,14 +184,14 @@ header .showTime {
 }
 .map {
   position: relative;
-  height: 10.125rem;
+  height: 8.361rem;
 }
 .map .chart {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 5;
-  height: 10.125rem;
+  height: 8.361rem;
   width: 100%;
 }
 .map .map1,
@@ -262,4 +262,8 @@ header .showTime {
 .funnel_a{
   height: 240px;
   width: 400px;
+}
+/* 鼠标特效 */
+* {
+	cursor: url(../images/pointer.png) 8 3, auto !important;
 }
