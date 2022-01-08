@@ -373,6 +373,9 @@ $(function () {
 
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
+    setTimeout(function (){
+      myChart.resize();
+    },500)
     window.addEventListener("resize", function () {
       myChart.resize();
     });
