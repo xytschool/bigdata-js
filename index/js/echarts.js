@@ -83,7 +83,7 @@ $(function () {
       data: {start:startDate , end: endDate},
       dataType: "json",
       success: function (data) {
-        $("#in").text(data.in)
+        $("#in").text(data.used)
         $("#total_seat").text(data.total_seat)
         $("#ticket_amount").text(data.ticket_amount)
         hour_in_group = data.hour_in_group
@@ -163,7 +163,7 @@ $(function () {
     option = {
       xAxis: {
         type: 'category',
-        data: ['团体', '个人', '电商'],
+        data: [ '个人','团体', '电商'],
         axisLabel: {
           formatter: '{value}',
           textStyle: {
@@ -354,9 +354,8 @@ $(function () {
         }
       },
       grid: [{
-        top: '0%',
-
-        width: '80%'
+        top: '10%',
+        width: '86%'
       }],
       legend: {
         show: false,
@@ -365,7 +364,7 @@ $(function () {
       xAxis: [{
         type: 'category',
         boundaryGap: false,
-        data: ['06', '08', '10', '12', '14', '16', '18', '20', '22'],
+        data: ['06','07', '08','09' ,'10','11' ,'12','13', '14','15','16','17', '18','19','20'],
         axisLabel: {
           formatter: '{value}',
           textStyle: {
@@ -441,9 +440,9 @@ $(function () {
     var province_customer_value = []
     for (var i = 0; i < province_customer.length; i++) {
       province_customer_value.push({
-        name: province_customer[i].province.replace('省', ''),
+        name: province_customer[i].name.replace('省', ''),
         value:province_customer[i].value})
-      province_customer_index.push(province_customer[i].province)
+      province_customer_index.push(province_customer[i].name)
     }
     console.log('province_customer_value', province_customer_value)
 

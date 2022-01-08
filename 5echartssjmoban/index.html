@@ -153,27 +153,27 @@
                     <li class="leftMain_ol_header">分销</li>
                     <li>
                       <p>本期</p>
-                      <span><b id="current_team">25195</b>张</span>
+                      <span><b id="current_team">0</b>张</span>
                     </li>
                     <li>
                       <p>本期</p>
-                      <span><b id="current_tourist">25195</b>张</span>
+                      <span><b id="current_distribution">0</b>张</span>
                     </li>
                     <li>
                       <p>本期</p>
-                      <span><b id="current_distribution">25195</b>张</span>
+                      <span><b id="current_tourist">0</b>张</span>
                     </li>
                     <li>
                       <p>同期</p>
-                      <span><b>6</b>张</span>
+                      <span><b>60</b>张</span>
                     </li>
                     <li>
                       <p>同期</p>
-                      <span><b>9</b>张</span>
+                      <span><b>92</b>张</span>
                     </li>
                     <li>
                       <p>同期</p>
-                      <span><b>5</b>张</span>
+                      <span><b>54</b>张</span>
                     </li>
                   </ol>
                 </div>
@@ -399,11 +399,11 @@
           function char_1() {
             for (var i = 0; i < group_type.length; i++) {
               if (group_type[i].type == 'group') {
-                $('#current_team').text( parseInt(group_type[i].value / 30))
+                $('#current_team').text( parseInt(group_type[i].value))
               } else if (group_type[i].type == 'online') {
-                $('#current_tourist').text( parseInt(group_type[i].value / 30))
+                $('#current_tourist').text( parseInt(group_type[i].value))
               } else if (group_type[i].type == 'sigle') {
-                $('#current_distribution').text(parseInt(group_type[i].value / 30))
+                $('#current_distribution').text(parseInt(group_type[i].value))
               }
             }
           }

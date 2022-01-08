@@ -305,6 +305,7 @@
   /*overflow: hidden;*/
 }
 .center-right-ul {
+  margin-top: 10px;
   margin-left: 40px;
   color: #fff;
 }
