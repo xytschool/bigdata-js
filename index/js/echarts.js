@@ -552,7 +552,6 @@ $(function () {
     myChart.setOption(option);
 
     // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption(option);
     myChart.on('click', function (params) { //点击事件
       if (params.componentType === 'series') {}
     })
