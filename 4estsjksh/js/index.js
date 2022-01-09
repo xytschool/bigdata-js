@@ -570,10 +570,9 @@
     var myChart = echarts.init(document.querySelector("#funnel_a"));
     console.log(myChart);
     option = {
-
       tooltip: {
         trigger: 'item',
-        formatter: '{a} <br/>{b} : {c}%'
+        formatter: '{a} <br/>{b} : {c}'
       },
       legend: {
         data: tickets_summary_name,

@@ -12,7 +12,7 @@ $(function () {
     var day_group=[]
     var startDate = ""
     var endDate = ""
-  
+
     new Vue({
       el: '.topHeder',
       data: function () {
@@ -61,7 +61,7 @@ $(function () {
     });
 
     }
-   
+
     function ceshis() {
         var myChart = echarts.init(document.getElementById('chart4'));
         var option = null;
@@ -540,7 +540,7 @@ $(function () {
         option = {
             xAxis: {
                 type: 'category',
-                data: ['团体', '个人', '电商'],
+                data: ['个人', '团体', '电商'],
                 axisLabel: {
                     formatter: '{value}',
                     textStyle: {

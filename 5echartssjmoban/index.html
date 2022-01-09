@@ -359,7 +359,7 @@
               dataType: 'json',
               success: function (data) {
                 month = data.month_group.map(function (item){return item.value})
-                last_year_month = data.day_group
+                last_year_month = data.last_year_day_group
                 day_group = data.day_group
 
                 char_6()
@@ -414,7 +414,7 @@
             for (var i = 0; i < day_group.length; i++) {
               day_group_data.push(day_group[i].value)
             }
-            console.log(day_group_data)
+
             option = {
               tooltip: {
                 trigger: 'axis',
@@ -437,7 +437,7 @@
                 }
               },
               grid: {
-                left: '0%',
+                left: '2%',
                 right: '4%',
                 bottom: '3%',
                 containLabel: true
@@ -565,25 +565,19 @@
           function char_5() {
             //获取dom容器
             var myChart = echarts.init(document.getElementById('chart_5'))
-            var month_value = []
+            var month_value = [0]
             for (var i = 0; i < month.length; i++) {
               month_value.push(month[i].value)
             }
+            month.unshift(0)
             console.log(month_value)
             option = {
-              tooltip: {
-                trigger: 'axis'
-              },
               grid: {
+                top: "8%",
+                bottom: "10%",
+                right: "5%",
                 x: 40,
                 y: 40,
-                x2: 20,
-                y2: 20
-              },
-              toolbox: {
-                feature: {
-                  //saveAsImage: {}
-                }
               },
               xAxis: {
                 type: 'category',
@@ -602,12 +596,12 @@
                 axisLine: {
                   show: true,
                   symbol: ['none', 'arrow'],
-                  symbolOffset: 12,
                   lineStyle: {
                     color: '#fff'
                   }
                 },
                 data: [
+                  '',
                   '1月',
                   '2月',
                   '3月',
@@ -625,9 +619,9 @@
               yAxis: {
                 type: 'value',
                 axisLine: {
-                  show: true,
+                  show: false,
                   symbol: ['none', 'arrow'],
-                  symbolOffset: 12,
+                  symbolOffset: 0,
                   lineStyle: {
                     color: '#fff'
                   }
@@ -644,14 +638,14 @@
               },
               series: [
                 {
-                  type: 'line',
+                  type: 'bar',
                   data: month,
                   itemStyle: {
                     normal: {
                       color: '#0efdff', //折线点的颜色
                       lineStyle: {
                         color: '#0efdff', //折线的颜色
-                        width: 2
+                        width: 1
                       }
                     }
                   }
@@ -777,7 +771,7 @@
                     }
                   },
                   type: 'bar',
-                  data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10]
+                  data: [0, 0, 0, 0, 0, 0, 0, 0, 18935, 13985, 14]
                 }
               ]
             }

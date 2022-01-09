@@ -74,7 +74,7 @@ $(function () {
     var xLables =  ['06', '07','08','09' ,'10','11' ,'12', '13', '14','15' ,'16', '17','18','19', '20','21','22']
     var hour_in_group_data = xLables.map(function (item){
       for (var i = 1; i < hour_in_group.length; i++) {
-          if(hour_in_group[i].hour == parseInt(item)){
+          if(hour_in_group[i].name == parseInt(item)){
             return hour_in_group[i].value
           }
       }
@@ -83,13 +83,12 @@ $(function () {
 
     var hour_out_group_data = xLables.map(function (item){
       for (var i = 1; i < hour_out_group.length; i++) {
-        if(hour_out_group[i].hour == parseInt(item)){
+        if(hour_out_group[i].name == parseInt(item)){
           return hour_in_group[i].value
         }
       }
       return 0
     })
-
 
     console.log(hour_in_group_data, hour_out_group_data);
     option = {
@@ -103,12 +102,10 @@ $(function () {
         }
       },
       grid: [{
-        top: '0%',
-
-        width: '80%'
+        top: '10%',
+        width: '86%'
       }],
       legend: {
-
         data: ['进场数据', '离场数据'],
         textStyle: {
           color: "rgba(255,255,255,0.9)" //图例文字
@@ -201,20 +198,12 @@ $(function () {
         }
       },
       "legend": {
-        "data": [{
-            "name": "本期"
-          },
-          {
-            "name": "同期"
-          },
-
-        ],
+        "data": [{ "name": "本期"}, {"name": "同期"},],
         "top": "0%",
         "textStyle": {
           "color": "rgba(255,255,255,0.9)" //图例文字
         }
       },
-
       "xAxis": [{
         type: "category",
         data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
@@ -235,7 +224,6 @@ $(function () {
           "type": "value",
           "name": "",
           "min": 0,
-          "max": 5000,
           "axisLabel": {"show": true,},
           axisLine: {
             lineStyle: {
@@ -246,9 +234,11 @@ $(function () {
       ],
       "grid": {
         "top": "10%",
-        "right": "40",
-        "bottom": "30",
-        "left": "30",
+        "right": "5%",
+        "bottom": "10%",
+        "left": "10%",
+        "width" : "86%",
+        "height": "70%"
       },
       "series": [{
           "name": "本期",
@@ -267,7 +257,6 @@ $(function () {
                     "offset": 0,
                     "color": "#609db8"
                   },
-
                   {
                     "offset": 1,
                     "color": "#609db8"
@@ -283,7 +272,6 @@ $(function () {
           "type": "bar",
           "data": last_year_month_group,
           "barWidth": "auto",
-
           "itemStyle": {
             "normal": {
               "color": {
@@ -307,10 +295,8 @@ $(function () {
           },
           "barGap": "0"
         },
-
       ]
-    };
-
+    }
 
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
