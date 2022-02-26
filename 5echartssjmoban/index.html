@@ -47,7 +47,7 @@
                     <a href="#" style="width: 130px; text-align: center">
                       <span
                         class="iconfont icon-sanjiaodown"
-                        style="font-size: 26px; color: rgb(27 104 203);"
+                        style="font-size: 26px; color: rgb(27 104 203)"
                       ></span>
                     </a>
 
@@ -59,9 +59,7 @@
                         <a href="../index/index.html">景区综合监测</a>
                       </li>
                       <li>
-                        <a href="../2jqueryechartsclgl/index.html"
-                          >收入统计</a
-                        >
+                        <a href="../2jqueryechartsclgl/index.html">收入统计</a>
                       </li>
                       <li>
                         <a href="../5echartssjmoban/index.html">票务收入分析</a>
@@ -179,76 +177,31 @@
                 </div>
                 <div class="boxfoot"></div>
               </div>
-              <div class="leftMain_info public" style="display: none;">
+              <div class="leftMain_info public">
                 <div class="min-title">
-                  <span>旅游社分析排行</span>
+                  <span>旅游社票务分析</span>
                 </div>
                 <div
                   class="biaoge biaoge_pai"
                   style="width: 100%; height: 25vh"
                 >
+
                   <div class="biaoge_paiIn">
                     <ul>
                       <li>
                         <div class="liIn">
-                          <div class="liIn_left">
-                            <span class="bot"></span
-                            ><span class="zi">第一名</span>
+                          <div class="liIn_left" >
+                            名称
                           </div>
-                          <div class="liIn_line">
-                            <div class="line_lineIn" style="width: 98.5%"></div>
-                          </div>
-                          <p class="num">98.5%</p>
+                          <p >
+                            张
+                          </p>
                         </div>
+                       
                       </li>
-                      <li>
-                        <div class="liIn liIn2">
-                          <div class="liIn_left">
-                            <span class="bot"></span
-                            ><span class="zi">第二名</span>
-                          </div>
-                          <div class="liIn_line">
-                            <div class="line_lineIn" style="width: 88.5%"></div>
-                          </div>
-                          <p class="num">88.5%</p>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="liIn liIn3">
-                          <div class="liIn_left">
-                            <span class="bot"></span
-                            ><span class="zi">第三名</span>
-                          </div>
-                          <div class="liIn_line">
-                            <div class="line_lineIn" style="width: 68.5%"></div>
-                          </div>
-                          <p class="num">68.5%</p>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="liIn liIn4">
-                          <div class="liIn_left">
-                            <span class="bot"></span
-                            ><span class="zi">第四名</span>
-                          </div>
-                          <div class="liIn_line">
-                            <div class="line_lineIn" style="width: 40.5%"></div>
-                          </div>
-                          <p class="num">40.5%</p>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="liIn liIn5">
-                          <div class="liIn_left">
-                            <span class="bot"></span
-                            ><span class="zi">第五名</span>
-                          </div>
-                          <div class="liIn_line">
-                            <div class="line_lineIn" style="width: 22.5%"></div>
-                          </div>
-                          <p class="num">22.5%</p>
-                        </div>
-                      </li>
+                    </ul>
+                    <ul id="biaoge_paiIn">
+                    
                     </ul>
                   </div>
                 </div>
@@ -354,11 +307,13 @@
           function getPageDate() {
             $.ajax({
               type: 'GET',
-              data: {start:startDate , end: endDate},
+              data: { start: startDate, end: endDate },
               url: 'http://bigdata.xytschool.com/api/getCustomerSummary',
               dataType: 'json',
               success: function (data) {
-                month = data.month_group.map(function (item){return item.value})
+                month = data.month_group.map(function (item) {
+                  return item.value
+                })
                 last_year_month = data.last_year_day_group
                 day_group = data.day_group
 
@@ -373,20 +328,37 @@
             $.ajax({
               //票务
               type: 'GET',
-              data: {start:startDate , end: endDate},
+              data: { start: startDate, end: endDate },
               url: 'http://bigdata.xytschool.com/api/getCustomerSummary',
               dataType: 'json',
               success: function (data) {
                 $('#customer_today').text(data.customer_today)
                 $('#uphill').text(data.ticket_amount)
-                $('#downhill').text(Math.ceil(data.customer_today*1.45))
-                $('#onhill').text(data.ticket_amount*1.45)
+                $('#downhill').text(Math.ceil(data.customer_today * 1.45))
+                $('#onhill').text(data.ticket_amount * 1.45)
                 buy_source = data.buy_source
                 group_type = data.group_type
                 char_3()
                 char_2()
                 char_1()
                 char_7()
+                $('#biaoge_paiIn').empty()
+                var events = data.tickets_summary
+                events.forEach(function (event) {
+                  $('#biaoge_paiIn').append(
+                    ' <li>\n' +
+                      '<div class="liIn">\n' +
+                      ' <div class="liIn_left">\n' +
+                      ' <span class="zi" title='+ event.goods_name +'>' +
+                      event.goods_name +
+                      '</span>\n' +
+                      '</div>\n' +
+                     
+                      '<p class="num" > '+ event.value +'</p>\n' +
+                      ' </div>\n' +
+                      ' </li>'
+                  )
+                })
               },
               error: function (jqXHR) {
                 console.log('Error: ' + jqXHR.status)
@@ -399,9 +371,9 @@
           function char_1() {
             for (var i = 0; i < group_type.length; i++) {
               if (group_type[i].type == 'group') {
-                $('#current_team').text( parseInt(group_type[i].value))
+                $('#current_team').text(parseInt(group_type[i].value))
               } else if (group_type[i].type == 'online') {
-                $('#current_tourist').text( parseInt(group_type[i].value))
+                $('#current_tourist').text(parseInt(group_type[i].value))
               } else if (group_type[i].type == 'sigle') {
                 $('#current_distribution').text(parseInt(group_type[i].value))
               }
@@ -573,11 +545,11 @@
             console.log(month_value)
             option = {
               grid: {
-                top: "8%",
-                bottom: "10%",
-                right: "5%",
+                top: '8%',
+                bottom: '10%',
+                right: '5%',
                 x: 40,
-                y: 40,
+                y: 40
               },
               xAxis: {
                 type: 'category',
@@ -894,7 +866,6 @@
               ],
               series: [
                 {
-                  
                   name: '值',
                   type: 'bar',
                   zlevel: 1,
