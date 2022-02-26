@@ -9,8 +9,8 @@ $(function () {
         value1: ''
       }
     },
-    methods:{
-      datachange(value){
+    methods: {
+      datachange(value) {
         console.log('time', value);
         startDate = value[0]
         endDate = value[1]
@@ -27,11 +27,14 @@ $(function () {
   var hour_out_group = []
   var group_type = []
   var day_group = []
-  var user_flowings =[]
+  var user_flowings = []
 
   $.ajax({
     type: "GET",
-    data: {start:startDate , end: endDate},
+    data: {
+      start: startDate,
+      end: endDate
+    },
     url: Customer,
     dataType: "json",
     success: function (data) {
@@ -46,10 +49,13 @@ $(function () {
     }
   });
 
-  function getPageDate(){
+  function getPageDate() {
     $.ajax({
       type: "GET",
-      data: {start:startDate , end: endDate},
+      data: {
+        start: startDate,
+        end: endDate
+      },
       url: Customer,
       dataType: "json",
       success: function (data) {
@@ -80,7 +86,10 @@ $(function () {
     $.ajax({
       type: "GET",
       url: Vehicles,
-      data: {start:startDate , end: endDate},
+      data: {
+        start: startDate,
+        end: endDate
+      },
       dataType: "json",
       success: function (data) {
         $("#in").text(data.in)
@@ -104,7 +113,7 @@ $(function () {
     dataType: "json",
     success: function (data) {
       $("#weather_text").text(data.weatherinfo.weather)
-      var text=  data.weatherinfo.temp1 + '-' + data.weatherinfo.temp2
+      var text = data.weatherinfo.temp1 + '-' + data.weatherinfo.temp2
       $("#weather_value").text(text)
     },
     error: function (jqXHR) {
@@ -171,16 +180,16 @@ $(function () {
           }
         },
       },
-      tooltip : {
+      tooltip: {
         trigger: 'axis',
-        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        axisPointer: { // 坐标轴指示器，坐标轴触发有效
+          type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
         },
         formatter: function (params) {
-            var tar = params[0];
-            return  tar.name + ' : ' + tar.value;
+          var tar = params[0];
+          return tar.name + ' : ' + tar.value;
         }
-    },
+      },
       grid: [{
         top: '10%',
         width: '80%'
@@ -204,10 +213,10 @@ $(function () {
             color: 'rgb(63,212,52)'
           },
           label: {
-           show: true,
-           position: 'top',
-           valueAnimation: true,
-          //color: 'rgb(102,236,12)'
+            show: true,
+            position: 'top',
+            valueAnimation: true,
+            //color: 'rgb(102,236,12)'
           },
         },
 
@@ -252,7 +261,7 @@ $(function () {
       xAxis: [{
         type: 'category',
         boundaryGap: false,
-        data: ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"],
+        data: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"],
         axisLabel: {
           formatter: '{value}',
           textStyle: {
@@ -442,7 +451,8 @@ $(function () {
     for (var i = 0; i < province_customer.length; i++) {
       province_customer_value.push({
         name: province_customer[i].province.replace('省', ''),
-        value:province_customer[i].value})
+        value: province_customer[i].value
+      })
       province_customer_index.push(province_customer[i].province)
     }
     console.log('province_customer_value', province_customer_value)
@@ -450,10 +460,28 @@ $(function () {
     var worldMapContainer1 = document.getElementById('map');
     var myChart = echarts.init(worldMapContainer1);
     var option = {
-      "color":       ["#DD6B66",  "#EEDD78", "#73A373", "#73B9BC", "#7289AB", "#91CA8C", "#F49F42"],
+      "color": ["#DD6B66", "#EEDD78", "#73A373", "#73B9BC", "#7289AB", "#91CA8C", "#F49F42"],
       tooltip: {
-        trigger: 'item'
+        trigger: 'item',
+        formatter: function (num) {
+           console.log(num);
+          if (num.value > 0) {
+            return num.name +":"+ num.value
+          } else {
+            return  num.name+": 0"
+          }
+        }
       },
+      visualMap: {
+        top: 'middle',
+        right: 10,
+        color: ['orangered','yellow', 'lightskyblue',],
+      
+        textStyle:{
+          color:"#fff"
+        }
+    },
+
       legend: {
         orient: 'vertical',
         x: 'left',
@@ -487,8 +515,7 @@ $(function () {
           }
         },
       },
-      series: [
-          {
+      series: [{
           name: '购票人数',
           type: 'map',
           aspectScale: 0.75,
@@ -501,7 +528,8 @@ $(function () {
               show: true, //显示省份标签
               textStyle: {
                 color: "#c71585"
-              } //省份标签字体颜色
+              }, //省份标签字体颜色
+             
             },
             emphasis: { //对应的鼠标悬浮效果
               show: true,
@@ -571,7 +599,7 @@ $(function () {
       tooltip: {
         trigger: 'item'
       },
-      color: ['#af89d6', '#4ac7f5', '#9089ff',  '#f5c847'],
+      color: ['#af89d6', '#4ac7f5', '#9089ff', '#f5c847'],
       series: [{
         type: 'pie',
         radius: '55%',
@@ -603,9 +631,15 @@ $(function () {
 
     myChart.setOption(option);
 
-    setTimeout(function (){myChart.resize()},500)
-    setTimeout(function (){myChart.resize()},1000)
-    setTimeout(function (){myChart.resize()},3000)
+    setTimeout(function () {
+      myChart.resize()
+    }, 500)
+    setTimeout(function () {
+      myChart.resize()
+    }, 1000)
+    setTimeout(function () {
+      myChart.resize()
+    }, 3000)
     window.addEventListener("resize", function () {
       myChart.resize();
     });

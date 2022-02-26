@@ -320,7 +320,23 @@ $(function () {
     var myChart = echarts.init(worldMapContainer1);
     var option = {
       tooltip: {
-        trigger: 'item'
+        trigger: 'item',
+        formatter: function (num) {
+          console.log(num);
+          if (num.value > 0) {
+            return num.name + ":" + num.value
+          } else {
+            return num.name + ": 0"
+          }
+        }
+      },
+      visualMap: {
+        top: 'middle',
+        right: 10,
+        color: ['orangered', 'yellow', 'lightskyblue', ],
+        textStyle: {
+          color: "#fff"
+        }
       },
       legend: {
         orient: 'vertical',

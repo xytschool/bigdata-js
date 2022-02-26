@@ -211,9 +211,25 @@ $(function () {
     var myChart = echarts.init(worldMapContainer1);
     var option = {
       tooltip: {
-        trigger: 'item'
+        trigger: 'item',
+        formatter: function (num) {
+          console.log(num);
+          if (num.value > 0) {
+            return num.name + ":" + num.value
+          } else {
+            return num.name + " 0"
+          }
+        }
       },
-      "color":       ["#DD6B66",  "#EEDD78", "#73A373", "#73B9BC", "#7289AB", "#91CA8C", "#F49F42"],
+      visualMap: {
+        top: 'middle',
+        right: 10,
+        color: ['orangered', 'yellow', 'lightskyblue', ],
+        textStyle: {
+          color: "#fff"
+        }
+      },
+      // "color":       ["#DD6B66",  "#EEDD78", "#73A373", "#73B9BC", "#7289AB", "#91CA8C", "#F49F42"],
       legend: {
         orient: 'vertical',
         x: 'left',

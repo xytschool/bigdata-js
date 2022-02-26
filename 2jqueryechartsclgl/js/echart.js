@@ -29,7 +29,10 @@ $(function () {
     $.ajax({
       type: "GET",
       url: Vehicles,
-      data: {start:startDate , end: endDate},
+      data: {
+        start: startDate,
+        end: endDate
+      },
       dataType: "json",
       success: function (data) {
         $("#total_seat").text(data.total_seat)
@@ -47,8 +50,12 @@ $(function () {
         hour_out_group = data.hour_out_group
         province_customer = data.province_customer_name
         city_customer = data.city_customer
-        month_group = data.month_group.map(function (item){ return item.value})
-        last_year_month_group = data.last_year_month_group.map(function (item){ return item.value})
+        month_group = data.month_group.map(function (item) {
+          return item.value
+        })
+        last_year_month_group = data.last_year_month_group.map(function (item) {
+          return item.value
+        })
         console.log('month_group', month_group)
         console.log('province_customer_name', province_customer)
         echart_3()
@@ -71,19 +78,19 @@ $(function () {
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('chart_3'));
 
-    var xLables =  ['06', '07','08','09' ,'10','11' ,'12', '13', '14','15' ,'16', '17','18','19', '20','21','22']
-    var hour_in_group_data = xLables.map(function (item){
+    var xLables = ['06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22']
+    var hour_in_group_data = xLables.map(function (item) {
       for (var i = 1; i < hour_in_group.length; i++) {
-          if(hour_in_group[i].hour == parseInt(item)){
-            return hour_in_group[i].value
-          }
+        if (hour_in_group[i].hour == parseInt(item)) {
+          return hour_in_group[i].value
+        }
       }
       return 0
     })
 
-    var hour_out_group_data = xLables.map(function (item){
+    var hour_out_group_data = xLables.map(function (item) {
       for (var i = 1; i < hour_out_group.length; i++) {
-        if(hour_out_group[i].hour == parseInt(item)){
+        if (hour_out_group[i].hour == parseInt(item)) {
           return hour_in_group[i].value
         }
       }
@@ -232,18 +239,19 @@ $(function () {
 
       }, ],
       "yAxis": [{
-          "type": "value",
-          "name": "",
-          "min": 0,
-          "max": 5000,
-          "axisLabel": {"show": true,},
-          axisLine: {
-            lineStyle: {
-              color: 'rgba(255,255,67,.8)'
-            }
-          }, //左线色
+        "type": "value",
+        "name": "",
+        "min": 0,
+        "max": 5000,
+        "axisLabel": {
+          "show": true,
         },
-      ],
+        axisLine: {
+          lineStyle: {
+            color: 'rgba(255,255,67,.8)'
+          }
+        }, //左线色
+      }, ],
       "grid": {
         "top": "10%",
         "right": "40",
@@ -324,7 +332,15 @@ $(function () {
     var myChart = echarts.init(worldMapContainer1);
     var option = {
       tooltip: {
-        trigger: 'item'
+        trigger: 'item',
+        formatter: function (num) {
+          console.log(num);
+          if (num.value > 0) {
+            return num.name + ":" + num.value
+          } else {
+            return num.name + ": 0"
+          }
+        }
       },
       legend: {
         orient: 'vertical',
@@ -335,43 +351,49 @@ $(function () {
           color: '#ccc'
         }
       },
-      series: [
-          {
-          name: '车辆数',
-          type: 'map',
-          aspectScale: 0.75,
-          zoom: 1.2,
-          mapType: 'china',
-          roam: false,
-            label: {
-              normal: {
-                show: true, //显示省份标签
-                textStyle: {
-                  color: "#c71585"
-                } //省份标签字体颜色
-              },
-              emphasis: { //对应的鼠标悬浮效果
-                show: true,
-                textStyle: {
-                  color: "#800080"
-                }
-              }
-            },
-            itemStyle: {
-              normal: {
-                borderWidth: .5, //区域边框宽度
-                borderColor: '#009fe8', //区域边框颜色
-                areaColor: "#ffffff", //区域颜色
-              },
-              emphasis: {
-                borderWidth: .5,
-                borderColor: '#4b0082',
-                areaColor: "#ffdead",
-              }
-            },
-          data: province_customer
+      visualMap: {
+        top: 'middle',
+        right: 10,
+        color: ['orangered', 'yellow', 'lightskyblue', ],
+        textStyle: {
+          color: "#fff"
+        }
+      },
+      series: [{
+        name: '车辆数',
+        type: 'map',
+        aspectScale: 0.75,
+        zoom: 1.2,
+        mapType: 'china',
+        roam: false,
+        label: {
+          normal: {
+            show: true, //显示省份标签
+            textStyle: {
+              color: "#c71585"
+            } //省份标签字体颜色
+          },
+          emphasis: { //对应的鼠标悬浮效果
+            show: true,
+            textStyle: {
+              color: "#800080"
+            }
+          }
         },
-      ],
+        itemStyle: {
+          normal: {
+            borderWidth: .5, //区域边框宽度
+            borderColor: '#009fe8', //区域边框颜色
+            areaColor: "#ffffff", //区域颜色
+          },
+          emphasis: {
+            borderWidth: .5,
+            borderColor: '#4b0082',
+            areaColor: "#ffdead",
+          }
+        },
+        data: province_customer
+      }, ],
     };
 
     myChart.setOption(option);
