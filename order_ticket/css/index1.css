@@ -360,3 +360,6 @@
 .right-cen-cent{
   height: 3.3rem;
 }
+.el-date-range-picker__content .el-date-range-picker__header div{
+  color: #000;
+}
