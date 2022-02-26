@@ -1,8 +1,8 @@
 $(function () {
 
-  var last_year_month=[]
-  var day_group=[]
-  var hour_group=[]
+  var last_year_month = []
+  var day_group = []
+  var hour_group = []
   var startDate = ""
   var endDate = ""
   var province_customer = []
@@ -13,8 +13,8 @@ $(function () {
         value1: ''
       }
     },
-    methods:{
-      datachange(value){
+    methods: {
+      datachange(value) {
         console.log('time', value);
         startDate = value[0]
         endDate = value[1]
@@ -22,16 +22,20 @@ $(function () {
       }
     }
   })
-  function getPageDate(){
+
+  function getPageDate() {
     $.ajax({
       type: "GET",
       url: Customer,
-      data: {start:startDate , end: endDate},
+      data: {
+        start: startDate,
+        end: endDate
+      },
       dataType: "json",
       success: function (data) {
         day_group = data.day_group
         last_year_month = data.last_year_day_group
-        hour_group=data.hour_group
+        hour_group = data.hour_group
         province_customer = data.province_customer_name
         console.log('province_customer', province_customer)
         char()
@@ -77,7 +81,7 @@ $(function () {
       xAxis: [{
         type: 'category',
         boundaryGap: false,
-        data: ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"],
+        data: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"],
         axisLabel: {
           formatter: '{value}',
           textStyle: {
@@ -155,14 +159,14 @@ $(function () {
     myChart.setOption(option);
   }
 
-  function char_1(){
+  function char_1() {
     day_group_data = []
     for (var i = 0; i < hour_group.length; i++) {
       day_group_data.push(hour_group[i].value)
     }
 
     var dom = echarts.init(document.getElementById('container2'));
-    var XData = ["08", "09", "10", "11", "12", "13", "14", "15", "16","17", "18", "19", "20", "21","22"];
+    var XData = ["08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22"];
     var yData = hour_group;
     option = {
       backgroundColor: "",
@@ -315,9 +319,22 @@ $(function () {
     dom.setOption(option);
   }
 
-  function map(){
+  function map() {
     var worldMapContainer1 = document.getElementById('distribution_map');
     var myChart = echarts.init(worldMapContainer1);
+    var yData = [];
+    barData = province_customer.sort(function (a, b) {
+      return b.value - a.value;
+    });
+    console.log(barData);
+    for (var j = 0; j < barData.length; j++) {
+      if (j < 10) {
+        yData.push('0' + j + barData[j].name);
+      } else {
+        yData.push(j + barData[j].name);
+      }
+    }
+    console.log(yData)
     var option = {
       tooltip: {
         trigger: 'item',
@@ -338,24 +355,96 @@ $(function () {
           color: "#fff"
         }
       },
-      legend: {
-        orient: 'vertical',
-        x: 'left',
-        y: 'bottom',
-        data: [
-          '游客数量'
-        ],
+      title: [{
+        show: true,
+        text: '游客省份排行',
+        subtext: '',
+        subtextStyle: {
+          color: '#ffffff',
+          lineHeight: 20
+        },
         textStyle: {
-          color: '#ccc'
-        }
+          color: '#fff',
+          fontSize: 18
+        },
+        right: 140,
+        top: 20
+      }],
+      grid: {
+        right: 300,
+        top: 50,
+        bottom: 550,
+        width: '100'
       },
+      xAxis: {
+        show: false
+      },
+      yAxis: {
+        type: 'category',
+        inverse: true,
+        nameGap: 16,
+        axisLine: {
+          show: false,
+          lineStyle: {
+            color: '#ddd'
+          }
+        },
+        axisTick: {
+          show: false,
+          lineStyle: {
+            color: '#ddd'
+          }
+        },
+        axisLabel: {
+          interval: 0,
+          margin: 85,
+          textStyle: {
+            color: '#fff',
+            align: 'left',
+            fontSize: 14
+          },
+          rich: {
+            a: {
+              color: '#fff',
+              backgroundColor: '#f0515e',
+              width: 15,
+              height: 15,
+              align: 'center',
+              borderRadius: 2
+            },
+            b: {
+              color: '#fff',
+              backgroundColor: '#24a5cd',
+              width: 15,
+              height: 15,
+              align: 'center',
+              borderRadius: 2
+            }
+          },
+          formatter: function (params) {
+            if (parseInt(params.slice(0, 2)) < 3) {
+              return [
+                '{a|' + (parseInt(params.slice(0, 2)) + 1) + '}' + '  ' + params.slice(2)
+              ].join('\n')
+            } else {
+              return [
+                '{b|' + (parseInt(params.slice(0, 2)) + 1) + '}' + '  ' + params.slice(2)
+              ].join('\n')
+            }
+          }
+        },
+        data: yData
+      },
+
       series: [{
-        name: '',
+        name: '购票人数',
         type: 'map',
         aspectScale: 0.75,
         zoom: 1.2,
         mapType: 'china',
         roam: false,
+        top: 150,
+        left: 100,
         label: {
           normal: {
             show: true, //显示省份标签
@@ -383,15 +472,66 @@ $(function () {
           }
         },
         data: province_customer
+      }, {
+        name: 'barSer',
+        type: 'bar',
+        visualMap: false,
+        zlevel: 2,
+        barMaxWidth: 16,
+        barGap: 0,
+        roam: false,
+        top: 150,
+        left: 100,
+        itemStyle: {
+          normal: {
+            color: function (params) {
+              var colorList = [{
+                  colorStops: [{
+                    offset: 0,
+                    color: '#f0515e'
+                  }, {
+                    offset: 1,
+                    color: '#ef8554'
+                  }]
+                },
+                {
+                  colorStops: [{
+                    offset: 0,
+                    color: '#3c38e4'
+                  }, {
+                    offset: 1,
+                    color: '#24a5cd'
+                  }]
+                }
+              ];
+              if (params.dataIndex < 3) {
+                return colorList[0]
+              } else {
+                return colorList[1]
+              }
+            },
+            barBorderRadius: [0, 15, 15, 0]
+          }
+        },
+        label: {
+          normal: {
+            show: true,
+            textBorderColor: '#333',
+            textBorderWidth: 2
+          }
+        },
+        data: barData.sort((a, b) => {
+          return b.value - a.value;
+        })
       }]
     };
 
 
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
-    setTimeout(function (){
+    setTimeout(function () {
       myChart.resize();
-    },500)
+    }, 500)
     window.addEventListener("resize", function () {
       myChart.resize();
     });

@@ -116,27 +116,27 @@
             <div class="leftMain">
               <div class="leftMain_info public">
                 <div class="min-title">
-                  <span>停车场检测</span>
+                  <span>收入统计</span>
                 </div>
                 <h3 class="h3title">本期</h3>
                 <ul class="leftMain_ul">
                   <li>
-                    <p>今日接待(人)</p>
+                    <p>累计订单</p>
                     <span id="customer_today">2020</span>
                   </li>
                   <li>
-                    <p>上山人数</p>
+                    <p>销售金额（万元）</p>
                     <span id="uphill">3598</span>
                   </li>
                 </ul>
-                <h3 class="h3title">本期</h3>
+                <h3 class="h3title">同期</h3>
                 <ul class="leftMain_ul">
                   <li>
-                    <p>下山人数</p>
+                    <p>累计订单</p>
                     <span id="downhill">180</span>
                   </li>
                   <li>
-                    <p>山上停留人数</p>
+                    <p>销售金额（万元）</p>
                     <span id="onhill">3418</span>
                   </li>
                 </ul>
@@ -179,7 +179,7 @@
                 </div>
                 <div class="boxfoot"></div>
               </div>
-              <div class="leftMain_info public">
+              <div class="leftMain_info public" style="display: none;">
                 <div class="min-title">
                   <span>旅游社分析排行</span>
                 </div>
@@ -311,7 +311,7 @@
                 <div class="min-title">
                   <span>OTA分销排行</span>
                 </div>
-                <div class="title-nav" id="chart2" style="height: 263px"></div>
+                <div class="title-nav" id="chart2" style="height: 195px"></div>
                 <div class="boxfoot"></div>
               </div>
             </div>
@@ -378,9 +378,9 @@
               dataType: 'json',
               success: function (data) {
                 $('#customer_today').text(data.customer_today)
-                $('#uphill').text(data.uphill)
-                $('#downhill').text(data.downhill)
-                $('#onhill').text(data.onhill)
+                $('#uphill').text(data.ticket_amount)
+                $('#downhill').text(Math.ceil(data.customer_today*1.45))
+                $('#onhill').text(data.ticket_amount*1.45)
                 buy_source = data.buy_source
                 group_type = data.group_type
                 char_3()
@@ -894,6 +894,7 @@
               ],
               series: [
                 {
+                  
                   name: '值',
                   type: 'bar',
                   zlevel: 1,
@@ -970,6 +971,8 @@
               },
               series: [
                 {
+                  barWidth: 40,
+
                   data: buy_source_value,
                   type: 'bar',
                   showBackground: true,
