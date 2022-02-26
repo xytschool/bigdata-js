@@ -1,15 +1,12 @@
 ﻿<!doctype html>
 <meta charset="utf-8">
-<title>警情警力分析</title>
+<title>舆情分析</title>
 <link href="css/style.css"  rel="stylesheet" type="text/css" media="all" />
 <script src="https://www.jq22.com/jquery/echarts-4.2.1.min.js"></script>
 <script src="js/jquery-3.2.0.min.js"></script>
 <link rel="stylesheet" href="../font/iconfont.css" />
 <link rel="stylesheet" href="../header.css" />
-<link
-  rel="stylesheet"
-  href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.11.1/theme-chalk/index.css"
-/>
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.11.1/theme-chalk/index.css"/>
 <script src="../time.js"></script>
 <script type="text/javascript" src="../vue.min.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.11.1/index.js"></script>
@@ -144,13 +141,13 @@
       <div  class="puleftboxtbott2 fr" >
         <div class="widget-inline-box text-center ">
           <p>今日舆情总数</p>
-          <h3 class=" ceeb1fd">54</h3>
+          <h3 class=" ceeb1fd">14</h3>
           <h4 class="text-muted ">环比<img src="img/iconup.png" height="16" />2%</h4>
         </div>
           <div style="height: 100px"> </div>
         <div class="widget-inline-box text-center ">
            <p>本周舆情总数</p>
-          <h3 class=" c24c9ff">54</h3>
+          <h3 class=" c24c9ff">42</h3>
           <h4 class="text-muted ">环比<img src="img/icondown.png" height="16" />3%</h4>
         </div>
 <!--        <div class="widget-inline-box text-center ">-->
@@ -171,22 +168,22 @@
               <div class="puleft2height">
                     <div class="widget-inline-box text-center ">
                       <p>今日舆情总数</p>
-                      <h3 class=" ceeb1fd f30">54</h3>
+                      <h3 class=" ceeb1fd f30">14</h3>
                       <h4 class="text-muted ">环比<img src="img/iconup.png" height="16" />2%</h4>
                     </div>
                     <div class="widget-inline-box text-center ">
                        <p>本周舆情总数</p>
-                      <h3 class=" c24c9ff f30">54</h3>
+                      <h3 class=" c24c9ff f30">42</h3>
                       <h4 class="text-muted ">环比<img src="img/icondown.png" height="16" />3%</h4>
                     </div>
                     <div class="widget-inline-box text-center ">
                        <p>本月舆情总数</p>
-                      <h3 class=" cffff00 f30">350</h3>
+                      <h3 class=" cffff00 f30">186</h3>
                       <h4 class="text-muted ">环比<img src="img/icondown.png" height="16" />3%</h4>
                     </div>
                     <div class="widget-inline-box text-center ">
                       <p>今日舆情总数</p>
-                      <h3 class=" ceeb1fd f30">54</h3>
+                      <h3 class=" ceeb1fd f30">14</h3>
                       <h4 class="text-muted ">环比<img src="img/iconup.png" height="16" />2%</h4>
                     </div>
                   </div>
@@ -262,14 +259,10 @@ $.ajax({
         url: comments,
         dataType: "json",
         success: function (data) {
-
           var html = '';
           $.each(data.data.comment, function(commentIndex, comment){
-
-
             if(commentIndex%2==1){
               html +=' <li><p class="text_l">'+comment['content']+'</p> <p class="text_r">'+comment['source']+'  转发：86  '+comment['date']+'</p></li>'
-
             }else{
               html +=' <li class="bg"><p class="text_l">'+comment['content']+'</p> <p class="text_r">'+comment['source']+'  转发：86  '+comment['date']+'</p></li>'
             }
@@ -539,7 +532,7 @@ $.ajax({
             <script type="text/javascript">
                     var myChart = echarts.init(document.getElementById('puleftboxtbott1'));
                     var data = [
-                        [[28604,77,21223973,'青要山',2020],[31163,77.4,11223973,'空气好',2020],[1516,68,8605773,'环境好',2020],[13670,74.7,10082,'飞拉达',2020],[28599,75,49805,'卫生好',2020],[29476,77.1,569499,'打卡',2020],[31476,75.4,789237,'飞拉达',2020],[28666,78.1,254830,'好玩',2020],[1777,57.7,870776,'地方大',2020],[29550,79.1,129285,'山水',2020],[2076,67.9,201954,'人不多',2020]],
+                        [[28604,77,21223973,'青要山',2022],[31163,77.4,11223973,'空气好',2022],[1516,68,8605773,'环境好',2022],[13670,74.7,10082,'飞拉达',2022],[28599,75,49805,'卫生好',2022],[29476,77.1,569499,'打卡',2022],[31476,75.4,789237,'飞拉达',2022],[28666,78.1,254830,'好玩',2022],[1777,57.7,870776,'地方大',2022],[29550,79.1,129285,'山水',2022],[2076,67.9,201954,'人不多',2022]],
                         [[44056,81.8,51223973,'青要山',2021],[43294,81.7,21223973,'空气好',2021],[13334,76.9,8376043,'环境好',2021],[21291,78.5,11562,'飞拉达',2021],[38923,80.8,55057,'卫生好',2021],[37599,81.9,64345,'打卡',2021],[44053,81.1,80545,'飞拉达',2021],[42182,82.8,329425,'好玩',2021],[5903,66.8,1311027,'地方大',2021],[36162,83.5,126571,'山水',2021],[1390,71.4,251317,'人不多',2021]],
                     ];
 
@@ -567,7 +560,7 @@ $.ajax({
                               fontSize:10,
                               color:'rgba(255,255,255,.6)'
                             },
-                            data: ['2020', '2021']
+                            data: ['2022', '2021']
                         },
                         xAxis: {
                           axisLine:{
@@ -601,7 +594,7 @@ $.ajax({
                           scale: true
                         },
                         series: [{
-                            name: '2020',
+                            name: '2022',
                             data: data[0],
                             type: 'scatter',
                             symbolSize: function (data) {
@@ -689,7 +682,7 @@ $.ajax({
                           fontSize: 10,
                           color:'rgba(255,255,255,.7)'
                         },
-                          data:['2020年','2021年','同比增速']
+                          data:['2021年','2022年']
                       },
                       xAxis: [
                           {
@@ -759,7 +752,7 @@ $.ajax({
                       series: [
 
                           {
-                              name:'2020年',
+                              name:'2021年',
                               type:'bar',
                               itemStyle: {
                                               normal: {
@@ -775,7 +768,7 @@ $.ajax({
                               data:[209, 210, 309, 389, 399, 412, 423, 442, 469, 520, 401, 340]
                           },
                           {
-                              name:'2021年',
+                              name:'2022年',
                               type:'bar',
                               itemStyle: {
                                               normal: {
@@ -788,24 +781,7 @@ $.ajax({
                                                   )
                                               }
                                           },
-                              data:[304, 310, 329, 408, 410, 430, 450, 502, 520, 580, 421, 360]
-                          },
-                          {
-                              name:'同比增速',
-                              type:'line',
-                              itemStyle: {
-                                              normal: {
-                                                  color: new echarts.graphic.LinearGradient(
-                                                      0, 0, 0, 1,
-                                                      [
-                                                          {offset: 0, color: '#fffb34'},
-                                                          {offset: 1, color: '#fffb34'}
-                                                      ]
-                                                  )
-                                              }
-                                          },
-                              yAxisIndex: 1,
-                              data:[2.0, 2.2, 3.3, 4.5, 6.3, 5.2, 6.3, 6.1, 7.0, 10.4, 5.2, 2]
+                              data:[120, 180]
                           }
                       ]
                   };
@@ -941,11 +917,11 @@ $.ajax({
                                     },
                                     series: [
                                         {
-                                            name:'2014年',
+                                            name:'2022年',
                                             type:'line',
                                             stack: '总量',
                                               areaStyle: {normal: {}},
-                                            data:[41, 42, 38,42, 38, 51, 52]
+                                            data:[11, 5, 7, 4, 6, 13, 14]
                                         }
 
                                     ]
