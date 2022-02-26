@@ -119,8 +119,8 @@
         },
       },
       grid: {
-        left: '20%',
-         right: '20%',
+        left: '30%',
+         right: '30%',
         top: '20%',
         bottom: '20%',
         containLabel: true
@@ -575,7 +575,7 @@
         formatter: '{a} <br/>{b} : {c}'
       },
       legend: {
-        data: tickets_summary_name,
+        data: ["提前四天","提前三天","提前两天","提前一天","当天"],
         textStyle: {
           color: '#ffffff'
         },
@@ -594,7 +594,14 @@
             }
           }
         },
-        data: tickets_summary
+        data: [
+          {name:"提前四天",value:"10"},
+          {name:"提前三天",value:"30"},
+          {name:"提前两天",value:"50"},
+          {name:"提前一天",value:"80"},
+          {name:"当天",value:"100"},
+
+        ]
       }]
     }
     // 使用刚指定的配置项和数据显示图表。
