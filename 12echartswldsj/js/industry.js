@@ -357,7 +357,7 @@ $(function () {
       },
       title: [{
         show: true,
-        text: '游客省份排行',
+        text: '',
         subtext: '',
         subtextStyle: {
           color: '#ffffff',
@@ -372,7 +372,7 @@ $(function () {
       }],
       grid: {
         right: 300,
-        top: 50,
+        top: 10,
         bottom: 550,
         width: '100'
       },
