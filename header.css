@@ -123,3 +123,6 @@ ol {
 .end-date span {
   color: #fff !important;
 }
+.el-date-range-picker__content .el-date-range-picker__header div {
+  color: #000 !important;
+}
