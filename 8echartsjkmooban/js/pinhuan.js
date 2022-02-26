@@ -5,53 +5,53 @@
   var option = {
     tooltip: {},
     series: [{
-      name: '销量',
+      name: '来访',
       type: 'pie',
       radius: ['30%', '60%'],
       right: '20%',
       data: [{
-          value: 124,
-          name: '6日',
+          value: 33,
+          name: '21日',
           itemStyle: {
             color: '#5f100f'
           }
         },
         {
-          value: 154,
-          name: '7日',
+          value: 24,
+          name: '22日',
           itemStyle: {
             color: '#d2e5df'
           }
         }, {
-          value: 99,
-          name: '8日',
+          value: 19,
+          name: '23日',
           itemStyle: {
             color: '#7a8aa7'
           }
         },
         {
-          value: 57,
-          name: '9日',
+          value: 17,
+          name: '24日',
           itemStyle: {
             color: '#9a81c3'
           }
         }, {
-          value: 197,
-          name: '10日',
+          value: 20,
+          name: '25日',
           itemStyle: {
             color: '#f4dfd5'
           }
         },
         {
-          value: 76,
-          name: '11日',
+          value: 26,
+          name: '26日',
           itemStyle: {
             color: '#a0fffe'
           }
         },
         {
-          value: 136,
-          name: '12日',
+          value: 14,
+          name: '27日',
           itemStyle: {
             color: '#5ba3ed'
           }
