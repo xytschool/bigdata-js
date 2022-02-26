@@ -230,6 +230,8 @@ $(function () {
       },
       "color": ["#00E4F0", "#44D16D", "#124E91", "#BDC414", "#C8CCA5", "#534EE1"],
       series: [{
+        barWidth: 40,
+      
           data: group_type_value,
           type: 'bar',
           showBackground: true,
@@ -517,7 +519,7 @@ $(function () {
       },
       title: [{
         show: true,
-        text: '游客省份排行',
+        text: '',
         subtext: '',
         subtextStyle: {
           color: '#ffffff',
@@ -531,9 +533,9 @@ $(function () {
         top: 20
       }],
       grid: {
-        right: 10,
-        top:80,
-        bottom: 30,
+        right: 1,
+        top:1,
+        bottom: 200,
         width: '200'
       },
       xAxis: {
