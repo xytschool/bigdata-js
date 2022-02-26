@@ -209,6 +209,18 @@ $(function () {
     console.log('map ....')
     var worldMapContainer1 = document.getElementById('distribution_map');
     var myChart = echarts.init(worldMapContainer1);
+    var yData = [];
+    barData = province_customer.sort(function (a, b) {
+      return b.value - a.value;
+    });
+
+    for (var j = 0; j < barData.length; j++) {
+      if (j < 10) {
+        yData.push('0' + j + barData[j].name);
+      } else {
+        yData.push(j + barData[j].name);
+      }
+    }
     var option = {
       tooltip: {
         trigger: 'item',
@@ -222,6 +234,7 @@ $(function () {
         }
       },
       visualMap: {
+        top: 'middle',
         right: 10,
         color: ['orangered', 'yellow', 'lightskyblue', ],
         textStyle: {
@@ -240,33 +253,80 @@ $(function () {
           color: '#ccc'
         }
       },
-      grid: [{
-        right: '4%',
-        top: '35%',
-        bottom: '10%',
-        width: '20%'
-      }],
+      grid: {
+        right: 300,
+        top: 100,
+        bottom: 550,
+        width: '100'
+      },
       xAxis: {
         max: 'dataMax',
         type: 'value',
         show: false,
       },
       yAxis: {
-        inverse: true,
         type: 'category',
-        data: province_customer.map( function (v){ return v.name }),
-        axisLabel: {
-          formatter: '{name}',
-          textStyle: {
-            color: "#d9d2c9"
+        inverse: true,
+        nameGap: 16,
+        axisLine: {
+          show: false,
+          lineStyle: {
+            color: '#ddd'
           }
         },
+        axisTick: {
+          show: false,
+          lineStyle: {
+            color: '#ddd'
+          }
+        },
+        axisLabel: {
+          interval: 0,
+          margin: 85,
+          textStyle: {
+            color: '#fff',
+            align: 'left',
+            fontSize: 14
+          },
+          rich: {
+            a: {
+              color: '#fff',
+              backgroundColor: '#f0515e',
+              width: 15,
+              height: 15,
+              align: 'center',
+              borderRadius: 2
+            },
+            b: {
+              color: '#fff',
+              backgroundColor: '#24a5cd',
+              width: 15,
+              height: 15,
+              align: 'center',
+              borderRadius: 2
+            }
+          },
+          formatter: function (params) {
+            if (parseInt(params.slice(0, 2)) < 3) {
+              return [
+                '{a|' + (parseInt(params.slice(0, 2)) + 1) + '}' + '  ' + params.slice(2)
+              ].join('\n')
+            } else {
+              return [
+                '{b|' + (parseInt(params.slice(0, 2)) + 1) + '}' + '  ' + params.slice(2)
+              ].join('\n')
+            }
+          }
+        },
+        data: yData
       },
       series: [{
         name: '游客数量',
         type: 'map',
         aspectScale: 0.75,
         zoom: 1.2,
+        top: 100,
+        left: 100,
         mapType: 'china',
         roam: false,
         left: '10%',
@@ -300,9 +360,11 @@ $(function () {
       },
         {
           type: 'bar',
-          zlevel: 1,
+          zlevel: 2,
           realtimeSort: true,
           sort: true,
+          barMaxWidth: 16,
+          visualMap: false,
           data: province_customer,
           showBackground: true,
           backgroundStyle: {

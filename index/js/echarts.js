@@ -620,7 +620,6 @@ $(function () {
           barMaxWidth: 16,
           barGap: 0,
           roam: false,
-
           itemStyle: {
             normal: {
               color: function (params) {
