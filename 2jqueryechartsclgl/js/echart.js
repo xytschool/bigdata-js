@@ -24,6 +24,11 @@ $(function () {
   var city_customer = []
   var month_group = []
   var last_year_month_group = []
+  var total_self_city = null
+  var total_self_province = null
+  var total_other_province = null
+  var total_Fuel = null
+  var total_NEV = null
 
   function getPageDate() {
     $.ajax({
@@ -39,13 +44,11 @@ $(function () {
         $("#in").text(data.in)
         $("#free_seat").text(data.free_seat)
         $("#ticket_amount").text(data.ticket_amount)
-
-        $("#total_self_city").text(data.total_self_city)
-        $("#total_self_province").text(data.total_self_province)
-        $("#total_other_province").text(data.total_other_province)
-        $("#total_Fuel").text(data.total_Fuel)
-        $("#total_NEV").text(data.total_NEV)
-
+        total_self_city = data.total_self_city
+        total_self_province = data.total_self_province
+        total_other_province = data.total_other_province
+        total_Fuel = data.total_Fuel
+        total_NEV = data.total_NEV
         hour_in_group = data.hour_in_group
         hour_out_group = data.hour_out_group
         province_customer = data.province_customer_name
@@ -63,6 +66,7 @@ $(function () {
         echarts_6()
         echarts_2()
         echarts_4()
+        echarts_1();
       },
       error: function (jqXHR) {
         console.log("Error: " + jqXHR.status);
@@ -70,9 +74,46 @@ $(function () {
     });
   }
   getPageDate()
-  // echarts_1();
   echarts_4();
 
+  function echarts_1() {
+    var myChart = echarts.init(document.getElementById('echarts_1'));
+    var hour_in_group_data = []
+    for (var i = 0; i < hour_in_group.length; i++) {
+      hour_in_group_data.push(hour_in_group[i].name + "小时")
+    }
+    option = {
+      tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b} : {c} ({d}%)'
+      },
+      legend: {
+        bottom: 10,
+        left: 'center',
+        data: hour_in_group_data
+      },
+      series: [{
+        type: 'pie',
+        radius: '65%',
+        center: ['50%', '50%'],
+        selectedMode: 'single',
+        data: hour_in_group,
+        emphasis: {
+          itemStyle: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+          }
+        }
+      }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+    window.addEventListener("resize", function () {
+      myChart.resize();
+    });
+  }
 
   function echart_3() {
     // 基于准备好的dom，初始化echarts实例
