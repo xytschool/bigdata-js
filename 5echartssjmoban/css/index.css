@@ -63,8 +63,6 @@
 
 .content {
   display: flex;
-
-
 }
 .leftMain {
   width: 20%;
@@ -126,12 +124,15 @@
   align-items: center;
   color: #fff;
   font-size: 0.06rem;
-  height: 0.18rem;
+  height: 0.25rem;
 }
 .biaoge_pai ul li .liIn .liIn_left {
-  width: 25%;
+  width: 80%;
   position: relative;
   padding-left: 0.14rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .biaoge_pai ul li .liIn .liIn_left .bot {
   width: 0.08rem;
@@ -144,6 +145,9 @@
   top: 0;
   bottom: 0;
   margin: auto 0;
+}
+.biaoge_pai ul li .num {
+  font-size: 16px;
 }
 .biaoge_pai ul li .liIn2 .liIn_left .bot {
   background: #e7feb8;
@@ -203,8 +207,6 @@
   width: 30%;
 }
 .rightMain_bottomIn {
-  
- 
   min-height: 60px;
   position: relative;
   padding: 0 0.05rem;

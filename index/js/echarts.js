@@ -48,7 +48,29 @@ $(function () {
       console.log("Error: " + jqXHR.status);
     }
   });
-
+  $.ajax({
+    type: "GET",
+    url: getMapDataUrl,
+    dataType: "json",
+    success: function (data) {
+      console.log('$(\'#getMapDataId\').innerHTML', $('#getMapDataId').innerHTML)
+      $('#getMapDataId').empty()
+      console.log(data);
+      var events = data.data
+      events.forEach(function (event){
+        $('#getMapDataId').append(
+            " <tr style=\"margin-bottom: 15px\">\n" +
+            "                <th style=\"width: 80px\">" + event.position + "</th>\n" +
+            "                <th style=\"width: 30px;text-align: right\">"+ event.num +"人</th>\n" +
+            "                <th style=\"width: 90px;text-align: right\"><img src=\"images/btn-long-green.png\"></th>\n" +
+            "              </tr>"
+        )
+      })
+    },
+    error: function (jqXHR) {
+      console.log("Error: " + jqXHR.status);
+    }
+  });
   function getPageDate() {
     $.ajax({
       type: "GET",
