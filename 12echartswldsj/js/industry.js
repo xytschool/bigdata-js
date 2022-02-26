@@ -443,8 +443,8 @@ $(function () {
         zoom: 1.2,
         mapType: 'china',
         roam: false,
-        top: 150,
-        left: 100,
+        top: 80,
+        left: 80,
         label: {
           normal: {
             show: true, //显示省份标签
