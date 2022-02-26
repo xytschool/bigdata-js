@@ -39,9 +39,9 @@ $(function () {
     dataType: "json",
     success: function (data) {
       $("#customer_today").text(data.customer_today)
-      $("#uphill").text(data.uphill)
+      $("#uphill").text(parseInt(data.uphill))
       $("#downhill").text(data.downhill)
-      $("#onhill").text(data.onhill)
+      $("#onhill").text(parseInt(data.onhill))
  
     },
     error: function (jqXHR) {
