@@ -451,7 +451,23 @@ $(function () {
     var option = {
       "color":       ["#DD6B66",  "#EEDD78", "#73A373", "#73B9BC", "#7289AB", "#91CA8C", "#F49F42"],
       tooltip: {
-        trigger: 'item'
+        trigger: 'item',
+        formatter: function (num) {
+          console.log(num);
+          if (num.value > 0) {
+            return num.name + ":" + num.value
+          } else {
+            return num.name + ": 0"
+          }
+        }
+      },
+      visualMap: {
+        top: 'middle',
+        right: 10,
+        color: ['orangered', 'yellow', 'lightskyblue', ],
+        textStyle: {
+          color: "#fff"
+        }
       },
       legend: {
         orient: 'vertical',
