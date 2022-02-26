@@ -270,7 +270,7 @@ $(function () {
         }
       },
       series: [{
-        name: '共享次数',
+        name: '接待人数',
         type: "bar",
         itemStyle: {
           normal: {
