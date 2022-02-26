@@ -111,7 +111,7 @@
         itemGap: 30,
         orient: 'horizontal',
         left: 'center',
-        top: '20px',
+        top: '6px',
         icon: 'rect',
         // selectedMode: false, //取消图例上的点击事件
         textStyle: {
@@ -120,7 +120,7 @@
       },
       grid: {
         left: '30%',
-         right: '30%',
+        right: '30%',
         top: '20%',
         bottom: '20%',
         containLabel: true
