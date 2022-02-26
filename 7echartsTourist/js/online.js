@@ -29,8 +29,8 @@ $(function () {
     success: function (data) {
       province_customer = data.province_customer_name
       city_customer = data.city_customer
-      char1();
-      char2()
+      cityBar();
+      provinceBar()
       map()
     },
     error: function (jqXHR) {
@@ -41,11 +41,10 @@ $(function () {
 
   getPageDate()
 
-  function char1() {
-    var myChart = echarts.init(document.getElementById('container2'));
+  function cityBar() {
+    var myChart = echarts.init(document.getElementById('cityBarId'));
     var city = []
     var value = []
-
 
     for (var i = 0; i < city_customer.length; i++) {
       city.push(city_customer[i].name)
@@ -92,6 +91,7 @@ $(function () {
       series: [{
         name: '城市',
         type: 'bar',
+        barWidth: 15,
         data: value,
         label: seriesLabel,
         markPoint: {
@@ -119,7 +119,7 @@ $(function () {
     });
   }
 
-  function char2() {
+  function provinceBar() {
     var province = []
     var value = []
 
@@ -163,7 +163,6 @@ $(function () {
         }
       },
       yAxis: {
-
         type: 'category',
         inverse: false,
         data: province,
@@ -174,10 +173,10 @@ $(function () {
           }
         },
       },
-      series: [
-          {
+      series: [{
         name: '省份',
         type: 'bar',
+        barWidth: 15,
         data: value,
         label: seriesLabel,
         markPoint: {
@@ -234,8 +233,9 @@ $(function () {
         }
       },
       visualMap: {
-        top: 'middle',
-        right: 10,
+        top: 10,
+        right: 150,
+        max: 100,
         color: ['orangered', 'yellow', 'lightskyblue', ],
         textStyle: {
           color: "#fff"
@@ -254,9 +254,9 @@ $(function () {
         }
       },
       grid: {
-        right: 300,
-        top: 100,
-        bottom: 550,
+        right: 140,
+        top: 260,
+        bottom: 180,
         width: '100'
       },
       xAxis: {
@@ -325,7 +325,7 @@ $(function () {
         type: 'map',
         aspectScale: 0.75,
         zoom: 1.2,
-        top: 100,
+        top: 60,
         left: 100,
         mapType: 'china',
         roam: false,
