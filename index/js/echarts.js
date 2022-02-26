@@ -9,8 +9,8 @@ $(function () {
         value1: ''
       }
     },
-    methods:{
-      datachange(value){
+    methods: {
+      datachange(value) {
         console.log('time', value);
         startDate = value[0]
         endDate = value[1]
@@ -27,11 +27,14 @@ $(function () {
   var hour_out_group = []
   var group_type = []
   var day_group = []
-  var user_flowings =[]
+  var user_flowings = []
 
   $.ajax({
     type: "GET",
-    data: {start:startDate , end: endDate},
+    data: {
+      start: startDate,
+      end: endDate
+    },
     url: Customer,
     dataType: "json",
     success: function (data) {
@@ -39,17 +42,20 @@ $(function () {
       $("#uphill").text(data.uphill)
       $("#downhill").text(data.downhill)
       $("#onhill").text(data.onhill)
-      ceshis5();
+ 
     },
     error: function (jqXHR) {
       console.log("Error: " + jqXHR.status);
     }
   });
 
-  function getPageDate(){
+  function getPageDate() {
     $.ajax({
       type: "GET",
-      data: {start:startDate , end: endDate},
+      data: {
+        start: startDate,
+        end: endDate
+      },
       url: Customer,
       dataType: "json",
       success: function (data) {
@@ -70,7 +76,9 @@ $(function () {
         ceshis1();
         ceshis2();
         ceshis3();
-        ceshis6()
+        ceshis5();
+        // ceshis6();
+      
       },
       error: function (jqXHR) {
         console.log("Error: " + jqXHR.status);
@@ -80,7 +88,10 @@ $(function () {
     $.ajax({
       type: "GET",
       url: Vehicles,
-      data: {start:startDate , end: endDate},
+      data: {
+        start: startDate,
+        end: endDate
+      },
       dataType: "json",
       success: function (data) {
         $("#in").text(data.used)
@@ -104,7 +115,7 @@ $(function () {
     dataType: "json",
     success: function (data) {
       $("#weather_text").text(data.weatherinfo.weather)
-      var text=  data.weatherinfo.temp1 + '-' + data.weatherinfo.temp2
+      var text = data.weatherinfo.temp1 + '-' + data.weatherinfo.temp2
       $("#weather_value").text(text)
     },
     error: function (jqXHR) {
@@ -163,7 +174,7 @@ $(function () {
     option = {
       xAxis: {
         type: 'category',
-        data: [ '个人','团体', '电商'],
+        data: ['个人', '团体', '电商'],
         axisLabel: {
           formatter: '{value}',
           textStyle: {
@@ -171,16 +182,16 @@ $(function () {
           }
         },
       },
-      tooltip : {
+      tooltip: {
         trigger: 'axis',
-        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        axisPointer: { // 坐标轴指示器，坐标轴触发有效
+          type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
         },
         formatter: function (params) {
-            var tar = params[0];
-            return  tar.name + ' : ' + tar.value;
+          var tar = params[0];
+          return tar.name + ' : ' + tar.value;
         }
-    },
+      },
       grid: [{
         top: '10%',
         width: '80%'
@@ -204,10 +215,10 @@ $(function () {
             color: 'rgb(63,212,52)'
           },
           label: {
-           show: true,
-           position: 'top',
-           valueAnimation: true,
-          //color: 'rgb(102,236,12)'
+            show: true,
+            position: 'top',
+            valueAnimation: true,
+            //color: 'rgb(102,236,12)'
           },
         },
 
@@ -252,7 +263,7 @@ $(function () {
       xAxis: [{
         type: 'category',
         boundaryGap: false,
-        data: ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"],
+        data: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"],
         axisLabel: {
           formatter: '{value}',
           textStyle: {
@@ -364,7 +375,7 @@ $(function () {
       xAxis: [{
         type: 'category',
         boundaryGap: false,
-        data: ['06','07', '08','09' ,'10','11' ,'12','13', '14','15','16','17', '18','19','20'],
+        data: ['06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'],
         axisLabel: {
           formatter: '{value}',
           textStyle: {
@@ -441,15 +452,28 @@ $(function () {
     for (var i = 0; i < province_customer.length; i++) {
       province_customer_value.push({
         name: province_customer[i].name.replace('省', ''),
-        value:province_customer[i].value})
+        value: province_customer[i].value
+      })
       province_customer_index.push(province_customer[i].name)
     }
     console.log('province_customer_value', province_customer_value)
 
     var worldMapContainer1 = document.getElementById('map');
     var myChart = echarts.init(worldMapContainer1);
+    var yData = [];
+    barData = province_customer.sort(function (a, b) {
+      return b.value - a.value;
+    });
+
+    for (var j = 0; j < barData.length; j++) {
+      if (j < 10) {
+        yData.push('0' + j + barData[j].name);
+      } else {
+        yData.push(j + barData[j].name);
+      }
+    }
     var option = {
-      "color":       ["#DD6B66",  "#EEDD78", "#73A373", "#73B9BC", "#7289AB", "#91CA8C", "#F49F42"],
+      "color": ["#DD6B66", "#EEDD78", "#73A373", "#73B9BC", "#7289AB", "#91CA8C", "#F49F42"],
       tooltip: {
         trigger: 'item',
         formatter: function (num) {
@@ -469,41 +493,87 @@ $(function () {
           color: "#fff"
         }
       },
-      legend: {
-        orient: 'vertical',
-        x: 'left',
-        y: 'bottom',
-        data: [
-          '购票人数'
-        ],
+      title: [{
+        show: true,
+        text: '游客省份排行',
+        subtext: '',
+        subtextStyle: {
+          color: '#ffffff',
+          lineHeight: 20
+        },
         textStyle: {
-          color: '#ccc'
-        }
-      },
-      grid: [{
-        right: '4%',
-        top: '35%',
-        bottom: '10%',
-        width: '30%'
+          color: '#fff',
+          fontSize: 18
+        },
+        right: 140,
+        top: 20
       }],
+      grid: {
+        right: 10,
+        top:80,
+        bottom: 30,
+        width: '200'
+      },
       xAxis: {
-        max: 'dataMax',
-        type: 'value',
-        show: false,
+        show: false
       },
       yAxis: {
-        inverse: true,
         type: 'category',
-        data: province_customer_index,
-        axisLabel: {
-          formatter: '{value}',
-          textStyle: {
-            color: "#d9d2c9"
+        inverse: true,
+        nameGap: 16,
+        axisLine: {
+          show: false,
+          lineStyle: {
+            color: '#ddd'
           }
         },
+        axisTick: {
+          show: false,
+          lineStyle: {
+            color: '#ddd'
+          }
+        },
+        axisLabel: {
+          interval: 0,
+          margin: 85,
+          textStyle: {
+            color: '#fff',
+            align: 'left',
+            fontSize: 14
+          },
+          rich: {
+            a: {
+              color: '#fff',
+              backgroundColor: '#f0515e',
+              width: 15,
+              height: 15,
+              align: 'center',
+              borderRadius: 2
+            },
+            b: {
+              color: '#fff',
+              backgroundColor: '#24a5cd',
+              width: 15,
+              height: 15,
+              align: 'center',
+              borderRadius: 2
+            }
+          },
+          formatter: function (params) {
+            if (parseInt(params.slice(0, 2)) < 3) {
+              return [
+                '{a|' + (parseInt(params.slice(0, 2)) + 1) + '}' + '  ' + params.slice(2)
+              ].join('\n')
+            } else {
+              return [
+                '{b|' + (parseInt(params.slice(0, 2)) + 1) + '}' + '  ' + params.slice(2)
+              ].join('\n')
+            }
+          }
+        },
+        data: yData
       },
-      series: [
-          {
+      series: [{
           name: '购票人数',
           type: 'map',
           aspectScale: 0.75,
@@ -541,23 +611,58 @@ $(function () {
             return province_customer_value;
           }()
         },
+       
         {
+          name: 'barSer',
           type: 'bar',
-          zlevel: 1,
-          realtimeSort: true,
-          sort: true,
-          data: province_customer_value,
-          showBackground: true,
-          backgroundStyle: {
-            color: 'rgb(191,239,123)'
+          visualMap: false,
+          zlevel: 2,
+          barMaxWidth: 16,
+          barGap: 0,
+          roam: false,
+
+          itemStyle: {
+            normal: {
+              color: function (params) {
+                var colorList = [{
+                    colorStops: [{
+                      offset: 0,
+                      color: '#f0515e'
+                    }, {
+                      offset: 1,
+                      color: '#ef8554'
+                    }]
+                  },
+                  {
+                    colorStops: [{
+                      offset: 0,
+                      color: '#3c38e4'
+                    }, {
+                      offset: 1,
+                      color: '#24a5cd'
+                    }]
+                  }
+                ];
+                if (params.dataIndex < 3) {
+                  return colorList[0]
+                } else {
+                  return colorList[1]
+                }
+              },
+              barBorderRadius: [0, 15, 15, 0]
+            }
           },
           label: {
-            show: true,
-            position: 'right',
-            valueAnimation: true,
-            color: 'rgb(191,239,123)'
-          }
-        },
+            normal: {
+              show: true,
+              textBorderColor: '#333',
+              textBorderWidth: 2
+            }
+          },
+          data: barData.sort((a, b) => {
+            return b.value - a.value;
+          })
+        }
       ],
       animationDuration: 0,
       animationDurationUpdate: 3000,
@@ -585,7 +690,7 @@ $(function () {
       tooltip: {
         trigger: 'item'
       },
-      color: ['#af89d6', '#4ac7f5', '#9089ff',  '#f5c847'],
+      color: ['#af89d6', '#4ac7f5', '#9089ff', '#f5c847'],
       series: [{
         type: 'pie',
         radius: '55%',
@@ -617,9 +722,15 @@ $(function () {
 
     myChart.setOption(option);
 
-    setTimeout(function (){myChart.resize()},500)
-    setTimeout(function (){myChart.resize()},1000)
-    setTimeout(function (){myChart.resize()},3000)
+    setTimeout(function () {
+      myChart.resize()
+    }, 500)
+    setTimeout(function () {
+      myChart.resize()
+    }, 1000)
+    setTimeout(function () {
+      myChart.resize()
+    }, 3000)
     window.addEventListener("resize", function () {
       myChart.resize();
     });

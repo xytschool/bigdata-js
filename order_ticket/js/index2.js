@@ -69,7 +69,6 @@ $(function () {
     var myChart = echarts.init(document.getElementById('provinceMapId'));
     var option = null;
     var yData = [];
-
     barData = province_customer.sort(function (a, b) {
       return b.value - a.value;
     });
@@ -81,6 +80,7 @@ $(function () {
         yData.push(j + barData[j].name);
       }
     }
+    console.log(yData)
     option = {
       /*backgroundColor: '#00013a',*/
       tooltip: {
@@ -182,60 +182,7 @@ $(function () {
         },
         data: yData
       },
-      // geo: {
-      //     map: 'china',
-      //     label: {
-      //         show: true,
-      //         color: '#ffffff',
-      //         emphasis: {
-      //             color: 'white',
-      //             show: false
-      //         }
-      //     },
-      //     roam: true,//是否允许缩放
-      //     top: 10,
-      //     left: 'left',
-      //     right: '200',
-      //     width:'66%',
-      //     height:'90%',
-      //     zoom: 1, //默认显示级别
-      //     scaleLimit: {
-      //         min: 0,
-      //         max: 1
-      //     }, //缩放级别
-      //     itemStyle: {
-      //         normal: {
-      //             borderColor: 'rgba(26,82,231, 1)',
-      //             borderWidth: 1,
-      //             areaColor: {
-      //                 type: 'radial',
-      //                 x: 0.5,
-      //                 y: 0.5,
-      //                 r: 0.8,
-      //                 colorStops: [{
-      //                     offset: 0,
-      //                     color: 'rgba(14, 101, 247, .1)' // 0% 处的颜色
-      //                 }, {
-      //                     offset: 1,
-      //                     color: 'rgba(125, 183, 252, .1)' // 100% 处的颜色
-      //                 }],
-      //                 globalCoord: false // 缺省为 false
-      //             },
-      //             shadowColor: 'rgba(255, 255, 255, 0)',
-      //             shadowOffsetX: -2,
-      //             shadowOffsetY: 2,
-      //             shadowBlur: 10
-      //         },
-      //         emphasis: {
-      //             areaColor: 'rgba(249,157,51, .2)',
-      //             borderWidth: 0
-      //         }
-      //     },
-      //     tooltip: {
-      //         show: false
-      //     },
-      //     data: province_customer
-      // },
+      
       series: [{
           name: '购票人数',
           type: 'map',
