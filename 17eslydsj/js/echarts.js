@@ -41,11 +41,6 @@ $(function () {
     success: function (data) {
       console.log(data);
       var videos = data.data
-      // document.getElementById('video_1').setAttribute('src', videos[0].addr )
-      // document.getElementById('video_2').setAttribute('src', videos[1].addr )
-      // document.getElementById('video_3').setAttribute('src', videos[2].addr )
-      // document.getElementById('video_4').setAttribute('src', videos[3].addr )
-
       document.getElementById('video_1').src = videos[0].addr;
       document.getElementById('video_1').play();
       document.getElementById('video_2').src = videos[1].addr;
@@ -59,7 +54,6 @@ $(function () {
       console.log("Error: " + jqXHR.status);
     }
   });
-
 
   $.ajax({
     type: "GET",
@@ -80,7 +74,30 @@ $(function () {
             "</li>"
         )
       })
+    },
+    error: function (jqXHR) {
+      console.log("Error: " + jqXHR.status);
+    }
+  });
 
+  $.ajax({
+    type: "GET",
+    url: getMapDataUrl,
+    dataType: "json",
+    success: function (data) {
+      console.log('$(\'#getMapDataId\').innerHTML', $('#getMapDataId').innerHTML)
+      $('#getMapDataId').empty()
+      console.log(data);
+      var events = data.data
+      events.forEach(function (event){
+        $('#getMapDataId').append(
+            " <tr style=\"margin-bottom: 15px\">\n" +
+            "                <th style=\"width: 80px\">" + event.position + "</th>\n" +
+            "                <th style=\"width: 30px;text-align: right\">"+ event.num +"人</th>\n" +
+            "                <th style=\"width: 90px;text-align: right\"><img src=\"img/btn-long-green.png\"></th>\n" +
+            "              </tr>"
+        )
+      })
     },
     error: function (jqXHR) {
       console.log("Error: " + jqXHR.status);

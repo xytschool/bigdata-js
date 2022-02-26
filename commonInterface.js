@@ -4,5 +4,6 @@ var comments= "http://bigdata.xytschool.com/api/comments"
 
 var videoDevicesUrl = "http://bigdata.xytschool.com/api/getVideoDevices"
 var eventsUrl = "http://bigdata.xytschool.com/api/getEvents"
+var getMapDataUrl = "http://bigdata.xytschool.com/api/getMapData"
 //var Customer="http://bigdata.xyt/api/getCustomerSummary"
 //var Vehicles="http://bigdata.xyt/api/getVehiclesSummary"
