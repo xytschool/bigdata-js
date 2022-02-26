@@ -39,6 +39,7 @@ $(function () {
       },
       dataType: "json",
       success: function (data) {
+        console.log('data', data)
         $("#customer_today").text(data.customer_today)
         $("#uphill").text(data.uphill)
         $("#downhill").text(data.downhill)
@@ -55,7 +56,7 @@ $(function () {
         ceshis();
         ceshis1()
         ceshi2()
-        ceshis3()
+        groupType()
       },
       error: function (jqXHR) {
         console.log("Error: " + jqXHR.status);
@@ -65,10 +66,10 @@ $(function () {
   }
 
   function ceshis() {
-    var myChart = echarts.init(document.getElementById('chart4'));
+    var myChart = echarts.init(document.getElementById('provinceMapId'));
     var option = null;
     var yData = [];
-  
+
     barData = province_customer.sort(function (a, b) {
       return b.value - a.value;
     });
@@ -104,7 +105,7 @@ $(function () {
       title: [{
         show: true,
         text: '游客省份排行',
-        subtext: '2021年 12月',
+        subtext: '',
         subtextStyle: {
           color: '#ffffff',
           lineHeight: 20
@@ -543,8 +544,8 @@ $(function () {
     myChart.setOption(option);
   }
 
-  function ceshis3() {
-    var myChart = echarts.init(document.getElementById('chart3'));
+  function groupType() {
+    var myChart = echarts.init(document.getElementById('groupTypeId'));
     let group_type_value = []
     for (var i = 0; i < group_type.length; i++) {
       group_type_value.push(group_type[i].value)
@@ -572,7 +573,7 @@ $(function () {
       },
       grid: [{
         top: '10%',
-        width: '80%'
+        width: '70%'
       }],
       yAxis: {
         show: false,
@@ -586,6 +587,7 @@ $(function () {
       },
       "color": ["#00E4F0", "#44D16D", "#124E91", "#BDC414", "#C8CCA5", "#534EE1"],
       series: [{
+          barWidth: 40,
           data: group_type_value,
           type: 'bar',
           showBackground: true,
