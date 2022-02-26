@@ -119,8 +119,8 @@
         },
       },
       grid: {
-        // left: '20%',
-        // right: '20%',
+        left: '20%',
+         right: '20%',
         top: '20%',
         bottom: '20%',
         containLabel: true
@@ -234,7 +234,7 @@
                 }
               },
               value: 100,
-              symbol: symbols[2],
+              symbol: symbols[1],
               symbolSize: [8, '18%'],
               symbolOffset: [0, '-200%']
             },
