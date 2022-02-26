@@ -24,6 +24,7 @@ $(function () {
   var city_customer = []
   var month_group = []
   var last_year_month_group = []
+  var aggDurationData = []
 
   function getPageDate() {
     $.ajax({
@@ -50,6 +51,7 @@ $(function () {
         hour_out_group = data.hour_out_group
         province_customer = data.province_customer_name
         city_customer = data.city_customer
+        aggDurationData = data.agg_duration
         month_group = data.month_group.map(function (item) {
           return item.value
         })
@@ -59,11 +61,11 @@ $(function () {
         console.log('month_group', month_group)
         console.log('province_customer_name', province_customer)
         echart_3()
-        echarts_5()
-        echarts_6()
+        provinceBar()
+        cityBar()
         echarts_2()
         echarts_4()
-        echarts_1();
+        aggDuration();
       },
       error: function (jqXHR) {
         console.log("Error: " + jqXHR.status);
@@ -71,48 +73,21 @@ $(function () {
     });
   }
   getPageDate()
-  // 
+  //
   echarts_4();
 
-  function echarts_1() {
-    var myChart = echarts.init(document.getElementById('echarts_1'));
+  function aggDuration() {
+    var myChart = echarts.init(document.getElementById('aggDuration'));
     var hour_in_group_data = []
     var value1 = 0
     var value2 = 0
     var value3 = 0
     var value4 = 0
 
-    for (var i = 0; i < hour_in_group.length; i++) {
-      // hour_in_group_data.push(hour_in_group[i].name + "小时")
-      if (hour_in_group[i].name > 8) {
-        hour_in_group_data.push({
-          name: "8小时以上",
-          value: value1 + hour_in_group[i].value
-        })
-      }else if(hour_in_group[i].name = 8 &&hour_in_group[i].name>4){
-        hour_in_group_data.push({
-          name: "4-8小时",
-          value: value2 + hour_in_group[i].value
-        })
-      }
-      else if(hour_in_group[i].name = 4 &&hour_in_group[i].name>2){
-        hour_in_group_data.push({
-          name: "2-4小时",
-          value: value3 + hour_in_group[i].value
-        })
-      }
-      else if(hour_in_group[i].name<2){
-        hour_in_group_data.push({
-          name: "两小时以内",
-          value: value4 + hour_in_group[i].value
-        })
-      }
-    }
-    console.log(hour_in_group_data);
     option = {
       tooltip: {
         trigger: 'item',
-        formatter: '{a} <br/>{b} : {c} ({d}%)'
+        formatter: '{b} : {c} ({d}%)'
       },
       legend: {
         bottom: 10,
@@ -124,7 +99,14 @@ $(function () {
         radius: '65%',
         center: ['50%', '50%'],
         selectedMode: 'single',
-        data: hour_in_group_data,
+        data: aggDurationData,
+        label: {
+          color: '#fff',
+          show: true, // 显示文字
+          formatter: function (arg) {
+            return arg.name + ' ' +arg.percent + '%'
+          },
+        },
         emphasis: {
           itemStyle: {
             shadowBlur: 10,
@@ -461,7 +443,7 @@ $(function () {
     });
   }
 
-  function echarts_5() {
+  function provinceBar() {
     var province = []
     var value = []
 
@@ -504,7 +486,6 @@ $(function () {
         }
       },
       yAxis: {
-
         type: 'category',
         inverse: false,
         data: province,
@@ -518,6 +499,7 @@ $(function () {
       series: [{
         name: '省份',
         type: 'bar',
+        barWidth: 40,
         data: value,
         label: seriesLabel,
         markPoint: {
@@ -545,7 +527,7 @@ $(function () {
     });
   }
 
-  function echarts_6() {
+  function cityBar() {
     var city = []
     var value = []
     var worldMapContainer1 = document.getElementById('city');
@@ -589,7 +571,7 @@ $(function () {
       },
       yAxis: {
         type: 'category',
-        inverse: true,
+        inverse: false,
         data: city,
         axisLabel: {
           formatter: '{value}',
@@ -601,6 +583,7 @@ $(function () {
       series: [{
         name: '城市',
         type: 'bar',
+        barWidth: 40,
         data: value,
         label: seriesLabel,
         markPoint: {
