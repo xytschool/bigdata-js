@@ -29,7 +29,10 @@ $(function () {
     $.ajax({
       type: "GET",
       url: Vehicles,
-      data: {start:startDate , end: endDate},
+      data: {
+        start: startDate,
+        end: endDate
+      },
       dataType: "json",
       success: function (data) {
         $("#total_seat").text(data.total_seat)
@@ -47,8 +50,12 @@ $(function () {
         hour_out_group = data.hour_out_group
         province_customer = data.province_customer_name
         city_customer = data.city_customer
-        month_group = data.month_group.map(function (item){ return item.value})
-        last_year_month_group = data.last_year_month_group.map(function (item){ return item.value})
+        month_group = data.month_group.map(function (item) {
+          return item.value
+        })
+        last_year_month_group = data.last_year_month_group.map(function (item) {
+          return item.value
+        })
         console.log('month_group', month_group)
         console.log('province_customer_name', province_customer)
         echart_3()
@@ -56,6 +63,7 @@ $(function () {
         echarts_6()
         echarts_2()
         echarts_4()
+        echarts_1();
       },
       error: function (jqXHR) {
         console.log("Error: " + jqXHR.status);
@@ -63,27 +71,95 @@ $(function () {
     });
   }
   getPageDate()
-  // echarts_1();
+  // 
   echarts_4();
+
+  function echarts_1() {
+    var myChart = echarts.init(document.getElementById('echarts_1'));
+    var hour_in_group_data = []
+    var value1 = 0
+    var value2 = 0
+    var value3 = 0
+    var value4 = 0
+
+    for (var i = 0; i < hour_in_group.length; i++) {
+      // hour_in_group_data.push(hour_in_group[i].name + "小时")
+      if (hour_in_group[i].name > 8) {
+        hour_in_group_data.push({
+          name: "8小时以上",
+          value: value1 + hour_in_group[i].value
+        })
+      }else if(hour_in_group[i].name = 8 &&hour_in_group[i].name>4){
+        hour_in_group_data.push({
+          name: "4-8小时",
+          value: value2 + hour_in_group[i].value
+        })
+      }
+      else if(hour_in_group[i].name = 4 &&hour_in_group[i].name>2){
+        hour_in_group_data.push({
+          name: "2-4小时",
+          value: value3 + hour_in_group[i].value
+        })
+      }
+      else if(hour_in_group[i].name<2){
+        hour_in_group_data.push({
+          name: "两小时以内",
+          value: value4 + hour_in_group[i].value
+        })
+      }
+    }
+    console.log(hour_in_group_data);
+    option = {
+      tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b} : {c} ({d}%)'
+      },
+      legend: {
+        bottom: 10,
+        left: 'center',
+        data: ["8小时以上", "2-4小时", "两小时以内", "4-8小时"]
+      },
+      series: [{
+        type: 'pie',
+        radius: '65%',
+        center: ['50%', '50%'],
+        selectedMode: 'single',
+        data: hour_in_group_data,
+        emphasis: {
+          itemStyle: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+          }
+        }
+      }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+    window.addEventListener("resize", function () {
+      myChart.resize();
+    });
+  }
 
 
   function echart_3() {
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('chart_3'));
 
-    var xLables =  ['06', '07','08','09' ,'10','11' ,'12', '13', '14','15' ,'16', '17','18','19', '20','21','22']
-    var hour_in_group_data = xLables.map(function (item){
+    var xLables = ['06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22']
+    var hour_in_group_data = xLables.map(function (item) {
       for (var i = 1; i < hour_in_group.length; i++) {
-          if(hour_in_group[i].name == parseInt(item)){
-            return hour_in_group[i].value
-          }
+        if (hour_in_group[i].name == parseInt(item)) {
+          return hour_in_group[i].value
+        }
       }
       return 0
     })
 
-    var hour_out_group_data = xLables.map(function (item){
+    var hour_out_group_data = xLables.map(function (item) {
       for (var i = 1; i < hour_out_group.length; i++) {
-        if(hour_out_group[i].name == parseInt(item)){
+        if (hour_out_group[i].name == parseInt(item)) {
           return hour_in_group[i].value
         }
       }
@@ -198,7 +274,11 @@ $(function () {
         }
       },
       "legend": {
-        "data": [{ "name": "本期"}, {"name": "同期"},],
+        "data": [{
+          "name": "本期"
+        }, {
+          "name": "同期"
+        }, ],
         "top": "0%",
         "textStyle": {
           "color": "rgba(255,255,255,0.9)" //图例文字
@@ -221,23 +301,24 @@ $(function () {
 
       }, ],
       "yAxis": [{
-          "type": "value",
-          "name": "",
-          "min": 0,
-          "axisLabel": {"show": true,},
-          axisLine: {
-            lineStyle: {
-              color: 'rgba(255,255,67,.8)'
-            }
-          }, //左线色
+        "type": "value",
+        "name": "",
+        "min": 0,
+        "axisLabel": {
+          "show": true,
         },
-      ],
+        axisLine: {
+          lineStyle: {
+            color: 'rgba(255,255,67,.8)'
+          }
+        }, //左线色
+      }, ],
       "grid": {
         "top": "10%",
         "right": "5%",
         "bottom": "10%",
         "left": "10%",
-        "width" : "86%",
+        "width": "86%",
         "height": "70%"
       },
       "series": [{
@@ -337,43 +418,41 @@ $(function () {
           color: '#ccc'
         }
       },
-      series: [
-          {
-          name: '车辆数',
-          type: 'map',
-          aspectScale: 0.75,
-          zoom: 1.2,
-          mapType: 'china',
-          roam: false,
-            label: {
-              normal: {
-                show: true, //显示省份标签
-                textStyle: {
-                  color: "#c71585"
-                } //省份标签字体颜色
-              },
-              emphasis: { //对应的鼠标悬浮效果
-                show: true,
-                textStyle: {
-                  color: "#800080"
-                }
-              }
-            },
-            itemStyle: {
-              normal: {
-                borderWidth: .5, //区域边框宽度
-                borderColor: '#009fe8', //区域边框颜色
-                areaColor: "#ffffff", //区域颜色
-              },
-              emphasis: {
-                borderWidth: .5,
-                borderColor: '#4b0082',
-                areaColor: "#ffdead",
-              }
-            },
-          data: province_customer
+      series: [{
+        name: '车辆数',
+        type: 'map',
+        aspectScale: 0.75,
+        zoom: 1.2,
+        mapType: 'china',
+        roam: false,
+        label: {
+          normal: {
+            show: true, //显示省份标签
+            textStyle: {
+              color: "#c71585"
+            } //省份标签字体颜色
+          },
+          emphasis: { //对应的鼠标悬浮效果
+            show: true,
+            textStyle: {
+              color: "#800080"
+            }
+          }
         },
-      ],
+        itemStyle: {
+          normal: {
+            borderWidth: .5, //区域边框宽度
+            borderColor: '#009fe8', //区域边框颜色
+            areaColor: "#ffffff", //区域颜色
+          },
+          emphasis: {
+            borderWidth: .5,
+            borderColor: '#4b0082',
+            areaColor: "#ffdead",
+          }
+        },
+        data: province_customer
+      }, ],
     };
 
     myChart.setOption(option);
